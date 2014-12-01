@@ -1,0 +1,166 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{E304487D-6AA6-425C-9962-ED4423242196}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>StevenVolckaert.InventorPowerTools</RootNamespace>
+    <AssemblyName>StevenVolckaert.InventorPowerTools</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>..\..\SupportFiles\StevenVolckaert.pfx</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Autodesk.Inventor.Interop, Version=16.0.0.0, Culture=neutral, PublicKeyToken=d84147f8b4276564, processorArchitecture=MSIL">
+      <HintPath>..\Libraries\Autodesk.Inventor.Interop.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="stdole, Version=7.0.3300.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AddIn.cs" />
+    <Compile Include="Buttons\ButtonBase.cs" />
+    <Compile Include="Buttons\CreatePartViewsFromAssemblyButton.cs" />
+    <Compile Include="Buttons\CreateTopAndLeftProjectedViewsButton.cs" />
+    <Compile Include="Buttons\ExportPdfButton.cs" />
+    <Compile Include="Buttons\GenerateMdfDrawingsButton.cs" />
+    <Compile Include="Buttons\GenerateSheetMetalDrawingsButton.cs" />
+    <Compile Include="Buttons\GenerateSubassemblyDrawingsButton.cs" />
+    <Compile Include="Extensions\ApplicationExtensions.cs" />
+    <Compile Include="Extensions\AssemblyDocumentExtensions.cs" />
+    <Compile Include="Extensions\Box2dExtensions.cs" />
+    <Compile Include="Extensions\CommandCategoriesExtensions.cs" />
+    <Compile Include="Extensions\DocumentExtensions.cs" />
+    <Compile Include="Extensions\DrawingCurveExtensions.cs" />
+    <Compile Include="Extensions\DrawingViewExtensions.cs" />
+    <Compile Include="Extensions\IconExtensions.cs" />
+    <Compile Include="Extensions\ParameterExtensions.cs" />
+    <Compile Include="Extensions\PartDocumentExtensions.cs" />
+    <Compile Include="Extensions\PartsListColumnExtensions.cs" />
+    <Compile Include="Extensions\PartsListExtensions.cs" />
+    <Compile Include="Extensions\PropertySetExtensions.cs" />
+    <Compile Include="Extensions\SheetExtensions.cs" />
+    <Compile Include="Extensions\StringExtensions.cs" />
+    <Compile Include="Extensions\UserInterfaceManagerExtensions.cs" />
+    <Compile Include="GlobalSuppressions.cs" />
+    <Compile Include="Helpers\OleCreateConverter.cs" />
+    <Compile Include="HumanReadableStringComparer.cs" />
+    <Compile Include="Models\ModelBase.cs" />
+    <Compile Include="Models\Assembly.cs" />
+    <Compile Include="Models\IDocument.cs" />
+    <Compile Include="Models\Margin.cs" />
+    <Compile Include="Models\Part.cs" />
+    <Compile Include="Models\Rectangle.cs" />
+    <Compile Include="PartType.cs" />
+    <Compile Include="Prism\Commands\DelegateCommand.cs" />
+    <Compile Include="Prism\Commands\DelegateCommandBase.cs" />
+    <Compile Include="Prism\Commands\WeakEventHandlerManager.Desktop.cs" />
+    <Compile Include="Prism\IActiveAware.cs" />
+    <Compile Include="Prism\ViewModel\NotificationObject.cs" />
+    <Compile Include="Prism\ViewModel\PropertySupport.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModelBase.cs" />
+    <Compile Include="Windows\GenerateSheetMetalDrawingsWindow.xaml.cs">
+      <DependentUpon>GenerateSheetMetalDrawingsWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\GenerateSheetMetalDrawingsViewModel.cs" />
+    <Compile Include="Windows\GenerateDrawingsViewModelBase.cs" />
+    <Compile Include="Windows\GenerateMdfDrawingsViewModel.cs" />
+    <Compile Include="Windows\GenerateMdfDrawingsWindow.xaml.cs">
+      <DependentUpon>GenerateMdfDrawingsWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\GenerateSubassemblyDrawingsViewModel.cs" />
+    <Compile Include="Windows\GenerateSubassemblyDrawingsWindow.xaml.cs">
+      <DependentUpon>GenerateSubAssemblyDrawingsWindow.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <CodeAnalysisDictionary Include="..\..\SupportFiles\CustomDictionary.xml">
+      <Link>CustomDictionary.xml</Link>
+    </CodeAnalysisDictionary>
+    <Content Include="StevenVolckaert.InventorPowerTools.addin" />
+    <EmbeddedResource Include="Buttons\CreatePartViewsFromAssemblyButton.ico" />
+    <EmbeddedResource Include="Buttons\CreateTopAndLeftProjectedViewsButton.ico" />
+    <EmbeddedResource Include="Buttons\ExportPdfButton.ico" />
+    <EmbeddedResource Include="Buttons\GenerateMdfDrawingsButton.ico" />
+    <EmbeddedResource Include="Buttons\GenerateSheetMetalDrawingsButton.ico" />
+    <EmbeddedResource Include="Buttons\GenerateSubassemblyDrawingsButton.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="StevenVolckaert.InventorPowerTools.manifest" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="Windows\GenerateSheetMetalDrawingsWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Windows\GenerateMdfDrawingsWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Windows\GenerateSubAssemblyDrawingsWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>call "%25VS120COMNTOOLS%25vsvars32"
+mt.exe -manifest "$(ProjectDir)StevenVolckaert.InventorPowerTools.manifest" -outputresource:"$(TargetPath)";#2
+</PostBuildEvent>
+    <!--<PostBuildEvent>
+            copy /Y "$(TargetPath)" "C:\ProgramData\Autodesk\Inventor 2012\Addins\"
+            copy /Y "$(ProjectDir)StevenVolckaert.InventorPowerTools.addin" "C:\ProgramData\Autodesk\Inventor 2012\Addins\"
+        </PostBuildEvent>-->
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

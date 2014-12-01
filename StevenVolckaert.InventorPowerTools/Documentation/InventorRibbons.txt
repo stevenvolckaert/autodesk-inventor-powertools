@@ -1,0 +1,526 @@
+Ribbon "ZeroDoc" (6)
+    id_GetStarted - "Get Started" (4)
+        id_Panel_Launch - "Launch"
+        id_Panel_GetStartedWhatsNew - "New Features"
+        id_Panel_LearnAbout - "Learn about Inventor"
+        id_Panel_GetStartedInvolve - "Community"
+    id_TabTools - "Tools" (4)
+        id_PanelP_ToolsOptions - "Options"
+        id_PanelZ_ToolsContentCenter - "Content Center"
+        iLogic.RibbonPanel - "iLogic"
+        id_PanelP_ToolsWebTools - "Web"
+    id_TabVault - "Vault" (2)
+        id_PanelZ_VaultAccess - "Access"
+        id_PanelZ_VaultStatus - "File Status"
+    id_TabVault_Upgrade - "Vault" (3)
+        id_PanelZ_VaultAccess - "Access"
+        id_PanelZ_VaultStatusUpgrade - "File Status"
+        id_PanelZ_VaultControl - "Control"
+    id_AddInsTab - "Add-Ins" (0)
+    id_InventorDebugTab - "Inventor Debug" (0)
+Ribbon "Part" (33)
+    id_TabSheetMetal - "Sheet Metal" (9)
+        id_PanelP_Model2DSketchCreate - "Sketch"
+        id_PanelP_SheetMetalCreate - "Create"
+        id_PanelP_SheetMetalModify - "Modify"
+        id_PanelA_ModelWorkFeatures - "Work Features"
+        id_PanelP_SheetMetalPattern - "Pattern"
+        id_PanelP_SheetMetalManage - "Setup"
+        id_PanelP_SheetMetalManageUnfold - "Flat Pattern"
+        id_PanelP_ToolsParameters - "Parameters"
+        id_PanelP_ToolsMeasure - "Measure"
+    id_TabFlatPattern - "Flat Pattern" (8)
+        id_PanelP_Model2DSketchCreate - "Sketch"
+        id_PanelP_FlatPatternCreate - "Create"
+        id_PanelP_FlatPatternModify - "Modify"
+        id_PanelA_ModelWorkFeatures - "Work Features"
+        id_PanelP_FlatPatternPattern - "Pattern"
+        id_PanelP_FlatPatternInsert - "Insert"
+        id_PanelP_FlatPatternManage - "Manage"
+        id_PanelP_FlatPatternExit - "Folded Part"
+    id_TabModel - "Model" (14)
+        id_PanelP_Model2DSketchCreate - "Sketch"
+        id_PanelP_ModelCreate - "Create"
+        id_PanelP_ModelModify - "Modify"
+        id_PanelA_ModelWorkFeatures - "Work Features"
+        id_PanelP_ModelPattern - "Pattern"
+        id_PanelP_ModelSurface - "Surface"
+        id_PanelP_ToolsParameters - "Parameters"
+        id_PanelP_PlasticPart - "Plastic Part"
+        id_PanelP_ToolsMeasure - "Measure"
+        id_PanelP_ToolsInsert - "Insert"
+        id_PanelP_ModelHarness - "Harness"
+        id_PanelA_AssembleIPartIAssembly - "iPart/iAssembly"
+        id_PanelP_AnalysisFEA - "Simulation"
+        id_PanelP_ConvertSheetMetal - "Convert"
+    id_TabInspect - "Inspect" (4)
+        id_PanelP_AnalysisMeasure - "Measure"
+        id_PanelP_ToolsAnalysis - "Analysis"
+        id_PanelP_ToolsAutoLimits - "AutoLimits"
+        id_PanelP_ToolsParameters - "Parameters"
+    id_TabTools - "Tools" (5)
+        id_PanelP_ToolsEnvironments - "Begin"
+        id_PanelP_ToolsMeasure - "Measure"
+        id_PanelP_ToolsOptions - "Options"
+        id_PanelP_ToolsClipboard - "Clipboard"
+        id_PanelP_ToolsFind - "Find"
+    id_TabManage - "Manage" (9)
+        id_PanelP_ToolsUpdate - "Update"
+        id_PanelP_ToolsParameters - "Parameters"
+        id_PanelP_ToolsStylesAndStandards - "Styles and Standards"
+        id_PanelP_ToolsInsert - "Insert"
+        id_PanelP_ToolsLayout - "Layout"
+        id_PanelP_ToolsAuthor - "Author"
+        iLogic.RibbonPanel - "iLogic"
+        id_PanelP_ToolsContentCenter - "Content Center"
+        id_PanelP_ToolsWebTools - "Web"
+    id_TabView - "View" (4)
+        id_PanelP_ViewVisibility - "Visibility"
+        id_PanelA_ViewAppearance - "Appearance"
+        id_PanelP_ViewWindow - "Windows"
+        id_PanelC_ViewNavigate - "Navigate"
+    id_TabEnvironments - "Environments" (3)
+        id_Panel_EnvironmentsBegin - "Begin"
+        id_PanelP_ConvertSheetMetal - "Convert"
+        id_PanelP_EnvironmentsAddIns - "Manage"
+    id_TabVault - "Vault" (2)
+        id_PanelZ_VaultAccess - "Access"
+        id_PanelZ_VaultStatus - "File Status"
+    id_TabVault_Upgrade - "Vault" (3)
+        id_PanelZ_VaultAccess - "Access"
+        id_PanelZ_VaultStatusUpgrade - "File Status"
+        id_PanelZ_VaultControl - "Control"
+    id_GetStarted - "Get Started" (4)
+        id_Panel_Launch - "Launch"
+        id_Panel_GetStartedWhatsNew - "New Features"
+        id_Panel_LearnAbout - "Learn about Inventor"
+        id_Panel_GetStartedInvolve - "Community"
+    id_AddInsTab - "Add-Ins" (1)
+        {95413AE5-1C63-4373-A614-2649F5BF8AA6} - "GeneralTools"
+    id_TabSketch - "Sketch" (8)
+        id_PanelP_2DSketchDraw - "Draw"
+        id_PanelP_2DSketchConstrain - "Constrain"
+        id_PanelP_2DSketchPattern - "Pattern"
+        id_PanelP_2DSketchModify - "Modify"
+        id_PanelP_2DSketchLayout - "Layout"
+        id_PanelA_2DSketchInsert - "Insert"
+        id_PanelP_2DSketchFormat - "Format"
+        id_PanelP_ToolsParameters - "Parameters"
+    id_TabSketch_Exit - "Exit 2D Sketch" (1)
+        id_PanelP_2DSketchExit - "Exit"
+    id_Tab3DSketch - "3D Sketch" (7)
+        id_PanelP_3DSketchDraw - "Draw"
+        id_PanelP_3DSketchConstrain - "Constrain"
+        id_PanelP_3DSketchModify - "Modify"
+        id_PanelP_3DSketchInsert - "Insert"
+        id_PanelP_3DSketchFormat - "Format"
+        id_PanelA_ModelWorkFeatures - "Work Features"
+        id_PanelP_ToolsParameters - "Parameters"
+    id_Tab3DSketch_Exit - "Exit 3D Sketch" (1)
+        id_PanelP_3DSketchExit - "Exit"
+    id_TabConstruction - "Construction" (2)
+        id_PanelP_ConstructionManage - "Manage"
+        id_PanelP_ConstructionSurface - "Surface"
+    id_TabConstruction_Exit - "Exit Construction" (1)
+        id_PanelP_ConstructionExit - "Exit"
+    id_TabEditBaseSolid - "Edit Base Solid" (3)
+        id_PanelP_ExplicitModify - "Modify"
+        id_PanelA_ModelWorkFeatures - "Work Features"
+        id_PanelP_ExplicitManage - "Manage"
+    id_TabEditBaseSolid_Exit - "Exit Base Solid" (1)
+        id_PanelP_ExplicitExit - "Exit"
+    id_TabSurfaceRepair - "Repair" (2)
+        id_PanelP_SurfaceRepairRepair - "Repair"
+        id_PanelP_SurfaceRepairModify - "Modify"
+    id_TabSurfaceRepair_Exit - "Exit Repair" (1)
+        id_PanelP_SurfaceRepairExit - "Exit"
+    id_TabRoute - "Route" (4)
+        id_PanelP_RouteCreate - "Create"
+        id_PanelP_RouteConstrain - "Constrain"
+        id_PanelP_RouteManage - "Manage"
+        id_PanelP_ToolsParameters - "Parameters"
+    id_TabRoute_Exit - "Exit Route" (1)
+        id_PanelP_RouteExit - "Exit"
+    id_TabRender - "Render" (4)
+        id_PanelP_StudioRender - "Render"
+        id_PanelP_StudioScene - "Scene"
+        id_PanelP_StudioAnimate - "Animate"
+        id_PanelP_StudioManage - "Manage"
+    id_TabRender_Exit - "Exit Studio" (1)
+        id_PanelP_StuidoExit - "Exit"
+    id_TabStressAnalysis_Exit - "Exit Stress Analysis" (1)
+        id_PanelP_StressAnalysisExit - "Exit"
+    id_TabAFEA - "Stress Analysis" (12)
+        id_PanelA_AFEAManage - "Manage"
+        id_PanelA_AFEAMaterial - "Material"
+        id_PanelA_AFEAConstraints - "Constraints"
+        id_PanelA_AFEALoads - "Loads"
+        id_PanelA_AFEAContacts - "Contacts"
+        id_PanelA_AFEAPreProcess - "Prepare"
+        id_PanelA_AFEASolve - "Solve"
+        id_PanelA_AFEAResult - "Result"
+        id_PanelA_AFEAResultDisplay - "Display"
+        id_PanelA_AFEAReport - "Report"
+        id_PanelA_AFEAGuide - "Guide"
+        id_PanelA_AFEASettings - "Settings"
+    id_TabAFEA_Exit - "Exit Stress Analysis" (1)
+        id_PanelP_AFEAExit - "Exit"
+    id_TabAECExchange - "BIM Exchange" (3)
+        id_PanelA_AECExchangeAuthor - "MEP Author"
+        id_PanelA_AECExchangeWorkFeature - "Work Feature"
+        id_PanelA_AECExchangeManage - "Manage"
+    id_TabAECExchange_Exit - "Exit BIM Exchange" (1)
+        id_PanelP_AECExchangeExit - "Exit"
+    id_TabReturn - "Return" (1)
+        id_PanelP_PartReturn - "Return"
+    id_InventorDebugTab - "Inventor Debug" (0)
+Ribbon "Assembly" (34)
+    id_TabAssemble - "Assemble" (10)
+        id_PanelA_AssembleComponent - "Component"
+        id_PanelA_AssemblePosition - "Position"
+        id_PanelA_AssembleManage - "Manage"
+        id_PanelA_AssembleIPartIAssembly - "iPart/iAssembly"
+        id_PanelA_AssembleAssemblyTools - "Productivity"
+        id_PanelA_ModelWorkFeatures - "Work Features"
+        id_PanelA_AssembleRoute - "Begin"
+        id_PanelA_AnalysisSimulation - "Simulation"
+        id_PanelA_ConvertWeld - "Convert"
+        id_PanelA_ToolsMeasure - "Measure"
+    id_TabDesign - "Design" (5)
+        id_PanelA_DesignFasten - "Fasten"
+        id_PanelA_DesignFrame - "Frame"
+        id_PanelA_DesignPowerTransmission - "Power Transmission"
+        id_PanelA_DesignSpring - "Spring"
+        id_PanelA_ToolsMeasure - "Measure"
+    id_TabModel - "Model" (6)
+        id_PanelA_ModelSketch - "Sketch"
+        id_PanelA_ModelModify - "Modify Assembly"
+        id_PanelA_ModelWorkFeatures - "Work Features"
+        id_PanelA_ModelPattern - "Pattern"
+        id_PanelA_ModelManage - "Parameters"
+        id_PanelA_ToolsMeasure - "Measure"
+    id_TabWeld - "Weld" (8)
+        id_PanelA_WeldProcess - "Process"
+        id_PanelA_WeldWeld - "Weld"
+        id_PanelA_WeldSketch - "Sketch"
+        id_PanelA_WeldModify - "Preparation and Machining"
+        id_PanelA_ModelWorkFeatures - "Work Features"
+        id_PanelA_WeldPattern - "Pattern"
+        id_PanelA_WeldManage - "Parameters"
+        id_PanelA_ToolsMeasure - "Measure"
+    id_TabWeld_ReturnParent - "Weld Return to Parent" (1)
+        id_PanelA_WeldReturnToParent - "Return"
+    id_TabInspect - "Inspect" (3)
+        id_PanelA_ToolsAnalysis - "Interference"
+        id_PanelA_AnalysisMeasure - "Measure"
+        id_PanelA_ToolsAutoLimits - "AutoLimits"
+    id_TabTools - "Tools" (5)
+        id_PanelA_ToolsRender - "Begin"
+        id_PanelA_ToolsMeasure - "Measure"
+        id_PanelP_ToolsOptions - "Options"
+        id_PanelP_ToolsClipboard - "Clipboard"
+        id_PanelP_ToolsFind - "Find"
+    id_TabManage - "Manage" (8)
+        id_PanelA_ToolsUpdate - "Update"
+        id_PanelA_ModelManage - "Parameters"
+        id_PanelA_ToolsStylesAndStandards - "Styles and Standards"
+        id_PanelA_ToolsInsert - "Insert"
+        id_PanelA_ToolsAuthor - "Author"
+        iLogic.RibbonPanel - "iLogic"
+        id_PanelA_ToolsContentCenter - "Content Center"
+        id_PanelP_ToolsWebTools - "Web"
+    id_TabView - "View" (4)
+        id_PanelA_ViewVisibility - "Visibility"
+        id_PanelA_ViewAppearance - "Appearance"
+        id_PanelP_ViewWindow - "Windows"
+        id_PanelC_ViewNavigate - "Navigate"
+    id_TabEnvironments - "Environments" (3)
+        id_Panel_EnvironmentsBegin - "Begin"
+        id_PanelA_ConvertWeld - "Convert"
+        id_PanelA_EnvironmentsAddIns - "Manage"
+    id_TabVault - "Vault" (2)
+        id_PanelZ_VaultAccess - "Access"
+        id_PanelZ_VaultStatus - "File Status"
+    id_TabVault_Upgrade - "Vault" (3)
+        id_PanelZ_VaultAccess - "Access"
+        id_PanelZ_VaultStatusUpgrade - "File Status"
+        id_PanelZ_VaultControl - "Control"
+    id_GetStarted - "Get Started" (4)
+        id_Panel_Launch - "Launch"
+        id_Panel_GetStartedWhatsNew - "New Features"
+        id_Panel_LearnAbout - "Learn about Inventor"
+        id_Panel_GetStartedInvolve - "Community"
+    id_AddInsTab - "Add-Ins" (1)
+        {95413AE5-1C63-4373-A614-2649F5BF8AA6} - "GeneralTools"
+    id_TabSketch - "Sketch" (7)
+        id_PanelA_2DSketchDraw - "Draw"
+        id_PanelA_2DSketchConstrain - "Constrain"
+        id_PanelA_2DSketchPattern - "Pattern"
+        id_PanelA_2DSketchModify - "Modify"
+        id_PanelA_2DSketchInsert - "Insert"
+        id_PanelA_2DSketchFormat - "Format"
+        id_PanelA_ToolsMeasure - "Measure"
+    id_TabSketch_Exit - "Exit 2D Sketch" (1)
+        id_PanelA_2DSketchExit - "Exit"
+    id_TabTube_Pipe - "Tube and Pipe" (7)
+        id_PanelA_TubePipeRoute - "Run"
+        id_PanelA_TubePipeContentCenter - "Content"
+        id_PanelA_TubePipeComponent - "Component"
+        id_PanelA_TubePipePosition - "Position"
+        id_PanelA_TubePipeManage - "Manage"
+        id_PanelP_ToolsParameters - "Parameters"
+        id_PanelA_TubePipeIPartIAssembly - "iPart/iAssembly"
+    id_TabTube_Pipe_Exit - "Exit Tube and Pipe" (1)
+        id_PanelA_TubePipeExit - "Exit"
+    id_TabTube_Pipe_Run - "Pipe Run" (4)
+        id_PanelA_TubePipeRunCreate - "Route"
+        id_PanelA_TubePipeRunContentCenter - "Content"
+        id_PanelA_TubePipeRunManage - "Manage"
+        id_PanelP_ToolsParameters - "Parameters"
+    id_TabTube_Pipe_Run_Exit - "Exit Tube and Pipe Run" (1)
+        id_PanelA_TubePipeRunExit - "Exit"
+    id_TabCable_Harness - "Cable and Harness" (4)
+        id_PanelA_CableHarnessCreate - "Create"
+        id_PanelA_CableHarnessRoute - "Route"
+        id_PanelA_CableHarnessManage - "Manage"
+        id_PanelA_CableHarnessVisibility - "Visibility"
+    id_TabCable_Harness_Exit - "Exit Cable and Harness" (1)
+        id_PanelA_CableHarnessExit - "Exit"
+    id_TabRender - "Render" (4)
+        id_PanelA_StudioRender - "Render"
+        id_PanelA_StudioScene - "Scene"
+        id_PanelA_StudioAnimate - "Animate"
+        id_PanelA_StudioManage - "Manage"
+    id_TabRender_Exit - "Exit Studio" (1)
+        id_PanelA_StudioExit - "Exit"
+    id_TabSimulation - "Dynamic Simulation" (6)
+        id_PanelA_SimulationJoint - "Joint"
+        id_PanelA_SimulationLoad - "Load"
+        id_PanelA_SimulationResults - "Results"
+        id_PanelA_SimulationAnimate - "Animate"
+        id_PanelA_SimulationMaterial - "Manage"
+        id_PanelA_SimulationExport - "Stress Analysis"
+    id_TabSimulation_Exit - "Exit Dynamic Simulation" (1)
+        id_PanelA_SimulationExit - "Exit"
+    id_TabAECExchange - "BIM Exchange" (4)
+        id_PanelA_AECExchangeAuthor - "MEP Author"
+        id_PanelA_AECExchangeComponent - "Component"
+        id_PanelA_AECExchangeWorkFeature - "Work Feature"
+        id_PanelA_AECExchangeManage - "Manage"
+    id_TabAECExchange_Exit - "Exit BIM Exchange" (1)
+        id_PanelA_AECExchangeExit - "Exit"
+    id_TabReturn - "Return" (1)
+        id_PanelA_AssmReturn - "Return"
+    id_TabAFEA - "Stress Analysis" (12)
+        id_PanelA_AFEAManage - "Manage"
+        id_PanelA_AFEAMaterial - "Material"
+        id_PanelA_AFEAConstraints - "Constraints"
+        id_PanelA_AFEALoads - "Loads"
+        id_PanelA_AFEAContacts - "Contacts"
+        id_PanelA_AFEAPreProcess - "Prepare"
+        id_PanelA_AFEASolve - "Solve"
+        id_PanelA_AFEAResult - "Result"
+        id_PanelA_AFEAResultDisplay - "Display"
+        id_PanelA_AFEAReport - "Report"
+        id_PanelA_AFEAGuide - "Guide"
+        id_PanelA_AFEASettings - "Settings"
+    id_TabAFEA_Exit - "Exit Stress Analysis" (1)
+        id_PanelA_AFEAExit - "Exit"
+    id_TabIFA - "Frame Analysis" (10)
+        id_PanelA_IFAManage - "Manage"
+        id_PanelA_IFAProperties - "Beams"
+        id_PanelA_IFAConstraints - "Constraints"
+        id_PanelA_IFA_Loads - "Loads"
+        id_PanelA_IFA_Connections - "Connections"
+        id_PanelA_IFA_Solve - "Solve"
+        id_PanelA_IFA_Result - "Result"
+        id_PanelA_IFA_Display - "Display"
+        id_PanelA_IFA_Publish - "Publish"
+        id_PanelA_IFA_Settings - "Settings"
+    id_TabIFA_Exit - "Exit Frame Analysis" (1)
+        id_PanelA_IFAExit - "Exit"
+    id_InventorDebugTab - "Inventor Debug" (0)
+Ribbon "Drawing" (19)
+    id_TabPlaceViews - "Place Views" (4)
+        id_PanelD_PlaceViewsCreate - "Create"
+        id_PanelD_PlaceViewsModify - "Modify"
+        id_PanelD_Annotate2DSketchCreate - "Sketch"
+        id_PanelD_PlaceViewsSheets - "Sheets"
+    id_TabAnnotate - "Annotate" (7)
+        id_PanelD_AnnotateDimension - "Dimension"
+        id_PanelD_AnnotateFeatureNotes - "Feature Notes"
+        id_PanelD_AnnotateText - "Text"
+        id_PanelD_AnnotateSymbols - "Symbols"
+        id_PanelD_Annotate2DSketchCreate - "Sketch"
+        id_PanelD_AnnotateTable - "Table"
+        id_PanelD_AnnotateFormat - "Format"
+    id_TabAnnotateESKD - "Annotate (ESKD)" (8)
+        id_PanelD_ESKDDrawingSheets - "Drawing Sheets"
+        id_PanelD_ESKDAnnotateDimension - "Dimension"
+        id_PanelD_ESKDAnnotateFeatureNotes - "Feature Notes"
+        id_PanelD_ESKDAnnotateText - "Text"
+        id_PanelD_ESKDAnnotateSymobols - "Symbols"
+        id_PanelD_ESKD2DSketchCreate - "Sketch"
+        id_PanelD_ESKDAnnotateTable - "Table"
+        id_PanelD_ESKDAnnotateFormat - "Format"
+    id_TabTools - "Tools" (3)
+        id_PanelD_ToolsMeasure - "Measure"
+        id_PanelP_ToolsOptions - "Options"
+        id_PanelP_ToolsClipboard - "Clipboard"
+    id_TabManage - "Manage" (9)
+        id_PanelP_ToolsUpdate - "Update"
+        id_PanelP_ToolsParameters - "Parameters"
+        id_PanelD_ToolsStylesAndStandards - "Styles and Standards"
+        id_PanelA_ToolsInsert - "Insert"
+        id_Panel_ToolsModify - "Modify"
+        id_PanelD_ToolsDefine - "Define"
+        iLogic.RibbonPanel - "iLogic"
+        id_PanelD_ToolsContentCenter - "Content Center"
+        id_PanelP_ToolsWebTools - "Web"
+    id_TabView - "View" (2)
+        id_PanelP_ViewWindow - "Windows"
+        id_PanelD_ViewNavigate - "Navigate"
+    id_TabEnvironments - "Environments" (2)
+        id_Panel_EnvironmentsBegin - "Begin"
+        id_PanelD_EnvironmentsAddIns - "Add-Ins"
+    id_TabNailboard - "Nailboard" (4)
+        id_PanelD_NailboardCreate - "Create"
+        id_PanelD_NailboardEdit - "Edit"
+        id_PanelD_NailboardDimension - "Dimension"
+        id_PanelD_NailboardManage - "Manage"
+    id_TabVault - "Vault" (2)
+        id_PanelZ_VaultAccess - "Access"
+        id_PanelZ_VaultStatus - "File Status"
+    id_TabVault_Upgrade - "Vault" (3)
+        id_PanelZ_VaultAccess - "Access"
+        id_PanelZ_VaultStatusUpgrade - "File Status"
+        id_PanelZ_VaultControl - "Control"
+    id_GetStarted - "Get Started" (4)
+        id_Panel_Launch - "Launch"
+        id_Panel_GetStartedWhatsNew - "New Features"
+        id_Panel_LearnAbout - "Learn about Inventor"
+        id_Panel_GetStartedInvolve - "Community"
+    id_AddInsTab - "Add-Ins" (1)
+        {95413AE5-1C63-4373-A614-2649F5BF8AA6} - "GeneralTools"
+    id_TabSketch - "Sketch" (7)
+        id_PanelD_2DSketchDraw - "Draw"
+        id_PanelD_2DSketchConstrain - "Constrain"
+        id_PanelD_2DSketchPattern - "Pattern"
+        id_PanelD_2DSketchModify - "Modify"
+        id_PanelA_2DSketchInsert - "Insert"
+        id_PanelD_2DSketchFormat - "Format"
+        id_PanelD_ToolsMeasure - "Measure"
+    id_TabSketch_Exit - "Exit 2D Sketch" (1)
+        id_PanelD_2DSketchExit - "Exit"
+    id_TabNailboard_Exit - "Exit Nailboard Sketch" (1)
+        id_PanelD_NailboardExit - "Exit"
+    id_TabReview - "Review" (5)
+        id_PanelD_ReviewNavigate - "Navigate"
+        id_PanelD_ReviewCreate - "Create"
+        id_PanelD_ReviewMeasure - "Measure"
+        id_PanelD_ReviewPrint - "Print"
+        id_PanelD_PlaceViewsSheets - "Sheets"
+    id_TabNailboard_Review - "Exit Review" (1)
+        id_PanelD_ReviewExit - "Exit"
+    id_TabReturn - "Return" (1)
+        id_PanelD_DrawingReturn - "Return"
+    id_InventorDebugTab - "Inventor Debug" (0)
+Ribbon "Presentation" (10)
+    id_TabManage - "Presentation" (1)
+        id_PanelPn_PresentationCreate - "Create"
+    id_TabTools - "Tools" (6)
+        id_PanelP_ToolsOptions - "Options"
+        id_PanelP_ToolsClipboard - "Clipboard"
+        id_PanelPn_ToolsStylesAndStandards - "Styles and Standards"
+        id_PanelPn_ToolsManage - "Insert"
+        id_PanelPn_ToolsContentCenter - "Content Center"
+        id_PanelP_ToolsWebTools - "Web"
+    id_TabView - "View" (3)
+        id_PanelA_ViewAppearance - "Appearance"
+        id_PanelP_ViewWindow - "Windows"
+        id_PanelC_ViewNavigate - "Navigate"
+    id_TabEnvironments - "Environments" (2)
+        id_Panel_EnvironmentsBegin - "Begin"
+        id_PanelD_EnvironmentsAddIns - "Add-Ins"
+    id_TabVault - "Vault" (2)
+        id_PanelZ_VaultAccess - "Access"
+        id_PanelZ_VaultStatus - "File Status"
+    id_TabVault_Upgrade - "Vault" (3)
+        id_PanelZ_VaultAccess - "Access"
+        id_PanelZ_VaultStatusUpgrade - "File Status"
+        id_PanelZ_VaultControl - "Control"
+    id_GetStarted - "Get Started" (4)
+        id_Panel_Launch - "Launch"
+        id_Panel_GetStartedWhatsNew - "New Features"
+        id_Panel_LearnAbout - "Learn about Inventor"
+        id_Panel_GetStartedInvolve - "Community"
+    id_AddInsTab - "Add-Ins" (1)
+        {95413AE5-1C63-4373-A614-2649F5BF8AA6} - "GeneralTools"
+    id_TabReturn - "Return" (1)
+        id_PanelPn_PnReturnPanel - "Return"
+    id_InventorDebugTab - "Inventor Debug" (0)
+Ribbon "iFeatures" (9)
+    id_TabiFeature - "iFeature" (1)
+        id_PaneliF_iFeaturesIFeature - "iFeature"
+    id_TabTools - "Tools" (5)
+        id_PanelP_ToolsOptions - "Options"
+        id_PanelP_ToolsFind - "Find"
+        id_PanelPn_ToolsInsert - "Insert"
+        id_PaneliF_ToolsContentCenter - "Content Center"
+        id_PanelP_ToolsWebTools - "Web"
+    id_TabView - "View" (3)
+        id_PaneliF_ViewAppearance - "Appearance"
+        id_PanelP_ViewWindow - "Windows"
+        id_PanelC_ViewNavigate - "Navigate"
+    id_TabEnvironments - "Environments" (2)
+        id_Panel_EnvironmentsBegin - "Begin"
+        id_PanelD_EnvironmentsAddIns - "Add-Ins"
+    id_TabVault - "Vault" (2)
+        id_PanelZ_VaultAccess - "Access"
+        id_PanelZ_VaultStatus - "File Status"
+    id_TabVault_Upgrade - "Vault" (3)
+        id_PanelZ_VaultAccess - "Access"
+        id_PanelZ_VaultStatusUpgrade - "File Status"
+        id_PanelZ_VaultControl - "Control"
+    id_GetStarted - "Get Started" (4)
+        id_Panel_Launch - "Launch"
+        id_Panel_GetStartedWhatsNew - "New Features"
+        id_Panel_LearnAbout - "Learn about Inventor"
+        id_Panel_GetStartedInvolve - "Community"
+    id_AddInsTab - "Add-Ins" (1)
+        {95413AE5-1C63-4373-A614-2649F5BF8AA6} - "GeneralTools"
+    id_InventorDebugTab - "Inventor Debug" (0)
+Ribbon "UnknownDocument" (9)
+    id_TabCustomView - "Custom View" (3)
+        id_PanelU_CustomViewNavigate - "Navigate"
+        id_PanelU_CustomViewAppearance - "Appearance"
+        id_PanelU_CustomViewExit - "Exit"
+    id_TabEngineersNotebook - "Engineer's Notebook" (4)
+        id_PanelU_EngineersNotebookNotes - "Notes"
+        id_PanelU_EngineersNotebookFormat - "Format"
+        id_PanelU_EngineersNotebookInsert - "Insert"
+        id_PanelU_NotebookExit - "Exit"
+    id_TabEngineersNotebookTools - "Tools" (4)
+        id_PanelP_ToolsOptions - "Options"
+        id_PanelP_ToolsClipboard - "Clipboard"
+        id_PanelU_ToolsContentCenter - "Content Center"
+        id_PanelP_ToolsWebTools - "Web"
+    id_TabEngineersNotebookView - "View" (3)
+        id_PanelU_ViewAppearance - "Appearance"
+        id_PanelP_ViewWindow - "Windows"
+        id_PanelC_ViewNavigate - "Navigate"
+    id_TabVault - "Vault" (2)
+        id_PanelZ_VaultAccess - "Access"
+        id_PanelZ_VaultStatus - "File Status"
+    id_TabVault_Upgrade - "Vault" (3)
+        id_PanelZ_VaultAccess - "Access"
+        id_PanelZ_VaultStatusUpgrade - "File Status"
+        id_PanelZ_VaultControl - "Control"
+    id_GetStarted - "Get Started" (4)
+        id_Panel_Launch - "Launch"
+        id_Panel_GetStartedWhatsNew - "New Features"
+        id_Panel_LearnAbout - "Learn about Inventor"
+        id_Panel_GetStartedInvolve - "Community"
+    id_InventorDebugTab - "Inventor Debug" (0)
+    id_AddInsTab - "Add-Ins" (1)
+        {95413AE5-1C63-4373-A614-2649F5BF8AA6} - "GeneralTools"
