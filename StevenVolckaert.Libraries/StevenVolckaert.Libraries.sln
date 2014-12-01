@@ -1,0 +1,107 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.31101.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StevenVolckaert.Core", "StevenVolckaert.Core\StevenVolckaert.Core.csproj", "{C86A46D6-7F14-418A-BCC3-908F2918B17C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SupportFiles", "SupportFiles", "{A81C05BC-5522-4584-900A-6C9991351527}"
+	ProjectSection(SolutionItems) = preProject
+		SupportFiles\CustomDictionary.xml = SupportFiles\CustomDictionary.xml
+		SupportFiles\StevenVolckaert.pfx = SupportFiles\StevenVolckaert.pfx
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StevenVolckaert.Core.Tests", "StevenVolckaert.Core.Tests\StevenVolckaert.Core.Tests.csproj", "{462C7BC0-3235-438D-A6D1-B4EBC8004EFC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StevenVolckaert.Web.Client", "StevenVolckaert.Web.Client\StevenVolckaert.Web.Client.csproj", "{520ED62E-F6E5-42AD-A94A-BA9656AF0996}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StevenVolckaert.Web.Client.Tests", "StevenVolckaert.Web.Client.Tests\StevenVolckaert.Web.Client.Tests.csproj", "{80053576-4761-4062-B59E-A1666CFADDAC}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{281BF074-3791-4AA8-9794-75058F2FF7BA}"
+	ProjectSection(SolutionItems) = preProject
+		.nuget\NuGet.Config = .nuget\NuGet.Config
+		.nuget\NuGet.exe = .nuget\NuGet.exe
+		.nuget\NuGet.targets = .nuget\NuGet.targets
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StevenVolckaert.Web.Mvc", "StevenVolckaert.Web.Mvc\StevenVolckaert.Web.Mvc.csproj", "{9EC949B8-18F6-47D2-A3E1-D4FB60DF0AED}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StevenVolckaert.Windows", "StevenVolckaert.Windows\StevenVolckaert.Windows.csproj", "{DA00E90E-6B8F-4A9B-9F4E-6973CC5FEB9A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StevenVolckaert.Web.Mvc.Tests", "StevenVolckaert.Web.Mvc.Tests\StevenVolckaert.Web.Mvc.Tests.csproj", "{C6F7881B-C9A4-4257-A0EF-89BB2C54B7DC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StevenVolckaert.Windows.Tests", "StevenVolckaert.Windows.Tests\StevenVolckaert.Windows.Tests.csproj", "{CAC57F37-69E0-4875-B988-5B0C07AC9A0E}"
+EndProject
+Global
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 9
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = https://stevenvolckaert.visualstudio.com/defaultcollection
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = StevenVolckaert.Core\\StevenVolckaert.Core.csproj
+		SccProjectName1 = StevenVolckaert.Core
+		SccLocalPath1 = StevenVolckaert.Core
+		SccProjectUniqueName2 = StevenVolckaert.Core.Tests\\StevenVolckaert.Core.Tests.csproj
+		SccProjectName2 = StevenVolckaert.Core.Tests
+		SccLocalPath2 = StevenVolckaert.Core.Tests
+		SccProjectUniqueName3 = StevenVolckaert.Web.Client.Tests\\StevenVolckaert.Web.Client.Tests.csproj
+		SccProjectName3 = StevenVolckaert.Web.Client.Tests
+		SccLocalPath3 = StevenVolckaert.Web.Client.Tests
+		SccProjectUniqueName4 = StevenVolckaert.Web.Client\\StevenVolckaert.Web.Client.csproj
+		SccProjectName4 = StevenVolckaert.Web.Client
+		SccLocalPath4 = StevenVolckaert.Web.Client
+		SccProjectUniqueName5 = StevenVolckaert.Web.Mvc\\StevenVolckaert.Web.Mvc.csproj
+		SccProjectName5 = StevenVolckaert.Web.Mvc
+		SccLocalPath5 = StevenVolckaert.Web.Mvc
+		SccProjectUniqueName6 = StevenVolckaert.Windows\\StevenVolckaert.Windows.csproj
+		SccProjectName6 = StevenVolckaert.Windows
+		SccLocalPath6 = StevenVolckaert.Windows
+		SccProjectUniqueName7 = StevenVolckaert.Web.Mvc.Tests\\StevenVolckaert.Web.Mvc.Tests.csproj
+		SccProjectName7 = StevenVolckaert.Web.Mvc.Tests
+		SccLocalPath7 = StevenVolckaert.Web.Mvc.Tests
+		SccProjectUniqueName8 = StevenVolckaert.Windows.Tests\\StevenVolckaert.Windows.Tests.csproj
+		SccProjectName8 = StevenVolckaert.Windows.Tests
+		SccLocalPath8 = StevenVolckaert.Windows.Tests
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C86A46D6-7F14-418A-BCC3-908F2918B17C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C86A46D6-7F14-418A-BCC3-908F2918B17C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C86A46D6-7F14-418A-BCC3-908F2918B17C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C86A46D6-7F14-418A-BCC3-908F2918B17C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{462C7BC0-3235-438D-A6D1-B4EBC8004EFC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{462C7BC0-3235-438D-A6D1-B4EBC8004EFC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{462C7BC0-3235-438D-A6D1-B4EBC8004EFC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{462C7BC0-3235-438D-A6D1-B4EBC8004EFC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{520ED62E-F6E5-42AD-A94A-BA9656AF0996}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{520ED62E-F6E5-42AD-A94A-BA9656AF0996}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{520ED62E-F6E5-42AD-A94A-BA9656AF0996}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{520ED62E-F6E5-42AD-A94A-BA9656AF0996}.Release|Any CPU.Build.0 = Release|Any CPU
+		{80053576-4761-4062-B59E-A1666CFADDAC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{80053576-4761-4062-B59E-A1666CFADDAC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{80053576-4761-4062-B59E-A1666CFADDAC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{80053576-4761-4062-B59E-A1666CFADDAC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9EC949B8-18F6-47D2-A3E1-D4FB60DF0AED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9EC949B8-18F6-47D2-A3E1-D4FB60DF0AED}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9EC949B8-18F6-47D2-A3E1-D4FB60DF0AED}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9EC949B8-18F6-47D2-A3E1-D4FB60DF0AED}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DA00E90E-6B8F-4A9B-9F4E-6973CC5FEB9A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DA00E90E-6B8F-4A9B-9F4E-6973CC5FEB9A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DA00E90E-6B8F-4A9B-9F4E-6973CC5FEB9A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DA00E90E-6B8F-4A9B-9F4E-6973CC5FEB9A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C6F7881B-C9A4-4257-A0EF-89BB2C54B7DC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C6F7881B-C9A4-4257-A0EF-89BB2C54B7DC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C6F7881B-C9A4-4257-A0EF-89BB2C54B7DC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C6F7881B-C9A4-4257-A0EF-89BB2C54B7DC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CAC57F37-69E0-4875-B988-5B0C07AC9A0E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CAC57F37-69E0-4875-B988-5B0C07AC9A0E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CAC57F37-69E0-4875-B988-5B0C07AC9A0E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CAC57F37-69E0-4875-B988-5B0C07AC9A0E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
