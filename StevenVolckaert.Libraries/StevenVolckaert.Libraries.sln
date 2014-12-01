@@ -5,12 +5,6 @@ VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StevenVolckaert.Core", "StevenVolckaert.Core\StevenVolckaert.Core.csproj", "{C86A46D6-7F14-418A-BCC3-908F2918B17C}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SupportFiles", "SupportFiles", "{A81C05BC-5522-4584-900A-6C9991351527}"
-	ProjectSection(SolutionItems) = preProject
-		SupportFiles\CustomDictionary.xml = SupportFiles\CustomDictionary.xml
-		SupportFiles\StevenVolckaert.pfx = SupportFiles\StevenVolckaert.pfx
-	EndProjectSection
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StevenVolckaert.Core.Tests", "StevenVolckaert.Core.Tests\StevenVolckaert.Core.Tests.csproj", "{462C7BC0-3235-438D-A6D1-B4EBC8004EFC}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StevenVolckaert.Web.Client", "StevenVolckaert.Web.Client\StevenVolckaert.Web.Client.csproj", "{520ED62E-F6E5-42AD-A94A-BA9656AF0996}"
