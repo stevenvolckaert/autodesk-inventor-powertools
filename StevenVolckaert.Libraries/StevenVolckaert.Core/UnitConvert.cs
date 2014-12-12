@@ -10,7 +10,7 @@ namespace StevenVolckaert
         private const double FeetPerMeter = 3.280839895;
 
         /// <summary>
-        /// Converts degrees Celsius (°C) to degrees Fahrenheit (°F).
+        /// Converts a value in degrees Celsius (°C) to its equivalent in degrees Fahrenheit (°F).
         /// </summary>
         /// <param name="value">The value to convert.</param>
         /// <returns>The value in degrees Fahrenheit (°F).</returns>
@@ -20,7 +20,7 @@ namespace StevenVolckaert
         }
 
         /// <summary>
-        /// Converts degrees Celsius (°C) to degrees Fahrenheit (°F).
+        /// Converts a value in degrees Celsius (°C) to its equivalent in degrees Fahrenheit (°F).
         /// </summary>
         /// <param name="value">The value to convert.</param>
         /// <returns>The value in degrees Fahrenheit (°F).</returns>
@@ -31,7 +31,7 @@ namespace StevenVolckaert
         }
 
         /// <summary>
-        /// Converts degrees Fahrenheit (°F) to degrees Celsius (°C).
+        /// Converts a value in degrees Fahrenheit (°F) to its equivalent in degrees Celsius (°C).
         /// </summary>
         /// <param name="value">The value to convert.</param>
         /// <returns>The value in degrees Celsius (°C)</returns>
@@ -41,7 +41,7 @@ namespace StevenVolckaert
         }
 
         /// <summary>
-        /// Converts degrees Fahrenheit (°F) to degrees Celsius (°C).
+        /// Converts a value in degrees Fahrenheit (°F) to its equivalent in degrees Celsius (°C).
         /// </summary>
         /// <param name="value">The value to convert.</param>
         /// <returns>The value in degrees Celsius (°C)</returns>
@@ -52,7 +52,7 @@ namespace StevenVolckaert
         }
 
         /// <summary>
-        /// Converts feet to meter.
+        /// Converts a value in feet to its equivalent in meter.
         /// </summary>
         /// <param name="value">The value to convert.</param>
         /// <returns>The value in meter.</returns>
@@ -62,7 +62,7 @@ namespace StevenVolckaert
         }
 
         /// <summary>
-        /// Converts feet to meter.
+        /// Converts a value in feet to its equivalent in meter.
         /// </summary>
         /// <param name="value">The value to convert.</param>
         /// <returns>The value in meter.</returns>
@@ -72,7 +72,7 @@ namespace StevenVolckaert
         }
 
         /// <summary>
-        /// Converts meter to feet.
+        /// Converts a value in meter to its equivalent in feet.
         /// </summary>
         /// <param name="value">The value to convert.</param>
         /// <returns>The value in feet.</returns>
@@ -82,7 +82,7 @@ namespace StevenVolckaert
         }
 
         /// <summary>
-        /// Converts meter to feet.
+        /// Converts a value in meter to its equivalent in feet.
         /// </summary>
         /// <param name="value">The value to convert.</param>
         /// <returns>The value in feet.</returns>

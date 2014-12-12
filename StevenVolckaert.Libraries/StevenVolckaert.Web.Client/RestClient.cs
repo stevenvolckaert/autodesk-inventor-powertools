@@ -44,7 +44,7 @@ namespace StevenVolckaert.Web.Client
             BaseAddress = baseAddress;
         }
 
-        [SuppressMessage("Microsoft.Reliability", "CA2000:Dispose objects before losing scope", Justification = "Method is a factory method that returns an IDisposable object.")]
+        [SuppressMessage("Microsoft.Reliability", "CA2000:Dispose objects before losing scope", Justification = "Is a factory method that returns an IDisposable object.")]
         private HttpClient CreateHttpClient()
         {
             var client = new HttpClient();

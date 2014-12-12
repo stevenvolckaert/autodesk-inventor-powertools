@@ -1,8 +1,35 @@
 ﻿using System;
+using System.Threading.Tasks;
 using Microsoft.Practices.Prism.Mvvm;
 
 namespace StevenVolckaert.Windows
 {
+    /// <summary>
+    /// Base class for data providers.
+    /// </summary>
+    /// <typeparam name="T">The System.Type of the data provider's data.</typeparam>
+    [CLSCompliant(false)]
+    public abstract class DataProviderBase<T> : DataProviderBase
+        where T : class
+    {
+        private T _data;
+        /// <summary>
+        /// Gets the data provider's data.
+        /// </summary>
+        public T Data
+        {
+            get { return _data; }
+            protected set
+            {
+                if (_data != value)
+                {
+                    _data = value;
+                    OnPropertyChanged(() => Data);
+                }
+            }
+        }
+    }
+
     /// <summary>
     /// Base class for data providers.
     /// </summary>
@@ -57,19 +84,30 @@ namespace StevenVolckaert.Windows
         }
 
         /// <summary>
-        /// Loads the provider's data from the application's back end.
+        /// Loads the provider's data from the application's back end asynchronously.
         /// </summary>
-        public virtual void LoadData()
+        public async Task LoadDataAsync()
         {
             if (IsDataLoaded)
                 return;
 
-            ReloadData();
+            OnDataLoading();
+            await DoLoadData();
+            OnDataLoaded();
         }
 
         /// <summary>
-        /// Reloads the provider's data from the application's back end.
+        /// Provides the logic required to load data from the application's back end.
         /// </summary>
-        public abstract void ReloadData();
+        protected abstract Task DoLoadData();
+
+        /// <summary>
+        /// Reloads the provider's data from the application's back end asynchronously.
+        /// </summary>
+        public async Task ReloadDataAsync()
+        {
+            IsDataLoaded = false;
+            await LoadDataAsync();
+        }
     }
 }

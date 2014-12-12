@@ -227,9 +227,9 @@ namespace StevenVolckaert.Windows.Mvvm
         public DelegateCommand SaveDataCommand { get; private set; }
 
         /// <summary>
-        /// Saves the view model's data to the application's back end.
+        /// Saves the view model's data to the application's back end asynchronously.
         /// </summary>
-        public async void SaveData()
+        public async void SaveDataAsync()
         {
             if (SaveDataTask == null)
                 return;
@@ -257,7 +257,7 @@ namespace StevenVolckaert.Windows.Mvvm
         protected DataViewModelBase()
         {
             LoadDataCommand = new DelegateCommand(LoadData, CanLoadDataCommandExecute);
-            SaveDataCommand = new DelegateCommand(SaveData, CanSaveDataCommandExecute);
+            SaveDataCommand = new DelegateCommand(SaveDataAsync, CanSaveDataCommandExecute);
             RefreshDataCommand = new DelegateCommand(RefreshData, CanRefreshDataCommandExecute);
         }
 
