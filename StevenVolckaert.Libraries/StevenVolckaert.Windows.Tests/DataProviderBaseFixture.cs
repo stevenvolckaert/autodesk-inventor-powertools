@@ -51,6 +51,7 @@ namespace StevenVolckaert.Windows.Tests
         public async Task LoadDataAsync_Succeeds()
         {
             var dataProvider = GetMockedDataProvider();
+            _eventStack.Clear();
 
             Assert.IsFalse(dataProvider.IsDataLoading);
             Assert.IsFalse(dataProvider.IsDataLoaded);
@@ -81,9 +82,32 @@ namespace StevenVolckaert.Windows.Tests
         }
 
         [TestMethod]
+        public async Task LoadDataAsync_DoesNotReloadDataIfAlreadyLoaded()
+        {
+            var dataProvider = GetMockedDataProvider();
+
+            await dataProvider.LoadDataAsync();
+
+            Assert.IsTrue(dataProvider.IsDataLoaded);
+
+            _eventStack.Clear();
+            var task = dataProvider.LoadDataAsync();
+
+            Assert.IsFalse(dataProvider.IsDataLoading);
+            Assert.IsTrue(dataProvider.IsDataLoaded);
+
+            await task;
+
+            Assert.IsFalse(dataProvider.IsDataLoading);
+            Assert.IsTrue(dataProvider.IsDataLoaded);
+            Assert.IsTrue(_eventStack.Count == 0);
+        }
+
+        [TestMethod]
         public async Task ReloadDataAsync_Succeeds()
         {
             var dataProvider = GetMockedDataProvider();
+            _eventStack.Clear();
 
             Assert.IsFalse(dataProvider.IsDataLoading);
             Assert.IsFalse(dataProvider.IsDataLoaded);
