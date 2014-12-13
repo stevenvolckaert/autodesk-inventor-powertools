@@ -30,22 +30,22 @@ namespace StevenVolckaert.InventorPowerTools.Helpers
             if (image == null || !(image is Bitmap))
                 return null;
 
-            PictDescBitmap pictDescBitmap = new PictDescBitmap((Bitmap)image);
+            var pictDescBitmap = new PictDescBitmap((Bitmap)image);
             object ppVoid = null;
-            Guid iPictureDispGuid = typeof(stdole.IPictureDisp).GUID;
+            var iPictureDispGuid = typeof(stdole.IPictureDisp).GUID;
             OleCreatePictureIndirect(pictDescBitmap, ref iPictureDispGuid, true, out ppVoid);
-            stdole.IPictureDisp picture = (stdole.IPictureDisp)ppVoid;
+            var picture = (stdole.IPictureDisp)ppVoid;
             return picture;
         }
 
-        public static Image PictureDispToImage(stdole.IPictureDisp pictureDisp)
-        {
-            if (pictureDisp == null || pictureDisp.Type != _PictureTypeBitmap)
-                return null;
+        //public static Image PictureDispToImage(stdole.IPictureDisp pictureDisp)
+        //{
+        //    if (pictureDisp == null || pictureDisp.Type != _PictureTypeBitmap)
+        //        return null;
 
-            var paletteHandle = new IntPtr(pictureDisp.hPal);
-            var bitmapHandle = new IntPtr(pictureDisp.Handle);
-            return Image.FromHbitmap(bitmapHandle, paletteHandle);
-        }
+        //    var paletteHandle = new IntPtr(pictureDisp.hPal);
+        //    var bitmapHandle = new IntPtr(pictureDisp.Handle);
+        //    return Image.FromHbitmap(bitmapHandle, paletteHandle);
+        //}
     }
 }

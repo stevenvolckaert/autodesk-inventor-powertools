@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Dictionary>
+    <Words>
+        <Unrecognized>
+            <Word></Word>
+        </Unrecognized>
+        <Recognized>
+            <Word></Word>
+        </Recognized>
+        <Deprecated>
+            <Term PreferredAlternate=""></Term>
+        </Deprecated>
+        <Compound>
+            <Term CompoundAlternate=""></Term>
+        </Compound>
+        <DiscreteExceptions>
+            <Term>2d</Term>
+        </DiscreteExceptions>
+    </Words>
+    <Acronyms>
+        <CasingExceptions>
+            <Acronym>2d</Acronym>
+            <Acronym>BOM</Acronym>
+        </CasingExceptions>
+    </Acronyms>
+</Dictionary>

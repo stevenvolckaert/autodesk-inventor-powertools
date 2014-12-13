@@ -71,6 +71,8 @@
     <Compile Include="Buttons\GenerateSubassemblyDrawingsButton.cs" />
     <Compile Include="Extensions\ApplicationExtensions.cs" />
     <Compile Include="Extensions\AssemblyDocumentExtensions.cs" />
+    <Compile Include="Extensions\BOMRowExtensions.cs" />
+    <Compile Include="Extensions\BOMViewsExtensions.cs" />
     <Compile Include="Extensions\Box2dExtensions.cs" />
     <Compile Include="Extensions\CommandCategoriesExtensions.cs" />
     <Compile Include="Extensions\DocumentExtensions.cs" />
@@ -120,6 +122,9 @@
   <ItemGroup>
     <CodeAnalysisDictionary Include="..\..\SupportFiles\CustomDictionary.xml">
       <Link>CustomDictionary.xml</Link>
+    </CodeAnalysisDictionary>
+    <CodeAnalysisDictionary Include="..\..\SupportFiles\AutodeskDictionary.xml">
+      <Link>AutodeskDictionary.xml</Link>
     </CodeAnalysisDictionary>
     <Content Include="StevenVolckaert.InventorPowerTools.addin" />
     <EmbeddedResource Include="Buttons\CreatePartViewsFromAssemblyButton.ico" />

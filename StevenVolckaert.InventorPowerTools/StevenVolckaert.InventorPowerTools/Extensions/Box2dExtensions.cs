@@ -6,7 +6,7 @@ namespace StevenVolckaert.InventorPowerTools
     /// <summary>
     /// Provides extension methods for Inventor.Box2d objects.
     /// </summary>
-    internal static class Box2dExtensions
+    public static class Box2dExtensions
     {
         public static double Height(this Box2d box2d)
         {

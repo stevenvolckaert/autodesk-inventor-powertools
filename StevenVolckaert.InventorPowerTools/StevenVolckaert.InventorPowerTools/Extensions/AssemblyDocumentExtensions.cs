@@ -5,6 +5,9 @@ using Inventor;
 
 namespace StevenVolckaert.InventorPowerTools
 {
+    /// <summary>
+    /// Provides extension methods for Inventor.AssemblyDocument objects.
+    /// </summary>
     public static class AssemblyDocumentExtensions
     {
         /// <summary>
@@ -103,16 +106,32 @@ namespace StevenVolckaert.InventorPowerTools
             var bom = assembly.ComponentDefinition.BOM;
             bom.PartsOnlyViewEnabled = true;
 
-            foreach (BOMRow row in bom.BOMViews["Parts Only"].BOMRows)
-            {
-                var document = (Document)row.ComponentDefinitions[1].Document;
+            BOMView partsOnlyView;
 
-                if (document.FullFileName == part.FullFileName)
-                    return row.ItemQuantity;
-            }
+            if (bom.BOMViews.TryGetValue("Parts Only", out partsOnlyView))
+                foreach (BOMRow row in partsOnlyView.BOMRows)
+                {
+                    if (row.ComponentDefinitions.Count == 0)
+                        continue;
+
+                    var componentDefinition = row.PrimaryComponentDefinition();
+
+                    if (componentDefinition == null)
+                        continue;
+
+                    var document = componentDefinition.Document as Document;
+
+                    if (document == null)
+                        continue;
+
+                    if (document.FullFileName == part.FullFileName)
+                        return row.ItemQuantity;
+                }
 
             return 0;
         }
+
+
 
         //public static Dictionary<string, List<string>> PartFileNameMap(this AssemblyDocument assembly)
         //{
