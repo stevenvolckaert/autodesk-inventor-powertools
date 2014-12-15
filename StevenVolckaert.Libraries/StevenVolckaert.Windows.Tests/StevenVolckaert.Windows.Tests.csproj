@@ -54,6 +54,7 @@
       <HintPath>..\packages\Moq.4.2.1409.1722\lib\net40\Moq.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.Composition" />
   </ItemGroup>
   <Choose>
     <When Condition="('$(VisualStudioVersion)' == '10.0' or '$(VisualStudioVersion)' == '') and '$(TargetFrameworkVersion)' == 'v3.5'">
@@ -69,12 +70,13 @@
   </Choose>
   <ItemGroup>
     <Compile Include="DataProviderBaseFixture.cs" />
+    <Compile Include="Mvvm\DataViewModelBaseFixture.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\StevenVolckaert.Web.Client\StevenVolckaert.Web.Client.csproj">
-      <Project>{520ed62e-f6e5-42ad-a94a-ba9656af0996}</Project>
-      <Name>StevenVolckaert.Web.Client</Name>
+    <ProjectReference Include="..\StevenVolckaert.Core\StevenVolckaert.Core.csproj">
+      <Project>{c86a46d6-7f14-418a-bcc3-908f2918b17c}</Project>
+      <Name>StevenVolckaert.Core</Name>
     </ProjectReference>
     <ProjectReference Include="..\StevenVolckaert.Windows\StevenVolckaert.Windows.csproj">
       <Project>{da00e90e-6b8f-4a9b-9f4e-6973cc5feb9a}</Project>

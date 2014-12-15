@@ -10,6 +10,23 @@ namespace StevenVolckaert.Windows.Mvvm
     [CLSCompliant(false)]
     public abstract class DataViewModelBase : ViewModelBase
     {
+        private class DataProvider : DataProviderBase
+        {
+            private DataViewModelBase _dataViewModel;
+
+            public DataProvider(DataViewModelBase dataViewModel)
+            {
+                _dataViewModel = dataViewModel;
+            }
+
+            protected override Task DoLoadData()
+            {
+                return _dataViewModel.DoLoadData();
+            }
+        }
+
+        private readonly DataProvider _dataProvider;
+
         /// <summary>
         /// Gets the view model's current status, intended for display in MVVM views.
         /// </summary>
@@ -40,7 +57,15 @@ namespace StevenVolckaert.Windows.Mvvm
             get { return IsDataLoading || IsDataSaving; }
         }
 
-        #region Loading Data
+        #region Members concerned with loading data
+
+        /// <summary>
+        /// Gets a value that indicates whether the view model's data is loading.
+        /// </summary>
+        public virtual bool IsDataLoading
+        {
+            get { return _dataProvider.IsDataLoading; }
+        }
 
         /// <summary>
         /// Occurs when the view model starts loading data.
@@ -49,33 +74,16 @@ namespace StevenVolckaert.Windows.Mvvm
 
         /// <summary>
         /// Raises the <see cref="DataLoading"/> event,
-        /// and sets the <see cref="IsDataLoading"/> and <see cref="IsDataLoaded"/> properties accordingly.
+        /// and the <see cref="PropertyChanged"/> event for the <see cref="IsBusy"/> and <see cref="IsDataLoading"/> properties.
         /// </summary>
         protected void OnDataLoading()
         {
-            IsDataLoading = true;
-            IsDataLoaded = false;
+            OnPropertyChanged(() => IsBusy);
+            OnPropertyChanged(() => IsDataLoading);
+            OnPropertyChanged(() => IsDataLoaded);
 
             if (DataLoading != null)
                 DataLoading(this, EventArgs.Empty);
-        }
-
-        private bool _isDataLoading;
-        /// <summary>
-        /// Gets a value that indicates whether the view model's data is loading.
-        /// </summary>
-        public virtual bool IsDataLoading
-        {
-            get { return _isDataLoading; }
-            protected set
-            {
-                if (_isDataLoading != value)
-                {
-                    _isDataLoading = value;
-                    OnPropertyChanged(() => IsBusy);
-                    OnPropertyChanged(() => IsDataLoading);
-                }
-            }
         }
 
         /// <summary>
@@ -85,56 +93,30 @@ namespace StevenVolckaert.Windows.Mvvm
 
         /// <summary>
         /// Raises the <see cref="DataLoaded"/> event,
-        /// and sets the <see cref="IsDataLoading"/> and <see cref="IsDataLoaded"/> properties accordingly.
+        /// and the <see cref="PropertyChanged"/> event for the <see cref="IsBusy"/> and <see cref="IsDataLoading"/> properties.
         /// </summary>
         private void OnDataLoaded()
         {
-            IsDataLoading = false;
-            IsDataLoaded = true;
+            OnPropertyChanged(() => IsBusy);
+            OnPropertyChanged(() => IsDataLoading);
+            OnPropertyChanged(() => IsDataLoaded);
 
             if (DataLoaded != null)
                 DataLoaded(this, EventArgs.Empty);
         }
 
-        private bool _isDataLoaded;
         /// <summary>
         /// Gets a value that indicates whether the view model's data is loaded.
         /// </summary>
         public bool IsDataLoaded
         {
-            get { return _isDataLoaded; }
-            set
-            {
-                if (_isDataLoaded != value)
-                {
-                    _isDataLoaded = value;
-                    OnPropertyChanged(() => IsDataLoaded);
-                }
-            }
+            get { return _dataProvider.IsDataLoaded; }
         }
-
-        /// <summary>
-        /// Gets or sets the method that loads the view model's data from the application's back end.
-        /// </summary>
-        protected Task LoadDataTask { get; set; }
 
         /// <summary>
         /// Gets a command that, when executed, loads the view model's data from the application's back end.
         /// </summary>
         public DelegateCommand LoadDataCommand { get; private set; }
-
-        /// <summary>
-        /// Loads the view model's data from the application's back end.
-        /// </summary>
-        public async void LoadData()
-        {
-            if (LoadDataTask == null)
-                return;
-
-            OnDataLoading();
-            await LoadDataTask;
-            OnDataLoaded();
-        }
 
         /// <summary>
         /// Returns a value that indicates whether <see cref="LoadDataCommand"/> can be executed.
@@ -144,12 +126,67 @@ namespace StevenVolckaert.Windows.Mvvm
             return true;
         }
 
-        #endregion
-
-        #region Saving Data
+        /// <summary>
+        /// Loads the view model's data from the application's back end asynchonously.
+        /// </summary>
+        /// <exception cref="NotImplementedException">The method is not implemented.</exception>
+        public async Task LoadDataAsync()
+        {
+            await _dataProvider.LoadDataAsync();
+        }
 
         /// <summary>
-        /// Occurs when the view model starts saving data.
+        /// Provides the logic required to load data from the application's back end.
+        /// </summary>
+        /// <exception cref="NotImplementedException">The method is not implemented.</exception>
+        protected virtual Task DoLoadData()
+        {
+            throw new NotImplementedException();
+        }
+
+        public DelegateCommand ReloadDataCommand { get; private set; }
+
+        /// <summary>
+        /// Returns a value that indicates whether <see cref="ReloadDataCommand"/> can be executed.
+        /// </summary>
+        protected virtual bool CanReloadDataCommandExecute()
+        {
+            return true;
+        }
+
+        /// <summary>
+        /// Reloads the view model's data asynchronously.
+        /// </summary>
+        /// <exception cref="NotImplementedException">The method is not implemented.</exception>
+        public Task ReloadDataAsync()
+        {
+            return _dataProvider.ReloadDataAsync();
+        }
+
+        #endregion
+
+        #region Members concerned with saving data
+
+        private bool _isDataSaving;
+        /// <summary>
+        /// Gets a value that indicates whether the view model's data is saving.
+        /// </summary>
+        public virtual bool IsDataSaving
+        {
+            get { return _isDataSaving; }
+            private set
+            {
+                if (_isDataSaving != value)
+                {
+                    _isDataSaving = value;
+                    OnPropertyChanged(() => IsBusy);
+                    OnPropertyChanged(() => IsDataSaving);
+                }
+            }
+        }
+
+        /// <summary>
+        /// Occurs when the view model's data is saving.
         /// </summary>
         public event EventHandler DataSaving;
 
@@ -166,20 +203,19 @@ namespace StevenVolckaert.Windows.Mvvm
                 DataSaving(this, EventArgs.Empty);
         }
 
-        private bool _isDataSaving;
+        private bool _isDataSaved;
         /// <summary>
-        /// Gets a value that indicates whether the view model's data is saving.
+        /// Gets a value that indicates whether the view model's data is saved.
         /// </summary>
-        public virtual bool IsDataSaving
+        public bool IsDataSaved
         {
-            get { return _isDataSaving; }
-            protected set
+            get { return _isDataSaved; }
+            set
             {
-                if (_isDataSaving != value)
+                if (_isDataSaved != value)
                 {
-                    _isDataSaving = value;
-                    OnPropertyChanged(() => IsBusy);
-                    OnPropertyChanged(() => IsDataSaving);
+                    _isDataSaved = value;
+                    OnPropertyChanged(() => IsDataSaved);
                 }
             }
         }
@@ -202,42 +238,10 @@ namespace StevenVolckaert.Windows.Mvvm
                 DataSaved(this, EventArgs.Empty);
         }
 
-        private bool _isDataSaved;
         /// <summary>
-        /// Gets a value that indicates whether the view model's data is saved.
+        /// Gets a command that, when executed, saves the view model's data to the application's back end.
         /// </summary>
-        public bool IsDataSaved
-        {
-            get { return _isDataSaved; }
-            set
-            {
-                if (_isDataSaved != value)
-                {
-                    _isDataSaved = value;
-                    OnPropertyChanged(() => IsDataSaved);
-                }
-            }
-        }
-
-        /// <summary>
-        /// Gets or sets the method that loads the view model's data from the application's back end.
-        /// </summary>
-        protected Task SaveDataTask { get; set; }
-
         public DelegateCommand SaveDataCommand { get; private set; }
-
-        /// <summary>
-        /// Saves the view model's data to the application's back end asynchronously.
-        /// </summary>
-        public async void SaveDataAsync()
-        {
-            if (SaveDataTask == null)
-                return;
-
-            OnDataSaving();
-            await SaveDataTask;
-            OnDataSaved();
-        }
 
         /// <summary>
         /// Returns a value that indicates whether <see cref="SaveDataCommand"/> can be executed.
@@ -247,34 +251,58 @@ namespace StevenVolckaert.Windows.Mvvm
             return true;
         }
 
-        #endregion
+        /// <summary>
+        /// Saves the view model's data to the application's back end asynchronously.
+        /// </summary>
+        /// <param name="ignoreState">
+        /// A value that indicates whether to ignore the data's current state.
+        /// <para>When <c>true</c>, data is saved even if no data changes have been detected.</para>
+        /// </param>
+        /// <exception cref="NotImplementedException">The method is not implemented.</exception>
+        public async Task SaveDataAsync(bool ignoreState)
+        {
+            if (ignoreState)
+                IsDataSaved = false;
 
-        public DelegateCommand RefreshDataCommand { get; private set; }
+            await SaveDataAsync();
+        }
+
+        /// <summary>
+        /// Saves the view model's data to the application's back end asynchronously.
+        /// </summary>
+        /// <exception cref="NotImplementedException">The method is not implemented.</exception>
+        public async Task SaveDataAsync()
+        {
+            if (IsDataSaved)
+                return;
+
+            OnDataSaving();
+            await DoSaveData();
+            OnDataSaved();
+        }
+
+        /// <summary>
+        /// Provides the logic required to save data to the application's back end.
+        /// </summary>
+        protected virtual Task DoSaveData()
+        {
+            throw new NotImplementedException();
+        }
+
+        #endregion
 
         /// <summary>
         /// Initializes a new instance of the <see cref="StevenVolckaert.Windows.Mvvm.DataViewModelBase"/> class.
         /// </summary>
         protected DataViewModelBase()
         {
-            LoadDataCommand = new DelegateCommand(LoadData, CanLoadDataCommandExecute);
-            SaveDataCommand = new DelegateCommand(SaveDataAsync, CanSaveDataCommandExecute);
-            RefreshDataCommand = new DelegateCommand(RefreshData, CanRefreshDataCommandExecute);
-        }
+            _dataProvider = new DataProvider(this);
+            _dataProvider.DataLoading += (sender, e) => OnDataLoading();
+            _dataProvider.DataLoaded += (sender, e) => OnDataLoaded();
 
-        /// <summary>
-        /// Returns a value that indicates whether <see cref="RefreshDataCommand"/> can be executed.
-        /// </summary>
-        protected virtual bool CanRefreshDataCommandExecute()
-        {
-            return true;
-        }
-
-        /// <summary>
-        /// Refreshes (reloads) the view model's data.
-        /// </summary>
-        public virtual void RefreshData()
-        {
-            LoadData();
+            LoadDataCommand = DelegateCommand.FromAsyncHandler(LoadDataAsync, CanLoadDataCommandExecute);
+            SaveDataCommand = DelegateCommand.FromAsyncHandler(SaveDataAsync, CanSaveDataCommandExecute);
+            ReloadDataCommand = DelegateCommand.FromAsyncHandler(ReloadDataAsync, CanReloadDataCommandExecute);
         }
     }
 }

@@ -37,7 +37,7 @@ namespace StevenVolckaert.Windows
     public abstract class DataProviderBase : BindableBase
     {
         /// <summary>
-        /// Gets a value that indicates whether the provider is loading data.
+        /// Gets a value that indicates whether the provider's data is loading.
         /// </summary>
         public bool IsDataLoading { get; private set; }
 
@@ -60,8 +60,7 @@ namespace StevenVolckaert.Windows
         }
 
         /// <summary>
-        /// Gets a value that indicates whether the provider's data is loaded
-        /// and it is safe to use.
+        /// Gets a value that indicates whether the provider's data is loaded.
         /// </summary>
         public bool IsDataLoaded { get; private set; }
 

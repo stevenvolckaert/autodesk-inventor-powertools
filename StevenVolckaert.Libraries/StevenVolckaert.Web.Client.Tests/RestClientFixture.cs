@@ -6,17 +6,17 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace StevenVolckaert.Web.Client.Tests
 {
-    internal class Post
-    {
-        public string Id { get; set; }
-        public string UserId { get; set; }
-        public string Title { get; set; }
-        public string Body { get; set; }
-    }
-
     [TestClass]
     public class RestClientFixture
     {
+        private class Post
+        {
+            public string Id { get; set; }
+            public string UserId { get; set; }
+            public string Title { get; set; }
+            public string Body { get; set; }
+        }
+
         private static readonly Uri _baseAddress = new Uri("http://jsonplaceholder.typicode.com");
         private static readonly Uri _incorrectBaseAddress = new Uri("http://jsonholder.typicade.com");
 
@@ -53,7 +53,7 @@ namespace StevenVolckaert.Web.Client.Tests
         public async Task GetResource_NullRequestUri_ThrowsImmediately()
         {
             var client = new RestClient();
-            var task = await client.GetAsync<Post>(uri: null);
+            await client.GetAsync<Post>(uri: null);
         }
 
         [TestMethod]
