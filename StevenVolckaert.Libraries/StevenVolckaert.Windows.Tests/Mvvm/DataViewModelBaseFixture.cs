@@ -46,25 +46,25 @@ namespace StevenVolckaert.Windows.Tests.Mvvm
             Assert.IsFalse(viewModel.IsDataSaving);
             Assert.IsFalse(viewModel.IsDataSaved);
             Assert.IsFalse(viewModel.IsBusy);
-            Assert.AreEqual(viewModel.Status, Properties.Resources.Idle);
+            Assert.AreEqual(Properties.Resources.Idle, viewModel.Status);
 
             var task1 = viewModel.SaveDataAsync();
 
-            Assert.AreEqual(eventStack.Pop(), "DataSaving");
+            Assert.AreEqual("DataSaving", eventStack.Pop());
             Assert.IsTrue(eventStack.Count == 0);
             Assert.IsTrue(viewModel.IsDataSaving);
             Assert.IsFalse(viewModel.IsDataSaved);
             Assert.IsTrue(viewModel.IsBusy);
-            Assert.AreEqual(viewModel.Status, Properties.Resources.Saving);
+            Assert.AreEqual(Properties.Resources.Saving, viewModel.Status);
 
             await task1;
 
-            Assert.AreEqual(eventStack.Pop(), "DataSaved");
+            Assert.AreEqual("DataSaved", eventStack.Pop());
             Assert.IsTrue(eventStack.Count == 0);
             Assert.IsFalse(viewModel.IsDataSaving);
             Assert.IsTrue(viewModel.IsDataSaved);
             Assert.IsFalse(viewModel.IsBusy);
-            Assert.AreEqual(viewModel.Status, Properties.Resources.Idle);
+            Assert.AreEqual(Properties.Resources.Idle, viewModel.Status);
 
             var task2 = viewModel.SaveDataAsync();
 
@@ -72,7 +72,7 @@ namespace StevenVolckaert.Windows.Tests.Mvvm
             Assert.IsFalse(viewModel.IsDataSaving);
             Assert.IsTrue(viewModel.IsDataSaved);
             Assert.IsFalse(viewModel.IsBusy);
-            Assert.AreEqual(viewModel.Status, Properties.Resources.Idle);
+            Assert.AreEqual(Properties.Resources.Idle, viewModel.Status);
 
             await task2;
 
@@ -80,27 +80,27 @@ namespace StevenVolckaert.Windows.Tests.Mvvm
             Assert.IsFalse(viewModel.IsDataSaving);
             Assert.IsTrue(viewModel.IsDataSaved);
             Assert.IsFalse(viewModel.IsBusy);
-            Assert.AreEqual(viewModel.Status, Properties.Resources.Idle);
+            Assert.AreEqual(Properties.Resources.Idle, viewModel.Status);
 
             viewModel.IsDataSaved = false;
 
             var task3 = viewModel.SaveDataAsync();
 
-            Assert.AreEqual(eventStack.Pop(), "DataSaving");
+            Assert.AreEqual("DataSaving", eventStack.Pop());
             Assert.IsTrue(eventStack.Count == 0);
             Assert.IsTrue(viewModel.IsDataSaving);
             Assert.IsFalse(viewModel.IsDataSaved);
             Assert.IsTrue(viewModel.IsBusy);
-            Assert.AreEqual(viewModel.Status, Properties.Resources.Saving);
+            Assert.AreEqual(Properties.Resources.Saving, viewModel.Status);
 
             await task3;
 
-            Assert.AreEqual(eventStack.Pop(), "DataSaved");
+            Assert.AreEqual("DataSaved", eventStack.Pop());
             Assert.IsTrue(eventStack.Count == 0);
             Assert.IsFalse(viewModel.IsDataSaving);
             Assert.IsTrue(viewModel.IsDataSaved);
             Assert.IsFalse(viewModel.IsBusy);
-            Assert.AreEqual(viewModel.Status, Properties.Resources.Idle);
+            Assert.AreEqual(Properties.Resources.Idle, viewModel.Status);
         }
 
         [TestMethod]
@@ -112,25 +112,25 @@ namespace StevenVolckaert.Windows.Tests.Mvvm
             Assert.IsFalse(viewModel.IsDataLoading);
             Assert.IsFalse(viewModel.IsDataLoaded);
             Assert.IsFalse(viewModel.IsBusy);
-            Assert.AreEqual(viewModel.Status, Properties.Resources.Idle);
+            Assert.AreEqual(Properties.Resources.Idle, viewModel.Status);
 
             var task1 = viewModel.LoadDataAsync();
 
-            Assert.AreEqual(eventStack.Pop(), "DataLoading");
+            Assert.AreEqual("DataLoading", eventStack.Pop());
             Assert.IsTrue(eventStack.Count == 0);
             Assert.IsTrue(viewModel.IsDataLoading);
             Assert.IsFalse(viewModel.IsDataLoaded);
             Assert.IsTrue(viewModel.IsBusy);
-            Assert.AreEqual(viewModel.Status, Properties.Resources.Loading);
+            Assert.AreEqual(Properties.Resources.Loading, viewModel.Status);
 
             await task1;
 
-            Assert.AreEqual(eventStack.Pop(), "DataLoaded");
+            Assert.AreEqual("DataLoaded", eventStack.Pop());
             Assert.IsTrue(eventStack.Count == 0);
             Assert.IsFalse(viewModel.IsDataLoading);
             Assert.IsTrue(viewModel.IsDataLoaded);
             Assert.IsFalse(viewModel.IsBusy);
-            Assert.AreEqual(viewModel.Status, Properties.Resources.Idle);
+            Assert.AreEqual(Properties.Resources.Idle, viewModel.Status);
 
             var task2 = viewModel.LoadDataAsync();
 
@@ -138,7 +138,7 @@ namespace StevenVolckaert.Windows.Tests.Mvvm
             Assert.IsFalse(viewModel.IsDataLoading);
             Assert.IsTrue(viewModel.IsDataLoaded);
             Assert.IsFalse(viewModel.IsBusy);
-            Assert.AreEqual(viewModel.Status, Properties.Resources.Idle);
+            Assert.AreEqual(Properties.Resources.Idle, viewModel.Status);
 
             await task2;
 
@@ -146,25 +146,25 @@ namespace StevenVolckaert.Windows.Tests.Mvvm
             Assert.IsFalse(viewModel.IsDataLoading);
             Assert.IsTrue(viewModel.IsDataLoaded);
             Assert.IsFalse(viewModel.IsBusy);
-            Assert.AreEqual(viewModel.Status, Properties.Resources.Idle);
+            Assert.AreEqual(Properties.Resources.Idle, viewModel.Status);
 
             var task3 = viewModel.ReloadDataAsync();
 
-            Assert.AreEqual(eventStack.Pop(), "DataLoading");
+            Assert.AreEqual("DataLoading", eventStack.Pop());
             Assert.IsTrue(eventStack.Count == 0);
             Assert.IsTrue(viewModel.IsDataLoading);
             Assert.IsFalse(viewModel.IsDataLoaded);
             Assert.IsTrue(viewModel.IsBusy);
-            Assert.AreEqual(viewModel.Status, Properties.Resources.Loading);
+            Assert.AreEqual(Properties.Resources.Loading, viewModel.Status);
 
             await task3;
 
-            Assert.AreEqual(eventStack.Pop(), "DataLoaded");
+            Assert.AreEqual("DataLoaded", eventStack.Pop());
             Assert.IsTrue(eventStack.Count == 0);
             Assert.IsFalse(viewModel.IsDataLoading);
             Assert.IsTrue(viewModel.IsDataLoaded);
             Assert.IsFalse(viewModel.IsBusy);
-            Assert.AreEqual(viewModel.Status, Properties.Resources.Idle);
+            Assert.AreEqual(Properties.Resources.Idle, viewModel.Status);
         }
 
         [TestMethod]
@@ -175,12 +175,12 @@ namespace StevenVolckaert.Windows.Tests.Mvvm
 
             var task1 = viewModel.SaveDataCommand.Execute();
 
-            Assert.AreEqual(eventStack.Pop(), "DataSaving");
+            Assert.AreEqual("DataSaving", eventStack.Pop());
             Assert.IsTrue(eventStack.Count == 0);
 
             await task1;
 
-            Assert.AreEqual(eventStack.Pop(), "DataSaved");
+            Assert.AreEqual("DataSaved", eventStack.Pop());
             Assert.IsTrue(eventStack.Count == 0);
         }
 
@@ -198,16 +198,16 @@ namespace StevenVolckaert.Windows.Tests.Mvvm
             Assert.IsTrue(viewModel.IsDataSaving);
             Assert.IsFalse(viewModel.IsDataSaved);
             Assert.IsTrue(viewModel.IsBusy);
-            Assert.AreEqual(viewModel.Status, Properties.Resources.Saving);
+            Assert.AreEqual(Properties.Resources.Saving, viewModel.Status);
 
             await task;
 
-            Assert.AreEqual(eventStack.Pop(), "DataSaved");
-            Assert.AreEqual(eventStack.Pop(), "DataSaving");
+            Assert.AreEqual("DataSaved", eventStack.Pop());
+            Assert.AreEqual("DataSaving", eventStack.Pop());
             Assert.IsFalse(viewModel.IsDataSaving);
             Assert.IsTrue(viewModel.IsDataSaved);
             Assert.IsFalse(viewModel.IsBusy);
-            Assert.AreEqual(viewModel.Status, Properties.Resources.Idle);
+            Assert.AreEqual(Properties.Resources.Idle, viewModel.Status);
         }
 
         private class DataViewModelWithoutDataOperations : DataViewModelBase

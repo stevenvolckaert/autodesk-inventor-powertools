@@ -59,18 +59,19 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="Extensions\IEnumerableExtensionsFixture.cs" />
     <Compile Include="Extensions\Int64ExtensionsFixture.cs" />
     <Compile Include="UnitConvertFixture.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\StevenVolckaert.Core\StevenVolckaert.Core.csproj">
-      <Project>{810d4519-fe8d-410d-bfaa-73897a27ec21}</Project>
-      <Name>StevenVolckaert.Core</Name>
-    </ProjectReference>
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config" />
+    <ProjectReference Include="..\StevenVolckaert.Core\StevenVolckaert.Core.csproj">
+      <Project>{c86a46d6-7f14-418a-bcc3-908f2918b17c}</Project>
+      <Name>StevenVolckaert.Core</Name>
+    </ProjectReference>
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">

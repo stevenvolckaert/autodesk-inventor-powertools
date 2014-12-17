@@ -50,8 +50,8 @@ namespace StevenVolckaert.Windows.Tests
 
             await task;
 
-            Assert.AreEqual(eventStack.Pop(), "DataLoaded");
-            Assert.AreEqual(eventStack.Pop(), "DataLoading");
+            Assert.AreEqual("DataLoaded", eventStack.Pop());
+            Assert.AreEqual("DataLoading", eventStack.Pop());
             Assert.IsFalse(dataProvider.IsDataLoading);
             Assert.IsTrue(dataProvider.IsDataLoaded);
 
@@ -103,8 +103,8 @@ namespace StevenVolckaert.Windows.Tests
             await dataProvider.LoadDataAsync();
 
             Assert.IsTrue(dataProvider.IsDataLoaded);
-            Assert.AreEqual(eventStack.Pop(), "DataLoaded");
-            Assert.AreEqual(eventStack.Pop(), "DataLoading");
+            Assert.AreEqual("DataLoaded", eventStack.Pop());
+            Assert.AreEqual("DataLoading", eventStack.Pop());
 
             var task = dataProvider.ReloadDataAsync();
 
@@ -115,8 +115,8 @@ namespace StevenVolckaert.Windows.Tests
 
             Assert.IsFalse(dataProvider.IsDataLoading);
             Assert.IsTrue(dataProvider.IsDataLoaded);
-            Assert.AreEqual(eventStack.Pop(), "DataLoaded");
-            Assert.AreEqual(eventStack.Pop(), "DataLoading");
+            Assert.AreEqual("DataLoaded", eventStack.Pop());
+            Assert.AreEqual("DataLoading", eventStack.Pop());
         }
     }
 }
