@@ -30,6 +30,8 @@ namespace StevenVolckaert
         /// <returns>A signed integer that indicates the relative values of x and y, as in the Compare method in the <c>IComparer&lt;T&gt;</c> interface.</returns>
         public int Compare(string x, string y)
         {
+            // TODO Check whether we can use String.CompareOrdinal(String, String, StringComparison) instead.
+
             // Check for null values first: A null reference is considered to be less than any reference that is not null
             if (x == null && y == null)
                 return 0;
