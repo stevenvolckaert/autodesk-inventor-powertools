@@ -28,10 +28,9 @@ namespace StevenVolckaert
         /// <param name="x">The first string value to compare.</param>
         /// <param name="y">The second string value to compare.</param>
         /// <returns>A signed integer that indicates the relative values of x and y, as in the Compare method in the <c>IComparer&lt;T&gt;</c> interface.</returns>
+        /// <remarks>Implementing this method with String.Compare(String, String, StringComparison) does not produce the desired results.</remarks>
         public int Compare(string x, string y)
         {
-            // TODO Check whether we can use String.CompareOrdinal(String, String, StringComparison) instead.
-
             // Check for null values first: A null reference is considered to be less than any reference that is not null
             if (x == null && y == null)
                 return 0;
