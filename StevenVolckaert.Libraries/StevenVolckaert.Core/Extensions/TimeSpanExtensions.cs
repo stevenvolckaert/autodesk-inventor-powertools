@@ -14,7 +14,7 @@ namespace StevenVolckaert
         /// <summary>
         /// Returns a formatted string that represents the current System.TimeSpan in the language of the application's current culture.
         /// </summary>
-        /// <param name="value">The System.TimeSpan that this extension method effects.</param>
+        /// <param name="value">The TimeSpan instance that this extension method affects.</param>
         public static string ToFormattedString(this TimeSpan timeSpan)
         {
             string returnValue;

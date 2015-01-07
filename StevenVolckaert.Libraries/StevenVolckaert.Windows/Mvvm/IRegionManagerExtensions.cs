@@ -12,7 +12,7 @@ namespace StevenVolckaert.Windows.Mvvm
         /// <summary>
         /// Navigates the specified region manager to the main view of a specified Prism module.
         /// </summary>
-        /// <param name="regionManager">The region manager that this extension method effects.</param>
+        /// <param name="regionManager">The region manager that this extension method affects.</param>
         /// <param name="regionName">The name of the region to call Navigate on.</param>
         /// <param name="moduleName">The name of the module to display.</param>
         public static void RequestNavigateToModuleMainView(this IRegionManager regionManager, string regionName, string moduleName)
@@ -23,7 +23,7 @@ namespace StevenVolckaert.Windows.Mvvm
         /// <summary>
         /// Navigates the specified region manager to the main view of a specified Prism module.
         /// </summary>
-        /// <param name="regionManager">The region manager that this extension method effects.</param>
+        /// <param name="regionManager">The region manager that this extension method affects.</param>
         /// <param name="regionName">The name of the region to call Navigate on.</param>
         /// <param name="moduleName">The name of the module to display.</param>
         /// <param name="navigationCallback">The method to call when the operation finishes.</param>

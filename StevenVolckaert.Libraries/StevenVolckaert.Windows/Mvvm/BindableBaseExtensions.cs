@@ -12,7 +12,7 @@ namespace StevenVolckaert.Windows.Mvvm
         /// <summary>
         /// Notifies listeners that the values of a number of properties has changed.
         /// </summary>
-        /// <param name="bindableBase">The BindableBase instance that this extension method effects.</param>
+        /// <param name="bindableBase">The BindableBase instance that this extension method affects.</param>
         /// <param name="propertyNames">The names of the properties used to notify listeners.</param>
         /// <exception cref="ArgumentNullException"><paramref name="bindableBase"/> is <c>null</c>.</exception>
         public static void OnPropertyChanged(this BindableBase bindableBase, params string[] propertyNames)

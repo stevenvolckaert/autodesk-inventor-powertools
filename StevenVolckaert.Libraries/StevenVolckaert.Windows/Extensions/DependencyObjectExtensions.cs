@@ -26,7 +26,7 @@ namespace StevenVolckaert.Windows
         /// Returns the DependencyObject's child System.Windows.FrameworkElement by examining the visual tree.
         /// </summary>
         /// <typeparam name="T">The type of the child element, which must inherit System.Windows.FrameworkElement.</typeparam>
-        /// <param name="dependencyObject">The DependencyObject that this extension method affects.</param>
+        /// <param name="dependencyObject">The DependencyObject instance that this extension method affects.</param>
         /// <param name="name">The identifying name of the child FrameworkElement.</param>
         /// <returns>The child FrameworkElement, or <c>null</c> if it does not exist.</returns>
         public static T Child<T>(this DependencyObject dependencyObject, string name)
@@ -38,7 +38,7 @@ namespace StevenVolckaert.Windows
         /// <summary>
         /// Returns the DependencyObject's child System.Windows.FrameworkElement by examining the visual tree.
         /// </summary>
-        /// <param name="dependencyObject">The DependencyObject that this extension method affects.</param>
+        /// <param name="dependencyObject">The DependencyObject instance that this extension method affects.</param>
         /// <param name="name">The identifying name of the child FrameworkElement.</param>
         /// <returns>The child FrameworkElement, or <c>null</c> if it does not exist.</returns>
         public static FrameworkElement Child(this DependencyObject dependencyObject, string name)
