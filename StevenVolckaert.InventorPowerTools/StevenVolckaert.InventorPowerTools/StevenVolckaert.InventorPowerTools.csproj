@@ -128,6 +128,9 @@
       <Link>AutodeskDictionary.xml</Link>
     </CodeAnalysisDictionary>
     <Content Include="StevenVolckaert.InventorPowerTools.addin" />
+    <Content Include="StevenVolckaert.InventorPowerTools.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <EmbeddedResource Include="Buttons\CreatePartViewsFromAssemblyButton.ico" />
     <EmbeddedResource Include="Buttons\CreateTopAndLeftProjectedViewsButton.ico" />
     <EmbeddedResource Include="Buttons\ExportPdfButton.ico" />
