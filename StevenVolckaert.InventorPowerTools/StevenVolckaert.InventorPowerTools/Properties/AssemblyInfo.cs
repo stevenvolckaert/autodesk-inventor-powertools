@@ -6,11 +6,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("PowerTools")]
+[assembly: AssemblyTitle("Steven Volckaert Inventor Power Tools")]
 [assembly: AssemblyDescription("A collection of power tools for Autodesk Inventor 2012.")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Steven Volckaert")]
-[assembly: AssemblyProduct("PowerTools")]
+[assembly: AssemblyProduct("Inventor Power Tools")]
 [assembly: AssemblyCopyright("Copyright © 2015 Steven Volckaert")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -40,7 +40,7 @@ using System.Runtime.InteropServices;
 
 namespace StevenVolckaert.InventorPowerTools
 {
-    static internal class AssemblyInfo
+    internal static class AssemblyInfo
     {
         /// <summary>
         /// The application's GUID.
