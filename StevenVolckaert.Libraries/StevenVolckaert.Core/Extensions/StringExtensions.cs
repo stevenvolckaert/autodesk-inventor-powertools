@@ -128,5 +128,87 @@ namespace StevenVolckaert
         {
             return value == null ? null : value.Trim();
         }
+
+        /// <summary>
+        /// Returns the first substring in this string that is delimited by a specified separator.
+        /// </summary>
+        /// <param name="value">The System.String value.</param>
+        /// <param name="separators">A collection of strings that delimit the substrings in this string.</param>
+        /// <returns>The first substring delimited by one of the specified separators, or <c>null</c>
+        /// if no such substring exists.</returns>
+        public static string FirstFromSplit(this String value, params string[] separators)
+        {
+            if (String.IsNullOrEmpty(value))
+                return null;
+
+            var values = value.Split(separators, StringSplitOptions.RemoveEmptyEntries).ToList();
+            return values.FirstOrDefault();
+        }
+
+        /// <summary>
+        /// Converts the string to a specified enumeration.
+        /// </summary>
+        /// <typeparam name="TEnum">The type of System.Enum to parse as.</typeparam>
+        /// <param name="value">The System.String value.</param>
+        /// <exception cref="ArgumentNullException"><paramref name="value"/> is <c>null</c>.</exception>
+        /// <exception cref="ArgumentException"><paramref name="value"/> does not map to one of the named constants defined in <typeparamref name="TEnum"/>.</exception>
+        public static TEnum ParseAs<TEnum>(this String value)
+            where TEnum : struct
+        {
+            return value.ParseAs<TEnum>(ignoreCase: false);
+        }
+
+        /// <summary>
+        /// Converts the string to a specified enumeration. A value specifies whether the operation is case-insensitive.
+        /// </summary>
+        /// <typeparam name="TEnum">The type of System.Enum to parse as.</typeparam>
+        /// <param name="value">The System.String value.</param>
+        /// <param name="ignoreCase"><c>true</c> to ignore case; <c>false</c> to regard case.</param>
+        /// <exception cref="ArgumentNullException"><paramref name="value"/> is <c>null</c>.</exception>
+        /// <exception cref="ArgumentException"><paramref name="value"/> does not map to one of the named constants defined in <typeparamref name="TEnum"/>.</exception>
+        public static TEnum ParseAs<TEnum>(this String value, bool ignoreCase)
+            where TEnum : struct
+        {
+            return (TEnum)Enum.Parse(typeof(TEnum), value, ignoreCase);
+        }
+
+        /// <summary>
+        /// Converts the string to a specified enumeration,
+        /// or returns a specified default result if the conversion fails.
+        /// </summary>
+        /// <typeparam name="TEnum">The type of System.Enum to parse as.</typeparam>
+        /// <param name="value">The System.String value.</param>
+        /// <param name="defaultResult">The default result to return if the conversion fails.</param>
+        public static TEnum TryParseAs<TEnum>(this String value, TEnum defaultResult)
+            where TEnum : struct
+        {
+            return value.TryParseAs<TEnum>(defaultResult, ignoreCase: false);
+        }
+
+        /// <summary>
+        /// Converts the string to a specified enumeration,
+        /// or returns a specified default result if the conversion fails.
+        /// A value specified whether the operation is case-insensitive.
+        /// </summary>
+        /// <typeparam name="TEnum">The type of System.Enum to parse as.</typeparam>
+        /// <param name="value">The System.String value.</param>
+        /// <param name="defaultResult">The default result to return if the conversion fails.</param>
+        /// <param name="ignoreCase"><c>true</c> to ignore case; <c>false</c> to regard case.</param>
+        public static TEnum TryParseAs<TEnum>(this String value, TEnum defaultResult, bool ignoreCase)
+            where TEnum : struct
+        {
+            try
+            {
+                return value.ParseAs<TEnum>(ignoreCase);
+            }
+            catch (ArgumentException)
+            {
+                return defaultResult;
+            }
+            catch (OverflowException)
+            {
+                return defaultResult;
+            }
+        }
     }
 }

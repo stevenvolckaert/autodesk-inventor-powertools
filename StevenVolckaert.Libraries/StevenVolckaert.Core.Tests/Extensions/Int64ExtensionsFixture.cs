@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace StevenVolckaert.Tests.Extensions
+namespace StevenVolckaert.Extensions.Tests
 {
     [TestClass]
     public class Int64ExtensionsFixture
@@ -133,7 +133,7 @@ namespace StevenVolckaert.Tests.Extensions
             Assert.AreEqual("2 PiB", ((UInt64)2251799813685248).BytesToString(UnitOfInformationPrefix.Binary));
             Assert.AreEqual("2.4 PiB", ((UInt64)2702159776422298).BytesToString(UnitOfInformationPrefix.Binary));
             Assert.AreEqual("2.5 PiB", ((UInt64)2814749767106560).BytesToString(UnitOfInformationPrefix.Binary));
-            Assert.AreEqual("999 PiB", ((UInt64)1124774006935781376).BytesToString(UnitOfInformationPrefix.Binary));        
+            Assert.AreEqual("999 PiB", ((UInt64)1124774006935781376).BytesToString(UnitOfInformationPrefix.Binary));
         }
     }
 }
