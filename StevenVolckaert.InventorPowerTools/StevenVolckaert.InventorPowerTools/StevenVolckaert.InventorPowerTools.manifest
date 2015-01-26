@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <assembly xmlns="urn:schemas-microsoft-com:asm.v1" manifestVersion="1.0">
     <assemblyIdentity name="StevenVolckaert.InventorPowerTools" version="1.0.0.0" />
-    <clrClass clsid="{e94e94b4-2808-4450-81ba-07ea75811e27}" progid="StevenVolckaert.InventorPowerTools.AddIn" threadingModel="Both" name="StevenVolckaert.InventorPowerTools.AddIn" runtimeVersion="" />
+    <clrClass clsid="{6f046c68-7899-4486-9e15-3752a437a94a}" progid="StevenVolckaert.InventorPowerTools.AddIn" threadingModel="Both" name="StevenVolckaert.InventorPowerTools.AddIn" runtimeVersion="1.0" />
     <file name="StevenVolckaert.InventorPowerTools.dll" hashalg="SHA1" />
 </assembly>

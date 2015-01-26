@@ -21,7 +21,8 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(true)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid(StevenVolckaert.InventorPowerTools.AssemblyInfo.Guid)]
+//[assembly: Guid(StevenVolckaert.InventorPowerTools.AssemblyInfo.Guid)]
+[assembly: Guid("6f046c68-7899-4486-9e15-3752a437a94a")]
 
 // Version information for an assembly consists of the following four values:
 //
@@ -45,6 +46,6 @@ namespace StevenVolckaert.InventorPowerTools
         /// <summary>
         /// The application's GUID.
         /// </summary>
-        internal const string Guid = "e94e94b4-2808-4450-81ba-07ea75811e27";
+        internal const string Guid = "6f046c68-7899-4486-9e15-3752a437a94a";
     }
 }
