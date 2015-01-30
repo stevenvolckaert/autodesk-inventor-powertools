@@ -6,7 +6,7 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Steven Volckaert Inventor Power Tools")]
+[assembly: AssemblyTitle("Steven Volckaert's Inventor Power Tools")]
 [assembly: AssemblyDescription("A collection of power tools for Autodesk Inventor 2012.")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Steven Volckaert")]
@@ -21,8 +21,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(true)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-//[assembly: Guid(StevenVolckaert.InventorPowerTools.AssemblyInfo.Guid)]
-[assembly: Guid("6f046c68-7899-4486-9e15-3752a437a94a")]
+[assembly: Guid(StevenVolckaert.InventorPowerTools.AssemblyInfo.Guid)]
 
 // Version information for an assembly consists of the following four values:
 //
