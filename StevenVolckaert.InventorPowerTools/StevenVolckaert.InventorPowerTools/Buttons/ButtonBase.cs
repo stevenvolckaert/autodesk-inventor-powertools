@@ -80,6 +80,8 @@ namespace StevenVolckaert.InventorPowerTools.Buttons
 
             try
             {
+                var standardIcon = ImageConvert.FromIconToIPictureDisp(new Icon(typeof(ButtonBase), typeName + ".ico"));
+
                 _buttonDefinition =
                     AddIn.Inventor.CommandManager.ControlDefinitions.AddButtonDefinition(
                         DisplayName: DisplayName,
@@ -88,8 +90,8 @@ namespace StevenVolckaert.InventorPowerTools.Buttons
                         ClientId: AddIn.ClientId,
                         DescriptionText: Description,
                         ToolTipText: ToolTip,
-                        StandardIcon: new Icon(typeof(ButtonBase), typeName + ".ico").ToPictureDisp(),
-                        LargeIcon: new Icon(typeof(ButtonBase), typeName + ".ico").ToPictureDisp(),
+                        StandardIcon: standardIcon,
+                        LargeIcon: standardIcon,
                         ButtonDisplay: DisplayType
                     );
 

@@ -14,7 +14,7 @@ namespace StevenVolckaert.InventorPowerTools
         private Dictionary<string, string[]> _dictionary = new Dictionary<string, string[]>();
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="Barco.CineCare.Presentation.HumanReadableStringComparer"/> class.
+        /// Initializes a new instance of the <see cref="HumanReadableStringComparer"/> class.
         /// </summary>
         public HumanReadableStringComparer()
             : this(sortAscending: true)
@@ -22,7 +22,7 @@ namespace StevenVolckaert.InventorPowerTools
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="Barco.CineCare.Presentation.HumanReadableStringComparer"/> class.
+        /// Initializes a new instance of the <see cref="HumanReadableStringComparer"/> class.
         /// </summary>
         /// <param name="sortAscending">A value which indicates whether to sort ascending or descending.</param>
         public HumanReadableStringComparer(bool sortAscending)

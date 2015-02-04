@@ -49,9 +49,6 @@
     </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
-    <Reference Include="stdole, Version=7.0.3300.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-      <EmbedInteropTypes>True</EmbedInteropTypes>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
@@ -80,7 +77,6 @@
     <Compile Include="Extensions\DocumentExtensions.cs" />
     <Compile Include="Extensions\DrawingCurveExtensions.cs" />
     <Compile Include="Extensions\DrawingViewExtensions.cs" />
-    <Compile Include="Extensions\IconExtensions.cs" />
     <Compile Include="Extensions\ParameterExtensions.cs" />
     <Compile Include="Extensions\PartDocumentExtensions.cs" />
     <Compile Include="Extensions\PartsListColumnExtensions.cs" />
@@ -90,8 +86,10 @@
     <Compile Include="Extensions\StringExtensions.cs" />
     <Compile Include="Extensions\UserInterfaceManagerExtensions.cs" />
     <Compile Include="GlobalSuppressions.cs" />
-    <Compile Include="Helpers\OleCreateConverter.cs" />
     <Compile Include="HumanReadableStringComparer.cs" />
+    <Compile Include="ImageConvert.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Models\ModelBase.cs" />
     <Compile Include="Models\Assembly.cs" />
     <Compile Include="Models\IDocument.cs" />
