@@ -5,16 +5,14 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    ResizeMode="NoResize"
+    SizeToContent="Height"
     Title="{Binding Title}"
     Width="720"
-    SizeToContent="Height"
     >
 
     <Window.Resources>
-        <Style TargetType="GroupBox">
-            <Setter Property="Margin" Value="8"/>
-            <Setter Property="Padding" Value="8"/>
-        </Style>
+        <ResourceDictionary Source="/StevenVolckaert.InventorPowerTools;component/Themes/Generic.xaml"/>
     </Window.Resources>
 
     <Grid x:Name="LayoutRoot">

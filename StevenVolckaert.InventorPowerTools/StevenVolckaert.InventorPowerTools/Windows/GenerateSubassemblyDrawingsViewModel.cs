@@ -24,6 +24,20 @@ namespace StevenVolckaert.InventorPowerTools.Windows
             }
         }
 
+        private Assembly _selectedSubassembly;
+        public Assembly SelectedSubassembly
+        {
+            get { return _selectedSubassembly; }
+            set
+            {
+                if (_selectedSubassembly != value)
+                {
+                    _selectedSubassembly = value;
+                    RaisePropertyChanged(() => SelectedSubassembly);
+                }
+            }
+        }
+
         /// <summary>
         /// Initializes a new instance of the <see cref="GenerateSubassemblyDrawingsViewModel"/> class.
         /// </summary>

@@ -143,6 +143,12 @@
     <None Include="StevenVolckaert.InventorPowerTools.manifest" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Themes\Generic.xaml">
+      <SubType>Designer</SubType>
+    </Resource>
+    <Resource Include="Themes\Generic\CoreStyles.xaml">
+      <SubType>Designer</SubType>
+    </Resource>
     <Page Include="Windows\GenerateSheetMetalDrawingsWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -156,6 +162,7 @@
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>call "%25VS120COMNTOOLS%25vsvars32"

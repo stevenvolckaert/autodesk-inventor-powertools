@@ -6,6 +6,10 @@ namespace StevenVolckaert.InventorPowerTools.Windows
 {
     public partial class GenerateSubassemblyDrawingsWindow : Window
     {
+        /* TODO attach double click event of each ListView row to a command in the view model.
+         * see http://stackoverflow.com/questions/728205/wpf-listview-attaching-a-double-click-on-an-item-event
+         */
+
         internal GenerateSubassemblyDrawingsViewModel ViewModel
         {
             get { return (GenerateSubassemblyDrawingsViewModel)DataContext; }

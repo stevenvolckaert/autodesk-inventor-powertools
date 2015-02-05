@@ -5,22 +5,14 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    ResizeMode="NoResize"
+    SizeToContent="Height"
     Title="{Binding Title}"
     Width="720"
-    SizeToContent="Height"
     >
 
     <Window.Resources>
-        <Style TargetType="GroupBox">
-            <Setter Property="Margin" Value="8,0,8,8"/>
-            <Setter Property="Padding" Value="8"/>
-        </Style>
-        <Style TargetType="TextBox">
-            <Setter Property="Margin" Value="8,3"/>
-        </Style>
-        <Style TargetType="TextBlock">
-            <Setter Property="VerticalAlignment" Value="Center"/>
-        </Style>
+        <ResourceDictionary Source="/StevenVolckaert.InventorPowerTools;component/Themes/Generic.xaml"/>
     </Window.Resources>
 
     <Grid x:Name="LayoutRoot">
@@ -34,7 +26,7 @@
             <ListView ItemsSource="{Binding Parts}" Height="300">
                 <ListView.View>
                     <GridView AllowsColumnReorder="False">
-                        <GridViewColumn Width="25">
+                        <GridViewColumn HeaderContainerStyle="{StaticResource CheckBoxGridViewColumnHeaderStyle}">
                             <GridViewColumn.Header>
                                 <CheckBox IsChecked="{Binding IsEverythingSelected, Mode=TwoWay}" Margin="4,0"/>
                             </GridViewColumn.Header>
@@ -50,7 +42,7 @@
             </ListView>
         </GroupBox>
 
-        <GroupBox Grid.Row="1" Header="Options">
+        <GroupBox Grid.Row="1" Header="Options" Margin="8,0,8,8">
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto"/>
@@ -62,15 +54,16 @@
                     <RowDefinition/>
                     <RowDefinition/>
                 </Grid.RowDefinitions>
-                <TextBlock Grid.Column="0" Text="Template" TextAlignment="Right"/>
-                <TextBox Grid.Column="1" IsReadOnly="True" Text="{Binding TemplateFileName}"/>
-                <Button Grid.Column="2" Command="{Binding SelectTemplateCommand}" Content="Browse..." Padding="8,2" Margin="0,3"/>
-
-                <TextBlock Grid.Column="0" Grid.Row="1" Text="Scale (Base View)" TextAlignment="Right"/>
-                <TextBox Grid.Column="1" Grid.Row="1" Text="{Binding Scale, Mode=TwoWay}"/>
-
-                <TextBlock Grid.Column="0" Grid.Row="2" Text="Scale (Perspective)" TextAlignment="Right"/>
-                <TextBox Grid.Column="1" Grid.Row="2" Text="{Binding PerspectiveScale, Mode=TwoWay}"/>
+                <!-- Template -->
+                <Label Grid.Column="0" Content="Template" Target="{Binding ElementName=TemplateFileNameTextBox}"/>
+                <TextBox x:Name="TemplateFileNameTextBox" Grid.Column="1" IsReadOnly="True" Text="{Binding TemplateFileName}"/>
+                <Button Grid.Column="2" Command="{Binding SelectTemplateCommand}" Content="Browse..." Padding="8,2" Margin="8,3,0,3"/>
+                <!-- Scale (Base View) -->
+                <Label Grid.Column="0" Grid.Row="1" Content="Scale (Base View)" Target="{Binding ElementName=ScaleTextBox}"/>
+                <TextBox x:Name="ScaleTextBox" Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="2" Text="{Binding Scale, Mode=TwoWay}"/>
+                <!-- Scale (Perspective) -->
+                <Label Grid.Column="0" Grid.Row="2" Content="Scale (Perspective)" Target="{Binding ElementName=PerspectiveScaleTextBox}"/>
+                <TextBox x:Name="PerspectiveScaleTextBox" Grid.Column="1" Grid.Row="2" Grid.ColumnSpan="2" Text="{Binding PerspectiveScale, Mode=TwoWay}"/>
             </Grid>
         </GroupBox>
 
