@@ -91,9 +91,12 @@ namespace StevenVolckaert.InventorPowerTools.Windows
 
                     // 2. Add part list to the top right corner.
                     var partsList = sheet.AddPartsList(part.Document, PartsListLevelEnum.kPartsOnly);
-                    partsList.PartsListRows[1]["QTY"].Value = Assembly.GetPartQuantity(part.Document).ToString();
+                    var quantity = Assembly.GetPartQuantity(part.Document);
 
-                    // 3. Add base "ISO Top Right", Hidden line removed, Shaded base view of the part in the drawing's top right corner.
+                    if (quantity > 0)
+                        partsList.PartsListRows[1]["QTY"].Value = quantity.ToString();
+
+                    // 3. Add base "ISO Top Right", hidden line removed, shaded base view of the part in the drawing's top right corner.
                     var perspectiveView = sheet.DrawingViews.AddBaseView(
                         Model: (_Document)part.Document,
                         Position: drawingDocument.ActiveSheet.TopRightPoint(),

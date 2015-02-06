@@ -104,7 +104,14 @@ namespace StevenVolckaert.InventorPowerTools
                 throw new ArgumentNullException("part");
 
             var bom = assembly.ComponentDefinition.BOM;
-            bom.PartsOnlyViewEnabled = true;
+
+            try
+            {
+                bom.PartsOnlyViewEnabled = true;
+            }
+            catch (ArgumentException)
+            {
+            }
 
             BOMView partsOnlyView;
 
@@ -130,8 +137,6 @@ namespace StevenVolckaert.InventorPowerTools
 
             return 0;
         }
-
-
 
         //public static Dictionary<string, List<string>> PartFileNameMap(this AssemblyDocument assembly)
         //{
