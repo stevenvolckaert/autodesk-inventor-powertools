@@ -10,7 +10,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyDescription("A collection of power tools for Autodesk Inventor 2012.")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Steven Volckaert")]
-[assembly: AssemblyProduct("Inventor Power Tools")]
+[assembly: AssemblyProduct(StevenVolckaert.InventorPowerTools.AssemblyInfo.Name)]
 [assembly: AssemblyCopyright("Copyright © 2015 Steven Volckaert")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -46,5 +46,10 @@ namespace StevenVolckaert.InventorPowerTools
         /// The application's GUID.
         /// </summary>
         internal const string Guid = "6f046c68-7899-4486-9e15-3752a437a94a";
+
+        /// <summary>
+        /// The application's name.
+        /// </summary>
+        internal const string Name = "Inventor Power Tools";
     }
 }

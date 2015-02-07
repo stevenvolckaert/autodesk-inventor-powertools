@@ -97,6 +97,18 @@ namespace StevenVolckaert.InventorPowerTools
         /// <exception cref="ArgumentNullException"><paramref name="assembly"/> or <paramref name="part"/>is <c>null</c>.</exception>
         public static int GetPartQuantity(this AssemblyDocument assembly, PartDocument part)
         {
+            return GetPartQuantity(assembly, part, displayWarnings: false);
+        }
+
+        /// <summary>
+        /// Returns the unit quantity of a specified part.
+        /// </summary>
+        /// <param name="assemblyDocument">The Inventor.AssemblyDocument instance that this extension method affects.</param>
+        /// <param name="part">The part.</param>
+        /// <param name="displayWarnings">A value which indicates wheter to display warnings, if they occur.</param>
+        /// <exception cref="ArgumentNullException"><paramref name="assembly"/> or <paramref name="part"/>is <c>null</c>.</exception>
+        public static int GetPartQuantity(this AssemblyDocument assembly, PartDocument part, bool displayWarnings)
+        {
             if (assembly == null)
                 throw new ArgumentNullException("assembly");
 
@@ -105,12 +117,23 @@ namespace StevenVolckaert.InventorPowerTools
 
             var bom = assembly.ComponentDefinition.BOM;
 
+            if (bom == null)
+                return 0;
+
+            if (displayWarnings && bom.RequiresUpdate)
+                AddIn.ShowWarningMessageBox(
+                    caption: AssemblyInfo.Name,
+                    messageFormat: "The BOM of assembly '{0}' requires an update. Quantities displayed in the generated drawing might be incorrect.",
+                    messageArgs: assembly.DisplayName
+                );
+
             try
             {
                 bom.PartsOnlyViewEnabled = true;
             }
             catch (ArgumentException)
             {
+                return 0;
             }
 
             BOMView partsOnlyView;

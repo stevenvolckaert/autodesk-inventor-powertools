@@ -59,6 +59,15 @@ namespace StevenVolckaert.InventorPowerTools.Windows
                 return;
             }
 
+            var bom = Assembly.ComponentDefinition.BOM;
+
+            if (bom != null && bom.RequiresUpdate)
+                AddIn.ShowWarningMessageBox(
+                    Title,
+                    "The BOM of assembly '{0}' requires an update.{1}Quantities displayed in the generated drawings might be incorrect.",
+                    Assembly.DisplayName, System.Environment.NewLine + System.Environment.NewLine
+                );
+
             foreach (var part in selectedParts)
             {
                 var drawingDocument = CreateDrawingDocument();

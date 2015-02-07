@@ -29,6 +29,11 @@ namespace StevenVolckaert.InventorPowerTools
                 value = views[viewName];
                 return true;
             }
+            catch (ArgumentException)
+            {
+                value = default(BOMView);
+                return false;
+            }
             catch (COMException)
             {
                 value = default(BOMView);
