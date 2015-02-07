@@ -1,6 +1,7 @@
 ﻿using System;
 using Inventor;
 using StevenVolckaert.InventorPowerTools.Windows;
+using Environment = System.Environment;
 
 namespace StevenVolckaert.InventorPowerTools.Buttons
 {
@@ -15,7 +16,7 @@ namespace StevenVolckaert.InventorPowerTools.Buttons
 
         public override string Description
         {
-            get { return "Generate a drawing of every\r\nsubassembly in the active document."; }
+            get { return "Generate a drawing of every" + Environment.NewLine + "subassembly in the active document."; }
         }
 
         protected override void OnExecute(NameValueMap context)
@@ -31,7 +32,12 @@ namespace StevenVolckaert.InventorPowerTools.Buttons
 
                 if (subassemblies.Count == 0)
                 {
-                    ShowWarningMessageBox("Assembly {0} doesn't contain any subassemblies.", assembly.FullFileName);
+                    AddIn.ShowWarningMessageBox(
+                        caption: _generateDrawingsWindow.Title,
+                        messageFormat: "Assembly '{0}' doesn't contain any subassemblies.",
+                        messageArgs: assembly.FullFileName
+                    );
+
                     return;
                 }
 

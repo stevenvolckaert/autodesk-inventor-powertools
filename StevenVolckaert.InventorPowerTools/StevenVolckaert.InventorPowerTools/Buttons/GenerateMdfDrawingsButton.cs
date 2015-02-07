@@ -1,6 +1,7 @@
 ﻿using System;
 using Inventor;
 using StevenVolckaert.InventorPowerTools.Windows;
+using Environment = System.Environment;
 
 namespace StevenVolckaert.InventorPowerTools.Buttons
 {
@@ -15,7 +16,7 @@ namespace StevenVolckaert.InventorPowerTools.Buttons
 
         public override string Description
         {
-            get { return "Generate a drawing of every\r\nMDF part in the active document."; }
+            get { return "Generate a drawing of every" + Environment.NewLine + "MDF part in the active document."; }
         }
 
         protected override void OnExecute(NameValueMap context)
@@ -31,9 +32,12 @@ namespace StevenVolckaert.InventorPowerTools.Buttons
 
                 if (mdfParts.Count == 0)
                 {
-                    ShowWarningMessageBox(
-                        messageFormat: "Assembly {0} doesn't contain any MDF parts.\r\n\r\n" +
-                                       "The file name of MDF parts must contain 'MDF' to be recognised as an MDF part.",
+                    AddIn.ShowWarningMessageBox(
+                        caption: _generateDrawingsWindow.Title,
+                        messageFormat:
+                            "Assembly '{0}' doesn't contain any MDF parts."
+                                + Environment.NewLine + Environment.NewLine
+                                + "Part file names must contain 'MDF' to be recognised as MDF parts",
                         messageArgs: assemblyDocument.FullFileName
                     );
 

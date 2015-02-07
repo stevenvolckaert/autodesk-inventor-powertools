@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Windows;
 using Inventor;
+using Environment = System.Environment;
 
 namespace StevenVolckaert.InventorPowerTools.Windows
 {
@@ -101,7 +102,7 @@ namespace StevenVolckaert.InventorPowerTools.Windows
                 catch (Exception ex)
                 {
                     MessageBox.Show(
-                        messageBoxText: string.Format(CultureInfo.InvariantCulture, "Encountered an exception when generating drawings for part document {0}:\r\n{1}", part.FullFileName, ex.ToString()),
+                        messageBoxText: string.Format(CultureInfo.InvariantCulture, "Encountered an exception when generating drawings for part document {0}:{1}", part.FullFileName, Environment.NewLine + ex.ToString()),
                         caption: "Exception",
                         button: MessageBoxButton.OK,
                         icon: MessageBoxImage.Exclamation

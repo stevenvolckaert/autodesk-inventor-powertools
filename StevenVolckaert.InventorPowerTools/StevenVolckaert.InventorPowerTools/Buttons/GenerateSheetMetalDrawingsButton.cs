@@ -1,6 +1,7 @@
 ﻿using System;
 using Inventor;
 using StevenVolckaert.InventorPowerTools.Windows;
+using Environment = System.Environment;
 
 namespace StevenVolckaert.InventorPowerTools.Buttons
 {
@@ -10,12 +11,12 @@ namespace StevenVolckaert.InventorPowerTools.Buttons
 
         public override string DisplayName
         {
-            get { return "Sheet Metal\r\nFlat Pattern"; }
+            get { return "Sheet Metal" + Environment.NewLine + "Flat Pattern"; }
         }
 
         public override string Description
         {
-            get { return "Generate a flat pattern drawing of every\r\nsheet metal part in the active document."; }
+            get { return "Generate a flat pattern drawing of every" + Environment.NewLine + "sheet metal part in the active document."; }
         }
 
         protected override void OnExecute(NameValueMap context)

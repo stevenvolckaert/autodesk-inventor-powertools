@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Text;
 using Inventor;
+using Environment = System.Environment;
 
 namespace StevenVolckaert.InventorPowerTools
 {
@@ -64,7 +65,7 @@ namespace StevenVolckaert.InventorPowerTools
                     stringBuilder.Append(
                         string.Format(
                             CultureInfo.InvariantCulture,
-                            "Title = '{0}', PropertyType = '{1}', FilePropertyId = <'{2}', '{3}'>\r\n",
+                            "Title = '{0}', PropertyType = '{1}', FilePropertyId = <'{2}', '{3}'>" + Environment.NewLine,
                             column.Title, column.PropertyType, filePropertyId.Key, filePropertyId.Value
                         ));
                 }
@@ -72,7 +73,7 @@ namespace StevenVolckaert.InventorPowerTools
                     stringBuilder.Append(
                         string.Format(
                             CultureInfo.InvariantCulture,
-                            "Title = '{0}', PropertyType = '{1}'\r\n",
+                            "Title = '{0}', PropertyType = '{1}'" + Environment.NewLine,
                             column.Title, column.PropertyType
                         )
                     );
