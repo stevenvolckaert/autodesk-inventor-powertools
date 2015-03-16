@@ -16,7 +16,7 @@ namespace StevenVolckaert
         /// <param name="value">The System.String value this extension method affects.</param>
         /// <param name="defaultValue">The default value.</param>
         /// <returns>The string, or the default value if the string is <c>null</c> or empty.</returns>
-        public static string DefaultIfEmpty(this String value, string defaultValue)
+        public static string DefaultIfNullOrEmpty(this String value, string defaultValue)
         {
             return string.IsNullOrEmpty(value) ? defaultValue : value;
         }
@@ -116,6 +116,17 @@ namespace StevenVolckaert
             return Decimal.TryParse(value, out returnValue)
                 ? (decimal?)returnValue
                 : null;
+        }
+
+        /// <summary>
+        /// Attempts to return a copy of this System.String instance converted to uppercase using
+        /// the casing rules of the invariant culture.
+        /// </summary>
+        /// <param name="value">The System.String value.</param>
+        /// <returns>The uppercase equivalent of the string, or <c>null</c> if the string was <c>null</c>.</returns>
+        public static string TryToUpperInvariant(this String value)
+        {
+            return value == null ? null : value.ToUpperInvariant();
         }
 
         /// <summary>

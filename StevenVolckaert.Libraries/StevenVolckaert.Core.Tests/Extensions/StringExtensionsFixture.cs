@@ -25,13 +25,13 @@ namespace StevenVolckaert.Extensions.Tests
         }
 
         [TestMethod]
-        public void IsInt32Test()
+        public void IsDecimalTest()
         {
             Assert.Fail();
         }
 
         [TestMethod]
-        public void IsDecimalTest()
+        public void IsInt32Test()
         {
             Assert.Fail();
         }
@@ -43,21 +43,29 @@ namespace StevenVolckaert.Extensions.Tests
         }
 
         [TestMethod]
-        public void ToNullableInt32Test()
-        {
-            Assert.Fail();
-        }
-
-        [TestMethod]
         public void ToNullableDecimalTest()
         {
             Assert.Fail();
         }
 
         [TestMethod]
-        public void TryTrimTest()
+        public void ToNullableInt32Test()
         {
             Assert.Fail();
+        }
+
+        [TestMethod]
+        public void TryToUpperInvariantTest()
+        {
+            Assert.AreEqual(" FOO ", " Foo ".TryToUpperInvariant());
+            Assert.AreEqual(null, ((String)null).TryToUpperInvariant());
+        }
+
+        [TestMethod]
+        public void TryTrimTest()
+        {
+            Assert.AreEqual("Foo", " Foo    ".TryTrim());
+            Assert.AreEqual(null, ((String)null).TryTrim());
         }
 
         [TestMethod]
