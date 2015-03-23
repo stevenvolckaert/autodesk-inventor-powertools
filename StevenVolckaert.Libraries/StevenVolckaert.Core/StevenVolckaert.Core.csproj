@@ -55,7 +55,7 @@
     <Compile Include="Container.cs" />
     <Compile Include="DefaultExportProvider.cs" />
     <Compile Include="Diagnostics\Debug.cs" />
-    <Compile Include="Extensions\ArrayExtensions.cs" />
+    <Compile Include="Extensions\IListExtensions.cs" />
     <Compile Include="Extensions\AssemblyExtensions.cs" />
     <Compile Include="Extensions\DictionaryExtensions.cs" />
     <Compile Include="Extensions\EnumExtensions.cs" />

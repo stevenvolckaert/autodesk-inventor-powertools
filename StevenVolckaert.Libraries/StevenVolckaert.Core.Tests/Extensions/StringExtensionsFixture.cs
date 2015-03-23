@@ -65,6 +65,7 @@ namespace StevenVolckaert.Extensions.Tests
         public void TryTrimTest()
         {
             Assert.AreEqual("Foo", " Foo    ".TryTrim());
+            Assert.AreEqual("Bar", "Bar".TryTrim());
             Assert.AreEqual(null, ((String)null).TryTrim());
         }
 
