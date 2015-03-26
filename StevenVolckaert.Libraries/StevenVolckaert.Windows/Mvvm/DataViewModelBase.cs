@@ -10,7 +10,7 @@ namespace StevenVolckaert.Windows.Mvvm
     [CLSCompliant(false)]
     public abstract class DataViewModelBase : ViewModelBase
     {
-        private class DataProvider : DataProviderBase
+        private class DataProvider : Data.DataProviderBase
         {
             private DataViewModelBase _dataViewModel;
 

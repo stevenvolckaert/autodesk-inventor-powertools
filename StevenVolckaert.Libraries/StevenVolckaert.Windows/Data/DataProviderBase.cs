@@ -2,7 +2,7 @@
 using System.Threading.Tasks;
 using Microsoft.Practices.Prism.Mvvm;
 
-namespace StevenVolckaert.Windows
+namespace StevenVolckaert.Windows.Data
 {
     /// <summary>
     /// Base class for data providers.
