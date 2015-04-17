@@ -8,7 +8,7 @@ using StevenVolckaert.Globalization;
 namespace StevenVolckaert.Web.Mvc
 {
     /// <summary>
-    /// Provides extension methods for <see cref="System.Web.Mvc.HtmlHelper"/> objects.
+    /// Provides extension methods for System.Web.Mvc.HtmlHelper objects.
     /// </summary>
     public static class HtmlHelperExtensions
     {
@@ -29,26 +29,26 @@ namespace StevenVolckaert.Web.Mvc
                 throw new ArgumentNullException("htmlHelper");
 
             if (String.IsNullOrWhiteSpace(name))
-                throw new ArgumentException(Properties.Resources.StringIsNullEmptyOrWhiteSpace, "name");
+                throw new ArgumentException(StevenVolckaert.Properties.Resources.ValueNullEmptyOrWhiteSpace, "name");
 
             if (String.IsNullOrWhiteSpace(cultureRouteKey))
-                throw new ArgumentException(Properties.Resources.StringIsNullEmptyOrWhiteSpace, "cultureRouteKey");
+                throw new ArgumentException(StevenVolckaert.Properties.Resources.ValueNullEmptyOrWhiteSpace, "cultureRouteKey");
 
             if (String.IsNullOrWhiteSpace(routeName))
-                throw new ArgumentException(Properties.Resources.StringIsNullEmptyOrWhiteSpace, "routeName");
+                throw new ArgumentException(StevenVolckaert.Properties.Resources.ValueNullEmptyOrWhiteSpace, "routeName");
 
             var itemList = new List<SelectListItem>();
             var cultureManager = Container.Current.GetExportedValue<CultureManager>();
 
             foreach (var cultureInfo in cultureManager.SupportedCultures.Values)
-            {
-                itemList.Add(new SelectListItem
-                {
-                    Selected = cultureManager.IsCultureSelected(cultureInfo.Name),
-                    Text = cultureInfo.NativeName,
-                    Value = GetGlobalizedUrl(htmlHelper, cultureInfo.Name, cultureRouteKey, routeName)
-                });
-            }
+                itemList.Add(
+                    new SelectListItem
+                    {
+                        Selected = cultureManager.IsCultureSelected(cultureInfo.Name),
+                        Text = cultureInfo.NativeName,
+                        Value = GetGlobalizedUrl(htmlHelper, cultureInfo.Name, cultureRouteKey, routeName)
+                    }
+                );
 
             return htmlHelper.DropDownList(name, itemList, new { onchange = "window.location.replace(this.value)" });
         }

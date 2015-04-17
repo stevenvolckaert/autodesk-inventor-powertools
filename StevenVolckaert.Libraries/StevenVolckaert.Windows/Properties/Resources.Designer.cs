@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace StevenVolckaert.Properties {
+namespace StevenVolckaert.Windows.Properties {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace StevenVolckaert.Properties {
         public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("StevenVolckaert.Properties.Resources", typeof(Resources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("StevenVolckaert.Windows.Properties.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -61,38 +61,29 @@ namespace StevenVolckaert.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Illegal enum value &apos;{0}&apos;..
+        ///   Looks up a localized string similar to Idle.
         /// </summary>
-        public static string IllegalEnumValue {
+        public static string Idle {
             get {
-                return ResourceManager.GetString("IllegalEnumValue", resourceCulture);
+                return ResourceManager.GetString("Idle", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Illegal value &apos;{0}&apos;..
+        ///   Looks up a localized string similar to Loading.
         /// </summary>
-        public static string IllegalValue {
+        public static string Loading {
             get {
-                return ResourceManager.GetString("IllegalValue", resourceCulture);
+                return ResourceManager.GetString("Loading", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Value is null, empty, or white space..
+        ///   Looks up a localized string similar to Saving.
         /// </summary>
-        public static string ValueNullEmptyOrWhiteSpace {
+        public static string Saving {
             get {
-                return ResourceManager.GetString("ValueNullEmptyOrWhiteSpace", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Value is null or empty..
-        /// </summary>
-        public static string ValueNullOrEmpty {
-            get {
-                return ResourceManager.GetString("ValueNullOrEmpty", resourceCulture);
+                return ResourceManager.GetString("Saving", resourceCulture);
             }
         }
     }

@@ -30,10 +30,10 @@ namespace StevenVolckaert.Windows.Mvvm
         public static void RequestNavigateToModuleMainView(this IRegionManager regionManager, string regionName, string moduleName, Action<NavigationResult> navigationCallback)
         {
             if (String.IsNullOrWhiteSpace(regionName))
-                throw new ArgumentException(Properties.Resources.StringIsNullEmptyOrWhiteSpace, "regionName");
+                throw new ArgumentException(StevenVolckaert.Properties.Resources.ValueNullEmptyOrWhiteSpace, "regionName");
 
             if (String.IsNullOrWhiteSpace(moduleName))
-                throw new ArgumentException(Properties.Resources.StringIsNullEmptyOrWhiteSpace, "moduleName");
+                throw new ArgumentException(StevenVolckaert.Properties.Resources.ValueNullEmptyOrWhiteSpace, "moduleName");
 
             var uri = new Uri("/" + moduleName.Replace("Module", "View"), UriKind.Relative);
 
@@ -54,7 +54,7 @@ namespace StevenVolckaert.Windows.Mvvm
         public static void RequestNavigateToModuleSpecificView(this IRegionManager regionManager, string regionName, string moduleName, Dictionary<string, string> parameters)
         {
             if (String.IsNullOrWhiteSpace(moduleName))
-                throw new ArgumentException(Properties.Resources.StringIsNullEmptyOrWhiteSpace, "moduleName");
+                throw new ArgumentException(StevenVolckaert.Properties.Resources.ValueNullEmptyOrWhiteSpace, "moduleName");
 
             var navigationParameters = new NavigationParameters();
 

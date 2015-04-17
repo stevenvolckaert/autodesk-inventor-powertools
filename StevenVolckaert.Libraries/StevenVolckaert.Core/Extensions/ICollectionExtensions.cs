@@ -5,7 +5,7 @@ using System.Linq;
 namespace StevenVolckaert
 {
     /// <summary>
-    /// Provides extension methods for objects implementing the System.Collections.Generic.ICollection&lt;T&gt; interface.
+    /// Provides extension methods for System.Collections.Generic.IDictionary&lt;TKey, TValue&gt; objects.
     /// </summary>
     public static class ICollectionExtensions
     {

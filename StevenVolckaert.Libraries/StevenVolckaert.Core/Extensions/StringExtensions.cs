@@ -18,7 +18,7 @@ namespace StevenVolckaert
         /// <returns>The string, or the default value if the string is <c>null</c> or empty.</returns>
         public static string DefaultIfNullOrEmpty(this String value, string defaultValue)
         {
-            return string.IsNullOrEmpty(value) ? defaultValue : value;
+            return String.IsNullOrEmpty(value) ? defaultValue : value;
         }
 
         /// <summary>
