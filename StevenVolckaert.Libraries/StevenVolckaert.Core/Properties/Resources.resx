@@ -120,8 +120,14 @@
   <data name="IllegalEnumValue" xml:space="preserve">
     <value>Illegal enum value '{0}'.</value>
   </data>
+  <data name="IllegalTargetType" xml:space="preserve">
+    <value>Illegal target type '{0}'.</value>
+  </data>
   <data name="IllegalValue" xml:space="preserve">
     <value>Illegal value '{0}'.</value>
+  </data>
+  <data name="ValueNotSupported" xml:space="preserve">
+    <value>Value '{0}' is not supported.</value>
   </data>
   <data name="ValueNullEmptyOrWhiteSpace" xml:space="preserve">
     <value>Value is null, empty, or white space.</value>

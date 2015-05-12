@@ -23,7 +23,7 @@ namespace StevenVolckaert.Windows.Data
         {
             if (targetType != typeof(TTarget) && targetType != typeof(Nullable<TTarget>))
             {
-                var message = String.Format(CultureInfo.InvariantCulture, "Target must be of type '{0}'.", typeof(TTarget));
+                var message = String.Format(CultureInfo.InvariantCulture, StevenVolckaert.Properties.Resources.IllegalTargetType, targetType);
                 Diagnostics.Debug.WriteLine(MethodBase.GetCurrentMethod(), message);
                 throw new InvalidOperationException(message);
             }

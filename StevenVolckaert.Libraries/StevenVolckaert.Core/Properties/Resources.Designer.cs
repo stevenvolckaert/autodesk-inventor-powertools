@@ -70,11 +70,29 @@ namespace StevenVolckaert.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Illegal target type &apos;{0}&apos;..
+        /// </summary>
+        public static string IllegalTargetType {
+            get {
+                return ResourceManager.GetString("IllegalTargetType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Illegal value &apos;{0}&apos;..
         /// </summary>
         public static string IllegalValue {
             get {
                 return ResourceManager.GetString("IllegalValue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Value &apos;{0}&apos; is not supported..
+        /// </summary>
+        public static string ValueNotSupported {
+            get {
+                return ResourceManager.GetString("ValueNotSupported", resourceCulture);
             }
         }
         
