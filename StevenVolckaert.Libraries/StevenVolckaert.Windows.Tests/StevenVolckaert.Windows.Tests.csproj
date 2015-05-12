@@ -72,7 +72,7 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="DataProviderBaseFixture.cs" />
+    <Compile Include="Data\DataProviderBaseFixture.cs" />
     <Compile Include="Mvvm\DataViewModelBaseFixture.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

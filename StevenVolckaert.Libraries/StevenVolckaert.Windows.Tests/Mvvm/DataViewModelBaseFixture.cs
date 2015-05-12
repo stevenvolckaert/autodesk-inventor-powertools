@@ -2,9 +2,8 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using StevenVolckaert.Windows.Mvvm;
 
-namespace StevenVolckaert.Windows.Tests.Mvvm
+namespace StevenVolckaert.Windows.Mvvm.Tests
 {
     [TestClass]
     public class DataViewModelBaseFixture

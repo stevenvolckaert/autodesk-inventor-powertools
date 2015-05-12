@@ -96,14 +96,14 @@
     <Compile Include="Mvvm\NotifyPropertyChangedOnCultureChangeAttribute.cs" />
     <Compile Include="Mvvm\ViewExportAttribute.cs" />
     <Compile Include="Data\DataProviderBase.cs" />
-    <Compile Include="Extensions\DependencyObjectExtensions.cs" />
-    <Compile Include="Extensions\FrameworkElementExtensions.cs" />
+    <Compile Include="DependencyObjectExtensions.cs" />
+    <Compile Include="FrameworkElementExtensions.cs" />
     <Compile Include="Mvvm\ModelBase.cs" />
     <Compile Include="Mvvm\NotifyPropertyChangedOnSystemOfMeasurementChangeAttribute.cs" />
     <Compile Include="Mvvm\NotifyPropertyChangedOnTemperatureMeasurementUnitChangeAttribute.cs" />
     <Compile Include="Mvvm\PreferenceChangedEvent.cs" />
     <Compile Include="Mvvm\IRegionManagerExtensions.cs" />
-    <Compile Include="Extensions\UIElementExtensions.cs" />
+    <Compile Include="UIElementExtensions.cs" />
     <Compile Include="Mvvm\DataViewModelBase.cs" />
     <Compile Include="Mvvm\ViewModelBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -134,6 +134,9 @@
       <Project>{c86a46d6-7f14-418a-bcc3-908f2918b17c}</Project>
       <Name>StevenVolckaert.Core</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Extensions\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />

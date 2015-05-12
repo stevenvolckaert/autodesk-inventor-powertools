@@ -2,9 +2,8 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using StevenVolckaert.Windows.Data;
 
-namespace StevenVolckaert.Windows.Tests
+namespace StevenVolckaert.Windows.Data.Tests
 {
     [TestClass]
     public class DataProviderBaseFixture
