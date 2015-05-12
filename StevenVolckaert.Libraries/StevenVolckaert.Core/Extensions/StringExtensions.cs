@@ -89,6 +89,31 @@ namespace StevenVolckaert
         }
 
         /// <summary>
+        /// Converts the string representation of a number to its 32-bit signed integer equivalent,
+        /// or returns 0 if the conversion fails.
+        /// </summary>
+        /// <param name="value">The System.String value containing the number to convert.</param>
+        /// <returns>The 32-bit signed integer equivalent to the number contained in <paramref name="value"/>,
+        /// or 0 if the conversion failed.</returns>
+        public static int ToInt32(this String value)
+        {
+            return value.TryToInt32(defaultResult: 0);
+        }
+
+        /// <summary>
+        /// Converts the string representation of a number to its 32-bit signed integer equivalent,
+        /// or returns a specified default result if the conversion fails.
+        /// </summary>
+        /// <param name="value">The System.String value containing the number to convert.</param>
+        /// <param name="defaultResult">The default result to return if the conversion fails.</param>
+        /// <returns>The 32-bit signed integer equivalent to the number contained in <paramref name="value"/>,
+        /// or <paramref name="defaultResult"/> if the conversion failed.</returns>
+        public static int TryToInt32(this String value, int defaultResult)
+        {
+            return value.ToNullableInt32() ?? defaultResult;
+        }
+
+        /// <summary>
         /// Converts the string representation of a number to its 32-bit signed integer equivalent.
         /// </summary>
         /// <param name="value">The System.String value containing the number to convert.</param>
@@ -100,6 +125,46 @@ namespace StevenVolckaert
 
             return Int32.TryParse(value, out returnValue)
                 ? (int?)returnValue
+                : null;
+        }
+
+        /// <summary>
+        /// Converts the string representation of a number to its 64-bit signed integer equivalent,
+        /// or returns 0 if the conversion fails.
+        /// </summary>
+        /// <param name="value">The System.String value containing the number to convert.</param>
+        /// <returns>The 64-bit signed integer equivalent to the number contained in <paramref name="value"/>,
+        /// or 0 if the conversion failed.</returns>
+        public static Int64 ToInt64(this String value)
+        {
+            return value.TryToInt64(defaultResult: 0);
+        }
+
+        /// <summary>
+        /// Converts the string representation of a number to its 64-bit signed integer equivalent,
+        /// or returns a specified default result if the conversion fails.
+        /// </summary>
+        /// <param name="value">The System.String value containing the number to convert.</param>
+        /// <param name="defaultResult">The default result to return if the conversion fails.</param>
+        /// <returns>The 64-bit signed integer equivalent to the number contained in <paramref name="value"/>,
+        /// or <paramref name="defaultResult"/> if the conversion failed.</returns>
+        public static Int64 TryToInt64(this String value, Int64 defaultResult)
+        {
+            return value.ToNullableInt64() ?? defaultResult;
+        }
+
+        /// <summary>
+        /// Converts the string representation of a number to its 64-bit signed integer equivalent.
+        /// </summary>
+        /// <param name="value">The System.String value containing the number to convert.</param>
+        /// <returns>The 64-bit signed integer equivalent to the number contained in <paramref name="value"/>,
+        /// or <c>null</c> if the conversion failed.</returns>
+        public static Int64? ToNullableInt64(this String value)
+        {
+            Int64 returnValue;
+
+            return Int64.TryParse(value, out returnValue)
+                ? (Int64?)returnValue
                 : null;
         }
 
