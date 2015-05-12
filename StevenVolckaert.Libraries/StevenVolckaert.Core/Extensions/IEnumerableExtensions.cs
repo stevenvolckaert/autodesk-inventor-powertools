@@ -40,6 +40,18 @@ namespace StevenVolckaert
         }
 
         /// <summary>
+        /// Sorts the elements of a sequence in ascending ordinal order, using the Object.ToString() method as the key.
+        /// </summary>
+        /// <typeparam name="TSource">The type of the elements contained in <paramref name="source"/>.</typeparam>
+        /// <param name="source">A sequence of elements to order.</param>
+        /// <returns>A System.Linq.IOrderedEnumerable&lt;TSource&gt; whose elements are sorted according to the Object.ToString() method of every element.</returns>
+        /// <exception cref="ArgumentNullException"><paramref name="source"/> or <paramref name="keySelector"/> is <c>null</c>.</exception>
+        public static IOrderedEnumerable<TSource> OrderByOrdinal<TSource>(this IEnumerable<TSource> source)
+        {
+            return source.OrderBy(x => x.ToString(), new OrdinalStringComparer(ignoreCase: false));
+        }
+
+        /// <summary>
         /// Sorts the elements of a sequence in ascending ordinal order, according to a specified key.
         /// </summary>
         /// <typeparam name="TSource">The type of the elements contained in <paramref name="source"/>.</typeparam>
@@ -64,6 +76,20 @@ namespace StevenVolckaert
         public static IOrderedEnumerable<TSource> OrderByOrdinal<TSource>(this IEnumerable<TSource> source, Func<TSource, string> keySelector, bool ignoreCase)
         {
             return source.OrderBy(keySelector, new OrdinalStringComparer(ignoreCase));
+        }
+
+        /// <summary>
+        /// Sorts the elements of a sequence in descending ordinal order, according to a specified key.
+        /// </summary>
+        /// <typeparam name="TSource">The type of the elements contained in <paramref name="source"/>.</typeparam>
+        /// <param name="source">A sequence of elements to order.</param>
+        /// <param name="keySelector">A function that extracts a key from an element.</param>
+        /// <param name="ignoreCase">A value that indicates whether to ignore case during comparison.</param>
+        /// <returns>A System.Linq.IOrderedEnumerable&lt;TSource&gt; whose elements are sorted according to the specified key.</returns>
+        /// <exception cref="ArgumentNullException"><paramref name="source"/> or <paramref name="keySelector"/> is <c>null</c>.</exception>
+        public static IOrderedEnumerable<TSource> OrderByOrdinalDescending<TSource>(this IEnumerable<TSource> source)
+        {
+            return source.OrderByDescending(x => x.ToString(), new OrdinalStringComparer(ignoreCase: false));
         }
 
         /// <summary>
