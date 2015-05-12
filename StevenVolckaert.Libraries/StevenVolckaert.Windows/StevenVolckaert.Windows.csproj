@@ -89,6 +89,7 @@
   <ItemGroup>
     <Compile Include="Data\CaseConverter.cs" />
     <Compile Include="Data\ObjectToValueConverters.cs" />
+    <Compile Include="Markup\ResourceExtension.cs" />
     <Compile Include="Mvvm\AutoPopulateExportedViewsBehavior.cs" />
     <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="Mvvm\BindableBaseExtensions.cs" />
