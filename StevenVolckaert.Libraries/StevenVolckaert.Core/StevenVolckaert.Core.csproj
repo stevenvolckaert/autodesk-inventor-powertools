@@ -70,6 +70,7 @@
     <Compile Include="Extensions\TimeSpanExtensions.cs" />
     <Compile Include="Extensions\TypeExtensions.cs" />
     <Compile Include="Extensions\UriExtensions.cs" />
+    <Compile Include="Globalization\CultureInfoExtensions.cs" />
     <Compile Include="Globalization\CultureManager.cs" />
     <Compile Include="Globalization\CurrentCultureChangedEventArgs.cs" />
     <Compile Include="GlobalSuppressions.cs" />
