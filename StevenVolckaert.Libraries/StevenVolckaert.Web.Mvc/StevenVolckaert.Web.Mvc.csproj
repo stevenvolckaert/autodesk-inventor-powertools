@@ -102,17 +102,16 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\StevenVolckaert.Core\StevenVolckaert.Core.csproj">
-      <Project>{bd295cb0-0a11-4d1f-a6f9-f01f94ec21d4}</Project>
-      <Name>StevenVolckaert.Core</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <CodeAnalysisDictionary Include="..\..\SupportFiles\CustomDictionary.xml">
       <Link>CustomDictionary.xml</Link>
     </CodeAnalysisDictionary>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\StevenVolckaert.Core\StevenVolckaert.Core.csproj">
+      <Project>{c86a46d6-7f14-418a-bcc3-908f2918b17c}</Project>
+      <Name>StevenVolckaert.Core</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
