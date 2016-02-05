@@ -6,8 +6,8 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Steven Volckaert's Inventor Power Tools")]
-[assembly: AssemblyDescription("A collection of power tools for Autodesk Inventor 2012.")]
+[assembly: AssemblyTitle("Steven Volckaert's Inventor® Power Tools")]
+[assembly: AssemblyDescription("A collection of power tools for Autodesk Inventor® 2012.")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Steven Volckaert")]
 [assembly: AssemblyProduct(StevenVolckaert.InventorPowerTools.AssemblyInfo.Name)]
