@@ -106,7 +106,8 @@ namespace StevenVolckaert.InventorPowerTools.Windows
                         Position: drawingDocument.ActiveSheet.TopRightPoint(),
                         Scale: PerspectiveScale,
                         ViewOrientation: ViewOrientationTypeEnum.kIsoTopRightViewOrientation,
-                        ViewStyle: DrawingViewStyleEnum.kShadedDrawingViewStyle,
+                        // DrawingViewStyleEnum.kShadedDrawingViewStyle results in difficult to read printouts - replacing with kHiddenLineDrawingViewStyle.
+                        ViewStyle: DrawingViewStyleEnum.kHiddenLineDrawingViewStyle,
                         ModelViewName: string.Empty,
                         ArbitraryCamera: Type.Missing,
                         AdditionalOptions: Type.Missing
