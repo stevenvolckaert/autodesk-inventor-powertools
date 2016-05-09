@@ -117,6 +117,24 @@ namespace StevenVolckaert.InventorPowerTools
         }
 
         /// <summary>
+        /// Returns a point in the bottom left corner, useful for placing small views.
+        /// </summary>
+        /// <param name="sheet">The <see cref="Sheet"/> object that this extension method affects.</param>
+        /// <exception cref="ArgumentNullException"><paramref name="sheet"/> is <c>null</c>.</exception>
+        public static Point2d BottomLeftCorner(this Sheet sheet)
+        {
+            if (sheet == null)
+                throw new ArgumentNullException(nameof(sheet));
+
+            var margin = sheet.Margin();
+
+            return AddIn.CreatePoint2D(
+                    margin.Left * 2,
+                    margin.Bottom * 2
+                );
+        }
+
+        /// <summary>
         /// Returns a point in the top right corner, useful for placing small views that add an overview.
         /// </summary>
         /// <param name="sheet">The Inventor.Sheet object that this extension method affects.</param>
