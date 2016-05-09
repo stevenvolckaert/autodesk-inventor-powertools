@@ -138,6 +138,25 @@ namespace StevenVolckaert.InventorPowerTools.Windows
                             perspectiveView.Position.X,
                             perspectiveView.Position.Y - partsList.RangeBox.Height()
                         );
+
+                    // 4. TODO Add 'Top View' below the 'ISO Top Right' view.
+                    // TODO Implement extension method 'BottomRightPoint'.
+                    var topView = sheet.DrawingViews.AddBaseView(
+                        Model: (_Document)part.Document,
+                        Position: drawingDocument.ActiveSheet.BottomLeftCorner(),
+                        Scale: 0.1,
+                        ViewOrientation: ViewOrientationTypeEnum.kTopViewOrientation,
+                        ViewStyle: DrawingViewStyleEnum.kHiddenLineDrawingViewStyle,
+                        ModelViewName: string.Empty,
+                        ArbitraryCamera: Type.Missing,
+                        AdditionalOptions: Type.Missing
+                    );
+
+                    topView.Position =
+                        AddIn.CreatePoint2D(
+                            margin.Left + topView.Width + 1,
+                            margin.Bottom + topView.Height + 1
+                        );
                 }
                 catch (Exception ex)
                 {
