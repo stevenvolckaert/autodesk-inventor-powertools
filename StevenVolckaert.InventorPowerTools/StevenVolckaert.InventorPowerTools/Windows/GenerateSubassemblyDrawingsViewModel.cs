@@ -84,6 +84,11 @@ namespace StevenVolckaert.InventorPowerTools.Windows
                         drawingDistance: 0.5
                     );
 
+                    baseView.AddPartName(
+                        partName: baseView.ReferencedDocumentDescriptor.DisplayName.RemoveExtension(),
+                        drawingDistance: 0.5
+                    );
+
                     // 2. Add part list to the top right corner.
                     foreach (var part in assembly.Document.Parts())
                     {

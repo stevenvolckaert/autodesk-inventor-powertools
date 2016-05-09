@@ -52,7 +52,6 @@ namespace StevenVolckaert.InventorPowerTools
 
         /// <summary>
         /// Removes all columns from the parts list, except the ones that appear in a specified collection.
-        /// 
         /// </summary>
         /// <param name="partsList">The Inventor.PartsList instance that this extension method affects.</param>
         /// <param name="columnIdsToExclude">A dictionary of IDs of kFileProperty columns that shouldn't be removed.</param>
@@ -93,5 +92,36 @@ namespace StevenVolckaert.InventorPowerTools
             foreach (PartsListColumn column in partsList.PartsListColumns)
                 column.ValueHorizontalJustification = valueHorizontalJustification;
         }
+
+        public static PartsListRow GetRowByPartNumber(this PartsList partsList, string partNumber)
+        {
+            if (partsList == null)
+                throw new ArgumentNullException(nameof(partsList));
+
+            // Select the 'part number' column.
+            //var partNumberColumn = partsList.GetColumnByFilePropertyId(key: "{32853F0F-3444-11D1-9E93-0060B03C1CA6}", value: 5);
+
+            var rows = partsList.PartsListRows.Cast<PartsListRow>();
+            return rows.FirstOrDefault(row => row.Cast<PartsListCell>().Any(x => x.Value == partNumber));
+        }
+
+        //public static PartsListColumn GetColumnByFilePropertyId(this PartsList partsList, string key, int value)
+        //{
+        //    if (partsList == null)
+        //        throw new ArgumentNullException(nameof(partsList));
+
+        //    if (string.IsNullOrEmpty(key))
+        //        throw new ArgumentException(nameof(key));
+
+        //    return partsList.PartsListColumns.Cast<PartsListColumn>()
+        //        .Where(x => x.PropertyType == PropertyTypeEnum.kFileProperty)
+        //        .FirstOrDefault(
+        //            x =>
+        //            {
+        //                var id = x.GetFilePropertyId();
+        //                return id.Key == key && id.Value == value;
+        //            }
+        //        );
+        //}
     }
 }

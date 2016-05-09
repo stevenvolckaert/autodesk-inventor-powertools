@@ -46,7 +46,6 @@ namespace StevenVolckaert.InventorPowerTools
 
             var drawingViews = DrawingDocument.ActiveSheet.DrawingViews;
             var drawingDimensions = DrawingDocument.ActiveSheet.DrawingDimensions;
-            var drawingNotes = DrawingDocument.ActiveSheet.DrawingNotes;
             var dimensionStyle = DrawingDocument.StylesManager.ActiveStandardStyle.ActiveObjectDefaults.LinearDimensionStyle;
             dimensionStyle.LinearPrecision = LinearPrecisionEnum.kZeroFractionalLinearPrecision;
 
@@ -85,11 +84,23 @@ namespace StevenVolckaert.InventorPowerTools
 
             if (addDimensions)
                 leftView.AddVerticalDimension(dimensionStyle);
+        }
 
-            // Add part name.
-            var note = drawingNotes.GeneralNotes.AddFitted(
-                PlacementPoint: AddIn.CreatePoint2D(drawingView.Left - drawingDistance, drawingView.Top + drawingDistance),
-                FormattedText: drawingView.ReferencedDocumentDescriptor.DisplayName.RemoveExtension()
+        /// <summary>
+        /// Adds a part name to the drawing view of the active document.
+        /// </summary>
+        /// <param name="drawingView">The <see cref="DrawingView"/> instance that this extension method affects.</param>
+        /// <param name="partName">The name of the part to add.</param>
+        /// <param name="drawingDistance">The distance between <paramref name="drawingView"/> and the name to add.</param>
+        public static void AddPartName(this DrawingView drawingView, string partName, double drawingDistance)
+        {
+            if (drawingView == null)
+                throw new ArgumentNullException(nameof(drawingView));
+
+            var note = DrawingDocument.ActiveSheet.DrawingNotes.GeneralNotes.AddFitted(
+                PlacementPoint: AddIn.CreatePoint2D(drawingView.Left - drawingDistance, drawingView.Top + drawingDistance * 5),
+                // TODO Parameterize style override. May 5, 2016.
+                FormattedText: $"<StyleOverride Bold='True' FontSize='0,4' Underline='True'>{partName}</StyleOverride>"
             );
 
             note.Position =

@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using System.Windows;
 using Inventor;
 
@@ -28,8 +29,16 @@ namespace StevenVolckaert.InventorPowerTools.Buttons
 
             try
             {
-                AddIn.GetDrawingViews("Select a view")
-                    .ForEach(x => x.AddTopAndLeftProjectedViews(addDimensions: true, drawingDistance: 0.5));
+                // TODO Add extension method that finds a row based on part number.
+
+                //var partsLists = DrawingDocument.ActiveSheet.PartsLists;
+
+
+                foreach (var drawingView in AddIn.GetDrawingViews("Select a view"))
+                {
+                    drawingView.AddTopAndLeftProjectedViews(addDimensions: true, drawingDistance: 0.5);
+                    AddPartNameNote(drawingView);
+                }
 
                 transaction.End();
             }
@@ -38,6 +47,30 @@ namespace StevenVolckaert.InventorPowerTools.Buttons
                 transaction.Abort();
                 MessageBox.Show(ex.ToString());
             }
+        }
+
+        private void AddPartNameNote(DrawingView drawingView)
+        {
+            var partName = drawingView.ReferencedDocumentDescriptor.DisplayName.RemoveExtension();
+            var rowItemNumber = GetRowItemNumber(partName);
+
+            if (string.IsNullOrEmpty(rowItemNumber) == false)
+                partName = $"{rowItemNumber} : {partName}";
+
+            drawingView.AddPartName(partName, drawingDistance: 0.5);
+        }
+
+        private string GetRowItemNumber(string partNumber)
+        {
+            foreach (PartsList partsList in DrawingDocument.ActiveSheet.PartsLists)
+            {
+                var row = partsList.GetRowByPartNumber(partNumber);
+
+                if (row != null)
+                    return row.Cast<PartsListCell>().First().Value;
+            }
+
+            return null;
         }
 
         //public void TestFileDialog()
