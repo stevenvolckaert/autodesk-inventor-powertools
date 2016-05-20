@@ -1,9 +1,9 @@
-﻿using System;
-using System.Globalization;
-using Inventor;
-
-namespace StevenVolckaert.InventorPowerTools
+﻿namespace StevenVolckaert.InventorPowerTools
 {
+    using System;
+    using System.Globalization;
+    using Inventor;
+
     /// <summary>
     /// Provides extension methods for Inventor.UserInterfaceManager objects.
     /// </summary>

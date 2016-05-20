@@ -1,10 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using Inventor;
-
-namespace StevenVolckaert.InventorPowerTools
+﻿namespace StevenVolckaert.InventorPowerTools
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using Inventor;
+
     /// <summary>
     /// Provides extension methods for Inventor.AssemblyDocument objects.
     /// </summary>

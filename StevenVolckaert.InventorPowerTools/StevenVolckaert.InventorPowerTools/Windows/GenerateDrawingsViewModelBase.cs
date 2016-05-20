@@ -1,11 +1,11 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using System.Windows.Input;
-using Inventor;
-using Microsoft.Practices.Prism.Commands;
-
-namespace StevenVolckaert.InventorPowerTools.Windows
+﻿namespace StevenVolckaert.InventorPowerTools.Windows
 {
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Windows.Input;
+    using Inventor;
+    using Microsoft.Practices.Prism.Commands;
+
     internal abstract class GenerateDrawingsViewModelBase : ViewModelBase
     {
         protected List<IDocument> _documents;

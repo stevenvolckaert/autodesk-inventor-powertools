@@ -1,15 +1,15 @@
-using System;
-using System.Collections.Generic;
-using System.Diagnostics.CodeAnalysis;
-using System.Globalization;
-using System.Linq;
-using System.Runtime.InteropServices;
-using System.Windows;
-using Inventor;
-using StevenVolckaert.InventorPowerTools.Buttons;
-
 namespace StevenVolckaert.InventorPowerTools
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Diagnostics.CodeAnalysis;
+    using System.Globalization;
+    using System.Linq;
+    using System.Runtime.InteropServices;
+    using System.Windows;
+    using Buttons;
+    using Inventor;
+
     /// <summary>
     /// Represents an Autodesk Inventor add-in.
     /// </summary>

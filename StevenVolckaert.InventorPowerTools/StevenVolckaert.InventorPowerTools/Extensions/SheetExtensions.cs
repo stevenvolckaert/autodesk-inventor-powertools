@@ -1,12 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.Text;
-using Inventor;
-using Environment = System.Environment;
-
-namespace StevenVolckaert.InventorPowerTools
+﻿namespace StevenVolckaert.InventorPowerTools
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Globalization;
+    using System.Text;
+    using Inventor;
+    using Environment = System.Environment;
+
     /// <summary>
     /// Provides extension methods for Inventor.Sheet objects.
     /// </summary>
@@ -108,12 +108,12 @@ namespace StevenVolckaert.InventorPowerTools
             return sheet.Border == null
                 ? new Margin()
                 : new Margin
-                  {
-                      Left = sheet.Border.RangeBox.MinPoint.X,
-                      Top = sheet.Height - sheet.Border.RangeBox.MaxPoint.Y,
-                      Right = sheet.Width - sheet.Border.RangeBox.MaxPoint.X,
-                      Bottom = sheet.Border.RangeBox.MinPoint.Y
-                  };
+                {
+                    Left = sheet.Border.RangeBox.MinPoint.X,
+                    Top = sheet.Height - sheet.Border.RangeBox.MaxPoint.Y,
+                    Right = sheet.Width - sheet.Border.RangeBox.MaxPoint.X,
+                    Bottom = sheet.Border.RangeBox.MinPoint.Y
+                };
         }
 
         /// <summary>

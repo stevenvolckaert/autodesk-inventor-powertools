@@ -1,9 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using Inventor;
-
-namespace StevenVolckaert.InventorPowerTools
+﻿namespace StevenVolckaert.InventorPowerTools
 {
+    using System;
+    using System.Collections.Generic;
+    using Inventor;
+
     /// <summary>
     /// Provides extension methods for Inventor.PartsListColumn objects.
     /// </summary>

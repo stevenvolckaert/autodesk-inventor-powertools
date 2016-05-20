@@ -1,7 +1,7 @@
-﻿using Inventor;
-
-namespace StevenVolckaert.InventorPowerTools
+﻿namespace StevenVolckaert.InventorPowerTools
 {
+    using Inventor;
+
     /// <summary>
     /// Provides extension methods for Inventor.CommandCategories objects.
     /// </summary>

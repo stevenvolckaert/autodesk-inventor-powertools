@@ -1,10 +1,10 @@
-using System;
-using System.Drawing;
-using System.Windows;
-using Inventor;
-
 namespace StevenVolckaert.InventorPowerTools.Buttons
 {
+    using System;
+    using System.Drawing;
+    using System.Windows;
+    using Inventor;
+
     /// <summary>
     /// Base class for Inventor buttons.
     /// </summary>

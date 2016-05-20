@@ -1,8 +1,8 @@
-﻿using System;
-using Inventor;
-
-namespace StevenVolckaert.InventorPowerTools
+﻿namespace StevenVolckaert.InventorPowerTools
 {
+    using System;
+    using Inventor;
+
     public class Part : ModelBase, IDocument
     {
         private readonly PartDocument _part;

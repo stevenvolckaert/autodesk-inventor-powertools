@@ -1,9 +1,9 @@
-﻿using System;
-using System.IO;
-using System.Text.RegularExpressions;
-
-namespace StevenVolckaert.InventorPowerTools
+﻿namespace StevenVolckaert.InventorPowerTools
 {
+    using System;
+    using System.IO;
+    using System.Text.RegularExpressions;
+
     /// <summary>
     /// Provides extension methods for System.String objects.
     /// </summary>

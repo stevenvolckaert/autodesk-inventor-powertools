@@ -1,9 +1,9 @@
-﻿using System;
-using System.Collections.ObjectModel;
-using System.Globalization;
-
-namespace StevenVolckaert.InventorPowerTools
+﻿namespace StevenVolckaert.InventorPowerTools
 {
+    using System;
+    using System.Collections.ObjectModel;
+    using System.Globalization;
+
     public enum PartTypeEnum
     {
         Generic,

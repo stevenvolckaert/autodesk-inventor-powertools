@@ -1,12 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.Windows;
-using Inventor;
-using Environment = System.Environment;
-
-namespace StevenVolckaert.InventorPowerTools.Windows
+﻿namespace StevenVolckaert.InventorPowerTools.Windows
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Globalization;
+    using System.Windows;
+    using Inventor;
+    using Environment = System.Environment;
+
     internal class GenerateMdfDrawingsViewModel : GenerateDrawingsViewModelBase
     {
         private IList<PartDocument> _mdfParts;

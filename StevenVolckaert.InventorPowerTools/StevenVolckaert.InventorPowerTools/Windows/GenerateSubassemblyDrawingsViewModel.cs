@@ -1,10 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using Inventor;
-
-namespace StevenVolckaert.InventorPowerTools.Windows
+﻿namespace StevenVolckaert.InventorPowerTools.Windows
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using Inventor;
+
     internal class GenerateSubassemblyDrawingsViewModel : GenerateDrawingsViewModelBase
     {
         private List<Assembly> _subassemblies;

@@ -1,9 +1,9 @@
-﻿using System;
-using System.Windows;
-using Inventor;
-
-namespace StevenVolckaert.InventorPowerTools.Buttons
+﻿namespace StevenVolckaert.InventorPowerTools.Buttons
 {
+    using System;
+    using System.Windows;
+    using Inventor;
+
     internal class CreatePartViewsFromAssemblyButton : ButtonBase
     {
         public override string DisplayName

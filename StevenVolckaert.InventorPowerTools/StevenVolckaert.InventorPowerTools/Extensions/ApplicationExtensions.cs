@@ -1,11 +1,11 @@
-﻿using System;
-using System.Diagnostics;
-using System.Globalization;
-using System.IO;
-using Inventor;
-
-namespace StevenVolckaert.InventorPowerTools
+﻿namespace StevenVolckaert.InventorPowerTools
 {
+    using System;
+    using System.Diagnostics;
+    using System.Globalization;
+    using System.IO;
+    using Inventor;
+
     /// <summary>
     /// Provides extension methods for Inventor.Application objects.
     /// </summary>

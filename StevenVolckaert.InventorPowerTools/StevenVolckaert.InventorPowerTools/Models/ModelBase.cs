@@ -1,6 +1,7 @@
-﻿using Microsoft.Practices.Prism.ViewModel;
-namespace StevenVolckaert.InventorPowerTools
+﻿namespace StevenVolckaert.InventorPowerTools
 {
+    using Microsoft.Practices.Prism.ViewModel;
+
     public abstract class ModelBase : NotificationObject
     {
         private bool _isSelected;

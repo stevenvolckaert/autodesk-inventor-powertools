@@ -1,10 +1,10 @@
-﻿using System;
-using Inventor;
-using StevenVolckaert.InventorPowerTools.Windows;
-using Environment = System.Environment;
-
-namespace StevenVolckaert.InventorPowerTools.Buttons
+﻿namespace StevenVolckaert.InventorPowerTools.Buttons
 {
+    using System;
+    using Inventor;
+    using StevenVolckaert.InventorPowerTools.Windows;
+    using Environment = System.Environment;
+
     internal class GenerateSubassemblyDrawingsButton : ButtonBase
     {
         private readonly GenerateSubassemblyDrawingsWindow _generateDrawingsWindow = new GenerateSubassemblyDrawingsWindow();

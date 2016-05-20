@@ -1,14 +1,14 @@
-﻿using System;
-using Inventor;
-
-namespace StevenVolckaert.InventorPowerTools
+﻿namespace StevenVolckaert.InventorPowerTools
 {
+    using System;
+    using Inventor;
+
     public class Assembly : ModelBase, IDocument
     {
-        private readonly AssemblyDocument _assembly;
+        private readonly AssemblyDocument _assemblyDocument;
         public AssemblyDocument Document
         {
-            get { return _assembly; }
+            get { return _assemblyDocument; }
         }
 
         public static readonly Func<AssemblyDocument, Assembly> AsAssembly =
@@ -16,23 +16,23 @@ namespace StevenVolckaert.InventorPowerTools
 
         public string Name
         {
-            get { return _assembly.DisplayName; }
+            get { return _assemblyDocument.DisplayName; }
         }
 
         public string FileName
         {
-            get { return _assembly.DisplayName; }
+            get { return _assemblyDocument.DisplayName; }
         }
 
-        public Assembly(AssemblyDocument assembly)
+        public Assembly(AssemblyDocument assemblyDocument)
         {
-            if (assembly == null)
-                throw new ArgumentNullException("assembly");
+            if (assemblyDocument == null)
+                throw new ArgumentNullException(nameof(assemblyDocument));
 
-            _assembly = assembly;
-            _assembly.SetCustomPropertyFormat("Lengte", CustomPropertyPrecisionEnum.kZeroDecimalPlacePrecision, showUnit: false);
-            _assembly.SetCustomPropertyFormat("Breedte", CustomPropertyPrecisionEnum.kZeroDecimalPlacePrecision, showUnit: false);
-            _assembly.SetCustomPropertyFormat("Dikte", CustomPropertyPrecisionEnum.kZeroDecimalPlacePrecision, showUnit: false);
+            _assemblyDocument = assemblyDocument;
+            _assemblyDocument.SetCustomPropertyFormat("Lengte", CustomPropertyPrecisionEnum.kZeroDecimalPlacePrecision, showUnit: false);
+            _assemblyDocument.SetCustomPropertyFormat("Breedte", CustomPropertyPrecisionEnum.kZeroDecimalPlacePrecision, showUnit: false);
+            _assemblyDocument.SetCustomPropertyFormat("Dikte", CustomPropertyPrecisionEnum.kZeroDecimalPlacePrecision, showUnit: false);
         }
     }
 }

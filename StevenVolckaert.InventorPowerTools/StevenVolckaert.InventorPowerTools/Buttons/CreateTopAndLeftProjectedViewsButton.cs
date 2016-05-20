@@ -1,10 +1,10 @@
-using System;
-using System.Linq;
-using System.Windows;
-using Inventor;
-
 namespace StevenVolckaert.InventorPowerTools.Buttons
 {
+    using System;
+    using System.Linq;
+    using System.Windows;
+    using Inventor;
+
     internal class CreateTopAndLeftProjectedViewsButton : ButtonBase
     {
         public override string DisplayName

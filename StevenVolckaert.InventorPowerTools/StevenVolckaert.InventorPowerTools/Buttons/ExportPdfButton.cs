@@ -1,10 +1,10 @@
-﻿using System;
-using System.Linq;
-using System.Windows;
-using Inventor;
-
-namespace StevenVolckaert.InventorPowerTools.Buttons
+﻿namespace StevenVolckaert.InventorPowerTools.Buttons
 {
+    using System;
+    using System.Linq;
+    using System.Windows;
+    using Inventor;
+
     internal class ExportPdfButton : ButtonBase
     {
         private string _targetDirectoryPath;

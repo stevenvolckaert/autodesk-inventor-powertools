@@ -1,8 +1,8 @@
-﻿using System;
-using Inventor;
-
-namespace StevenVolckaert.InventorPowerTools
+﻿namespace StevenVolckaert.InventorPowerTools
 {
+    using System;
+    using Inventor;
+
     /// <summary>
     /// Provides extension methods for Inventor.BOMRow objects.
     /// </summary>

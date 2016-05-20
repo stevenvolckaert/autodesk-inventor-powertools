@@ -1,9 +1,9 @@
-﻿using System;
-using System.Runtime.InteropServices;
-using Inventor;
-
-namespace StevenVolckaert.InventorPowerTools
+﻿namespace StevenVolckaert.InventorPowerTools
 {
+    using System;
+    using System.Runtime.InteropServices;
+    using Inventor;
+
     /// <summary>
     /// Provides extension methods for Inventor.BOMViews objects.
     /// </summary>

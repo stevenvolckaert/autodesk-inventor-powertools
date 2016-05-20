@@ -1,10 +1,10 @@
-﻿using System;
-using Inventor;
-using StevenVolckaert.InventorPowerTools.Windows;
-using Environment = System.Environment;
-
-namespace StevenVolckaert.InventorPowerTools.Buttons
+﻿namespace StevenVolckaert.InventorPowerTools.Buttons
 {
+    using System;
+    using Inventor;
+    using Windows;
+    using Environment = System.Environment;
+
     internal class GenerateMdfDrawingsButton : ButtonBase
     {
         private readonly GenerateMdfDrawingsWindow _generateDrawingsWindow = new GenerateMdfDrawingsWindow();
