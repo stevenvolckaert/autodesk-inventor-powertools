@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.31101.0
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StevenVolckaert.InventorPowerTools", "StevenVolckaert.InventorPowerTools\StevenVolckaert.InventorPowerTools.csproj", "{E304487D-6AA6-425C-9962-ED4423242196}"
 EndProject
@@ -10,7 +10,6 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Documentation", "Documentation", "{74B32F39-BA24-4F4D-8BBC-68A4DA7BCB5F}"
 	ProjectSection(SolutionItems) = preProject
 		Documentation\admapi_16_0.chm = Documentation\admapi_16_0.chm
-		Documentation\admapi_16_0.chw = Documentation\admapi_16_0.chw
 		Documentation\CustomCommand.zip = Documentation\CustomCommand.zip
 		Documentation\DocCLSIDs.h = Documentation\DocCLSIDs.h
 		Documentation\InventorRibbons.txt = Documentation\InventorRibbons.txt
@@ -23,18 +22,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Libraries", "Libraries", "{
 	EndProjectSection
 EndProject
 Global
-	GlobalSection(TeamFoundationVersionControl) = preSolution
-		SccNumberOfProjects = 3
-		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
-		SccTeamFoundationServer = https://stevenvolckaert.visualstudio.com/defaultcollection
-		SccLocalPath0 = .
-		SccProjectUniqueName1 = StevenVolckaert.InventorPowerTools.Tests\\StevenVolckaert.InventorPowerTools.Tests.csproj
-		SccProjectName1 = StevenVolckaert.InventorPowerTools.Tests
-		SccLocalPath1 = StevenVolckaert.InventorPowerTools.Tests
-		SccProjectUniqueName2 = StevenVolckaert.InventorPowerTools\\StevenVolckaert.InventorPowerTools.csproj
-		SccProjectName2 = StevenVolckaert.InventorPowerTools
-		SccLocalPath2 = StevenVolckaert.InventorPowerTools
-	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
