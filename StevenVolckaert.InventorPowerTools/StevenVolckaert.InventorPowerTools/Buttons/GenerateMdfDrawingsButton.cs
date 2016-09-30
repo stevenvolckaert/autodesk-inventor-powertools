@@ -35,9 +35,9 @@
                     AddIn.ShowWarningMessageBox(
                         caption: _generateDrawingsWindow.Title,
                         messageFormat:
-                            "Assembly '{0}' doesn't contain any MDF parts."
+                            "Assembly '{0}' doesn't contain MDF parts."
                                 + Environment.NewLine + Environment.NewLine
-                                + "Part file names must contain 'MDF' to be recognised as MDF parts",
+                                + "A part file name must contain 'MDF' to be recognized as a MDF part.",
                         messageArgs: assemblyDocument.FullFileName
                     );
 

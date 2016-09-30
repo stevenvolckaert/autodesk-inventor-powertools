@@ -30,9 +30,7 @@ namespace StevenVolckaert.InventorPowerTools.Buttons
             try
             {
                 // TODO Add extension method that finds a row based on part number.
-
                 //var partsLists = DrawingDocument.ActiveSheet.PartsLists;
-
 
                 foreach (var drawingView in AddIn.GetDrawingViews("Select a view"))
                 {

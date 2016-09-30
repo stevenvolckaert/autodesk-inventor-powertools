@@ -34,7 +34,7 @@
                 {
                     AddIn.ShowWarningMessageBox(
                         caption: _generateDrawingsWindow.Title,
-                        messageFormat: "Assembly '{0}' doesn't contain any subassemblies.",
+                        messageFormat: "Assembly '{0}' doesn't contain subassemblies.",
                         messageArgs: assembly.FullFileName
                     );
 
