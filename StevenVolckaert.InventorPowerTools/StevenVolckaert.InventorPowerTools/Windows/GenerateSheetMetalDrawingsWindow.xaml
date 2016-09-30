@@ -22,7 +22,7 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
 
-        <GroupBox Grid.Column="0" Header="Sheet Metal Parts" Margin="8">
+        <GroupBox Grid.Row="0" Header="Sheet Metal Parts" Margin="8">
             <ListView ItemsSource="{Binding Parts}" Height="300">
                 <ListView.View>
                     <GridView AllowsColumnReorder="False">
@@ -47,27 +47,47 @@
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto"/>
                     <ColumnDefinition/>
+                    <ColumnDefinition/>
                     <ColumnDefinition Width="Auto"/>
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
                     <RowDefinition/>
                     <RowDefinition/>
                     <RowDefinition/>
+                    <RowDefinition/>
                 </Grid.RowDefinitions>
                 <!-- Template -->
-                <Label Grid.Column="0" Content="Template" Target="{Binding ElementName=TemplateFileNameTextBox}"/>
-                <TextBox x:Name="TemplateFileNameTextBox" Grid.Column="1" IsReadOnly="True" Text="{Binding TemplateFileName}"/>
-                <Button Grid.Column="2" Command="{Binding SelectTemplateCommand}" Content="Browse..." Padding="8,2" Margin="8,3,0,3"/>
+                <Label Grid.Column="0" Grid.Row="0" Content="Template"
+                       Target="{Binding ElementName=TemplateFileNameTextBox}"/>
+                <TextBox x:Name="TemplateFileNameTextBox" Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="0"
+                         IsReadOnly="True" Text="{Binding TemplateFileName}"/>
+                <Button Grid.Column="4" Grid.Row="0" Command="{Binding SelectTemplateCommand}" Content="Browse..."
+                        Padding="8,2" Margin="8,3,0,3"/>
                 <!-- Scale (Base View) -->
-                <Label Grid.Column="0" Grid.Row="1" Content="Scale (Base View)" Target="{Binding ElementName=ScaleTextBox}"/>
-                <TextBox x:Name="ScaleTextBox" Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="2" Text="{Binding Scale, Mode=TwoWay}"/>
+                <Label Grid.Column="0" Grid.Row="1" Content="Scale (Base View)"
+                       Target="{Binding ElementName=ScaleTextBox}"/>
+                <TextBox x:Name="ScaleTextBox" Grid.Column="1" Grid.ColumnSpan="4" Grid.Row="1"
+                         Text="{Binding Scale, Mode=TwoWay}"/>
                 <!-- Scale (Perspective) -->
-                <Label Grid.Column="0" Grid.Row="2" Content="Scale (Perspective)" Target="{Binding ElementName=PerspectiveScaleTextBox}"/>
-                <TextBox x:Name="PerspectiveScaleTextBox" Grid.Column="1" Grid.Row="2" Grid.ColumnSpan="2" Text="{Binding PerspectiveScale, Mode=TwoWay}"/>
+                <Label Grid.Column="0" Grid.Row="2" Content="Scale (Perspective)"
+                       Target="{Binding ElementName=PerspectiveScaleTextBox}"/>
+                <TextBox x:Name="PerspectiveScaleTextBox" Grid.Column="1" Grid.ColumnSpan="4" Grid.Row="2"
+                         Text="{Binding PerspectiveScale, Mode=TwoWay}"/>
+                <!-- Linear Precision -->
+                <Label Grid.Column="0" Grid.Row="3" Content="Linear Precision"
+                       Target="{Binding ElementName=LinearPrecisionComboBox}"/>
+                <ComboBox x:Name="LinearPrecisionComboBox" Grid.Column="1" Grid.Row="3"
+                          ItemsSource="{Binding SupportedLinearPrecisions}"
+                          SelectedItem="{Binding SelectedLinearPrecision, Mode=TwoWay}"
+                          DisplayMemberPath="DisplayName"/>
+                <!-- Trailing Zeros -->
+                <CheckBox Grid.Column="2" Grid.ColumnSpan="2" Grid.Row="3" Content="Trailing Zeros"
+                          IsChecked="{Binding AreTrailingZerosDisplayed}" Margin="8,3,0,3"/>
             </Grid>
         </GroupBox>
 
-        <Button Grid.Row="2" Command="{Binding GenerateDrawingsCommand}" Click="Hide" Content="Generate" HorizontalAlignment="Center" Margin="8,0,8,8" VerticalAlignment="Center" Width="75" Padding="8,2"/>
+        <Button Grid.Row="2" Command="{Binding GenerateDrawingsCommand}" Click="Hide" Content="Generate"
+                HorizontalAlignment="Center" VerticalAlignment="Center" Width="75" Margin="8,0,8,8" Padding="8,2"/>
     </Grid>
 
 </Window>

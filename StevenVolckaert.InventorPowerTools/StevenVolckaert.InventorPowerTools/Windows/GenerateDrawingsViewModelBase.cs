@@ -55,6 +55,43 @@
             }
         }
 
+        public IList<LinearPrecision> SupportedLinearPrecisions { get; }
+            = LinearPrecision.CreateFractionalLinearPrecisions().ToList();
+
+        private LinearPrecision _selectedLinearPrecision;
+        public LinearPrecision SelectedLinearPrecision
+        {
+            get
+            {
+                return _selectedLinearPrecision ?? (
+                    _selectedLinearPrecision = SupportedLinearPrecisions
+                        .First(x => x.EnumValue == LinearPrecisionEnum.kHalfFractionalLinearPrecision)
+                    );
+            }
+            set
+            {
+                if (_selectedLinearPrecision != value)
+                {
+                    _selectedLinearPrecision = value;
+                    RaisePropertyChanged(() => SelectedLinearPrecision);
+                }
+            }
+        }
+
+        private bool _areTrailingZerosDisplayed = false;
+        public bool AreTrailingZerosDisplayed
+        {
+            get { return _areTrailingZerosDisplayed; }
+            set
+            {
+                if (_areTrailingZerosDisplayed != value)
+                {
+                    _areTrailingZerosDisplayed = value;
+                    RaisePropertyChanged(() => AreTrailingZerosDisplayed);
+                }
+            }
+        }
+
         private bool? _isEverythingSelected;
         public bool? IsEverythingSelected
         {
@@ -72,7 +109,7 @@
             }
         }
 
-        public void CalculateIsEverythingSelected()
+        public void ComputeIsEverythingSelected()
         {
             if (_documents.All(x => x.IsSelected == true))
                 _isEverythingSelected = true;
@@ -110,19 +147,28 @@
         protected abstract void GenerateDrawings();
 
         /// <summary>
-        /// Creates a new DrawingDocument,
-        /// using the template specified by <paramref name="TemplateFileName"/>.
+        /// Creates a new <see cref="DrawingDocument"/>, using the template specified by the
+        /// <seealso cref="TemplateFileName"/> property.
         /// </summary>
-        /// <returns>The new Inventor.DrawingDocument.</returns>
+        /// <returns>A new <see cref="DrawingDocument"/> instance.</returns>
         protected DrawingDocument CreateDrawingDocument()
         {
+            // TODO Create a unit test that tests whether setting the LinearPrecision of the LinearDimensionStyle
+            // property (see below) works as expected. Not sure if unit tests are possible without running Inventor,
+            // though. Steven Volckaert. September 29, 2016.
+
             var drawingDocument =
                 AddIn.CreateDrawingDocument(
                     templateFileName: TemplateFileName,
                     isVisible: true
                 );
 
-            drawingDocument.StylesManager.ActiveStandardStyle.ActiveObjectDefaults.LinearDimensionStyle.LinearPrecision = LinearPrecisionEnum.kZeroFractionalLinearPrecision;
+            var activeLinearDimensionStyle = drawingDocument.ActiveLinearDimensionStyle();
+
+            activeLinearDimensionStyle.TrailingZeroDisplay = AreTrailingZerosDisplayed;
+            activeLinearDimensionStyle.LinearPrecision =
+                SelectedLinearPrecision?.EnumValue ?? LinearPrecisionEnum.kZeroFractionalLinearPrecision;
+
             return drawingDocument;
         }
     }

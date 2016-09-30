@@ -19,7 +19,7 @@
                     RaisePropertyChanged(() => Subassemblies);
 
                     _documents = value.Cast<IDocument>().ToList();
-                    CalculateIsEverythingSelected();
+                    ComputeIsEverythingSelected();
                 }
             }
         }

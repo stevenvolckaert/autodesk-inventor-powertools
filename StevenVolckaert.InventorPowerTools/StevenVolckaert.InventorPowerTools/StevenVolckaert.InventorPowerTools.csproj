@@ -76,6 +76,7 @@
     <Compile Include="Extensions\CommandCategoriesExtensions.cs" />
     <Compile Include="Extensions\DocumentExtensions.cs" />
     <Compile Include="Extensions\DrawingCurveExtensions.cs" />
+    <Compile Include="Extensions\DrawingDocumentExtensions.cs" />
     <Compile Include="Extensions\DrawingViewExtensions.cs" />
     <Compile Include="Extensions\ParameterExtensions.cs" />
     <Compile Include="Extensions\PartDocumentExtensions.cs" />
@@ -90,6 +91,7 @@
     <Compile Include="ImageConvert.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Models\LinearPrecision.cs" />
     <Compile Include="Models\ModelBase.cs" />
     <Compile Include="Models\Assembly.cs" />
     <Compile Include="Models\IDocument.cs" />

@@ -33,7 +33,7 @@
                     RaisePropertyChanged(() => Parts);
 
                     _documents = value.Cast<IDocument>().ToList();
-                    CalculateIsEverythingSelected();
+                    ComputeIsEverythingSelected();
                 }
             }
         }
@@ -72,6 +72,7 @@
             {
                 var drawingDocument = CreateDrawingDocument();
                 var dimensionStyle = drawingDocument.StylesManager.ActiveStandardStyle.ActiveObjectDefaults.LinearDimensionStyle;
+
                 var sheet = drawingDocument.ActiveSheet;
                 var topRightCorner = sheet.TopRightCorner();
 

@@ -97,7 +97,16 @@
         <Setter Property="HorizontalContentAlignment" Value="Right"/>
     </Style>
 
+    <Style x:Key="CheckBoxBaseStyle" TargetType="CheckBox">
+        <Setter Property="Margin" Value="0,3"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+    </Style>
+    
     <Style x:Key="TextBoxBaseStyle" TargetType="TextBox">
+        <Setter Property="Margin" Value="0,3"/>
+    </Style>
+
+    <Style x:Key="ComboBoxBaseStyle" TargetType="ComboBox">
         <Setter Property="Margin" Value="0,3"/>
     </Style>
 
@@ -105,7 +114,9 @@
 
     <Style BasedOn="{StaticResource GridViewColumnHeaderBaseStyle}" TargetType="GridViewColumnHeader"/>
     <Style BasedOn="{StaticResource GroupBoxBaseStyle}" TargetType="GroupBox"/>
+    <Style BasedOn="{StaticResource CheckBoxBaseStyle}" TargetType="CheckBox"/>
     <Style BasedOn="{StaticResource LabelBaseStyle}" TargetType="Label"/>
     <Style BasedOn="{StaticResource TextBoxBaseStyle}" TargetType="TextBox"/>
+    <Style BasedOn="{StaticResource ComboBoxBaseStyle}" TargetType="ComboBox"/>
 
 </ResourceDictionary>

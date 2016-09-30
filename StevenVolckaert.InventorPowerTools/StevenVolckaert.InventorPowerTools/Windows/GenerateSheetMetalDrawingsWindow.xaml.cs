@@ -51,7 +51,7 @@ namespace StevenVolckaert.InventorPowerTools.Windows
 
         private void CheckBox_Click(object sender, RoutedEventArgs e)
         {
-            ViewModel.CalculateIsEverythingSelected();
+            ViewModel.ComputeIsEverythingSelected();
         }
     }
 }
