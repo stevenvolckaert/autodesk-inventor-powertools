@@ -9,15 +9,10 @@
     {
         private readonly GenerateMdfDrawingsWindow _generateDrawingsWindow = new GenerateMdfDrawingsWindow();
 
-        public override string DisplayName
-        {
-            get { return "MDF"; }
-        }
+        public override string DisplayName { get; } = "MDF";
 
-        public override string Description
-        {
-            get { return "Generate a drawing of every" + Environment.NewLine + "MDF part in the active document."; }
-        }
+        public override string Description { get; } =
+            "Generate a drawing of every" + Environment.NewLine + "MDF part in the active document.";
 
         protected override void OnExecute(NameValueMap context)
         {

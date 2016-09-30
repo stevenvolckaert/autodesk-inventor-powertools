@@ -7,20 +7,17 @@ namespace StevenVolckaert.InventorPowerTools.Buttons
 
     internal class CreateTopAndLeftProjectedViewsButton : ButtonBase
     {
-        public override string DisplayName
-        {
-            get { return "Top+Left"; }
-        }
+        public override string DisplayName { get; } = "Top+Left";
 
-        public override string Description
-        {
-            get { return "Add Top & Left Projected Views"; }
-        }
+        public override string Description { get; } = "Add Top & Left Projected Views";
 
         public CreateTopAndLeftProjectedViewsButton()
         {
-            Panel = AddIn.UserInterfaceManager.GetPanel("id_PanelD_PlaceViewsCreate", tabName: "id_TabPlaceViews", ribbonName: "Drawing");
-            //AddToCommandCategory("Autodesk:SimpleAddIn:SlotCmdCat", "Slot");
+            Panel = AddIn.UserInterfaceManager.GetPanel(
+                name: "id_PanelD_PlaceViewsCreate",
+                tabName: "id_TabPlaceViews",
+                ribbonName: "Drawing"
+            );
         }
 
         override protected void OnExecute(NameValueMap context)

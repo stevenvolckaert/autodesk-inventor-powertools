@@ -6,19 +6,17 @@
 
     internal class CreatePartViewsFromAssemblyButton : ButtonBase
     {
-        public override string DisplayName
-        {
-            get { return "Place Parts"; }
-        }
+        public override string DisplayName { get; } = "Place Parts";
 
-        public override string Description
-        {
-            get { return "Create base views for every part in an assembly"; }
-        }
+        public override string Description { get; } = "Create base views for every part in an assembly";
 
         public CreatePartViewsFromAssemblyButton()
         {
-            Panel = AddIn.UserInterfaceManager.GetPanel("id_PanelD_PlaceViewsCreate", tabName: "id_TabPlaceViews", ribbonName: "Drawing");
+            Panel = AddIn.UserInterfaceManager.GetPanel(
+                name: "id_PanelD_PlaceViewsCreate",
+                tabName: "id_TabPlaceViews",
+                ribbonName: "Drawing"
+            );
         }
 
         protected override void OnExecute(NameValueMap context)
@@ -35,7 +33,12 @@
                         transaction.End();
                     }
                     else
-                        MessageBox.Show(DisplayName + " can only be used on base views.", DisplayName, MessageBoxButton.OK, MessageBoxImage.Information);
+                        MessageBox.Show(
+                            messageBoxText: DisplayName + " can only be used on base views.",
+                            caption: DisplayName,
+                            button: MessageBoxButton.OK,
+                            icon: MessageBoxImage.Information
+                        );
             }
             catch (Exception ex)
             {

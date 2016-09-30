@@ -9,19 +9,17 @@
     {
         private string _targetDirectoryPath;
 
-        public override string DisplayName
-        {
-            get { return "PDF"; }
-        }
+        public override string DisplayName { get; } = "PDF";
 
-        public override string Description
-        {
-            get { return "Export all open drawings as PDF"; }
-        }
+        public override string Description { get; } = "Export all open drawings as PDF";
 
         public ExportPdfButton()
         {
-            //Panel = AddIn.UserInterfaceManager.GetPanel("id_PanelD_PlaceViewsCreate", tabName: "id_TabPlaceViews", ribbonName: "Drawing");
+            //Panel = AddIn.UserInterfaceManager.GetPanel(
+            //    name: "id_PanelD_PlaceViewsCreate",
+            //    tabName: "id_TabPlaceViews",
+            //    ribbonName: "Drawing"
+            //);
         }
 
         protected override void OnExecute(NameValueMap context)
@@ -32,7 +30,9 @@
 
                 if (drawingDocuments.Count == 0)
                 {
-                    ShowWarningMessageBox("There are no drawing documents loaded. Open one or more drawing documents before using this command.");
+                    ShowWarningMessageBox("There are no drawing documents loaded. " +
+                        "Open one or more drawing documents before using this command.");
+
                     return;
                 }
 

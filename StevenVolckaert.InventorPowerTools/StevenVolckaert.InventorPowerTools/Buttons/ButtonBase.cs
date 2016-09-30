@@ -15,15 +15,12 @@ namespace StevenVolckaert.InventorPowerTools.Buttons
         /// <summary>
         /// Gets the button's name.
         /// </summary>
-        public string Name { get; private set; }
+        public string Name { get; }
 
         /// <summary>
         /// Gets the button's command type.
         /// </summary>
-        public virtual CommandTypesEnum CommandType
-        {
-            get { return CommandTypesEnum.kShapeEditCmdType; }
-        }
+        public virtual CommandTypesEnum CommandType { get; } = CommandTypesEnum.kShapeEditCmdType;
 
         /// <summary>
         /// Gets the button's display name.
@@ -33,10 +30,7 @@ namespace StevenVolckaert.InventorPowerTools.Buttons
         /// <summary>
         /// Gets the button's display type.
         /// </summary>
-        public virtual ButtonDisplayEnum DisplayType
-        {
-            get { return ButtonDisplayEnum.kDisplayTextInLearningMode; }
-        }
+        public virtual ButtonDisplayEnum DisplayType { get; } = ButtonDisplayEnum.kDisplayTextInLearningMode;
 
         /// <summary>
         /// Gets the button's description
@@ -80,7 +74,9 @@ namespace StevenVolckaert.InventorPowerTools.Buttons
 
             try
             {
-                var standardIcon = ImageConvert.FromIconToIPictureDisp(new Icon(typeof(ButtonBase), typeName + ".ico"));
+                var standardIcon = ImageConvert.FromIconToIPictureDisp(
+                    icon: new Icon(typeof(ButtonBase), typeName + ".ico")
+                );
 
                 _buttonDefinition =
                     AddIn.Inventor.CommandManager.ControlDefinitions.AddButtonDefinition(
@@ -121,7 +117,7 @@ namespace StevenVolckaert.InventorPowerTools.Buttons
         public void AddTo(CommandBar commandBar)
         {
             if (commandBar == null)
-                throw new ArgumentNullException("commandBar");
+                throw new ArgumentNullException(nameof(commandBar));
 
             commandBar.Controls.AddButton(_buttonDefinition, Before: 0);
         }
@@ -140,15 +136,17 @@ namespace StevenVolckaert.InventorPowerTools.Buttons
         /// </summary>
         /// <param name="ribbonPanel">The ribbon panel.</param>
         /// <param name="targetControlName">The name of an existing control to position the button next to.</param>
-        /// <param name="insertBeforeTargetControl">A value that indicates whether to position the button before or after the target control.</param>
-        /// <exception cref="ArgumentNullException"><paramref name="ribbonPanel"/> or <paramref name="targetControlName"/> is <c>null</c>.</exception>
+        /// <param name="insertBeforeTargetControl">A value that indicates whether to position the button before or
+        /// after the target control.</param>
+        /// <exception cref="ArgumentNullException"><paramref name="ribbonPanel"/> or
+        /// <paramref name="targetControlName"/> is <c>null</c>.</exception>
         public void AddTo(RibbonPanel ribbonPanel, string targetControlName, bool insertBeforeTargetControl)
         {
             if (ribbonPanel == null)
-                throw new ArgumentNullException("ribbonPanel");
+                throw new ArgumentNullException(nameof(ribbonPanel));
 
             if (targetControlName == null)
-                throw new ArgumentNullException("targetControlName");
+                throw new ArgumentNullException(nameof(targetControlName));
 
             ribbonPanel.CommandControls.AddButton(
                 ButtonDefinition: _buttonDefinition,
@@ -188,11 +186,12 @@ namespace StevenVolckaert.InventorPowerTools.Buttons
             try
             {
                 var commandCategories = AddIn.Inventor.CommandManager.CommandCategories;
-                var commandCategory = commandCategories.TryGetValue(categoryName) ?? commandCategories.Add(displayName, categoryName, AddIn.ClientId);
-                commandCategory.Add(_buttonDefinition);
 
-                //var slotCmdCategory = Runtime.Inventor.CommandManager.CommandCategories.Add("Slot", "Autodesk:SimpleAddIn:SlotCmdCat", Runtime.AddInId);
-                //slotCmdCategory.Add(_createTopAndLeftViewButton.ButtonDefinition);
+                var commandCategory =
+                    commandCategories.TryGetValue(categoryName) ??
+                    commandCategories.Add(displayName, categoryName, AddIn.ClientId);
+
+                commandCategory.Add(_buttonDefinition);
             }
             catch (Exception ex)
             {
