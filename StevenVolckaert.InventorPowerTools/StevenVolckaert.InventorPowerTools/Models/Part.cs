@@ -5,34 +5,30 @@
 
     public class Part : ModelBase, IDocument
     {
-        private readonly PartDocument _part;
-        public PartDocument Document
-        {
-            get { return _part; }
-        }
+        public PartDocument Document { get; }
 
-        public static readonly Func<PartDocument, Part> AsPart =
+        public static Func<PartDocument, Part> AsPart { get; } =
             partDocument => new Part(partDocument) { IsSelected = true };
 
         public string Name
         {
-            get { return _part.DisplayName; }
+            get { return Document.DisplayName; }
         }
 
         public string FileName
         {
-            get { return _part.DisplayName; }
+            get { return Document.DisplayName; }
         }
 
         public Part(PartDocument part)
         {
             if (part == null)
-                throw new ArgumentNullException("part");
+                throw new ArgumentNullException(nameof(part));
 
-            _part = part;
-            _part.SetCustomPropertyFormat("Lengte", CustomPropertyPrecisionEnum.kZeroDecimalPlacePrecision, showUnit: false);
-            _part.SetCustomPropertyFormat("Breedte", CustomPropertyPrecisionEnum.kZeroDecimalPlacePrecision, showUnit: false);
-            _part.SetCustomPropertyFormat("Dikte", CustomPropertyPrecisionEnum.kZeroDecimalPlacePrecision, showUnit: false);
+            Document = part;
+            Document.SetCustomPropertyFormat("Lengte", CustomPropertyPrecisionEnum.kZeroDecimalPlacePrecision, showUnit: false);
+            Document.SetCustomPropertyFormat("Breedte", CustomPropertyPrecisionEnum.kZeroDecimalPlacePrecision, showUnit: false);
+            Document.SetCustomPropertyFormat("Dikte", CustomPropertyPrecisionEnum.kZeroDecimalPlacePrecision, showUnit: false);
         }
     }
 }
