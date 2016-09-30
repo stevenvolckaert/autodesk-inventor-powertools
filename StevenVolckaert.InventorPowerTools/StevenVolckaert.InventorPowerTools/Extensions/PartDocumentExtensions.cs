@@ -4,7 +4,7 @@
     using Inventor;
 
     /// <summary>
-    /// Provides extension methods for Inventor.PartDocument documents.
+    /// Provides extension methods for <see cref="PartDocument"/> instances.
     /// </summary>
     public static class PartDocumentExtensions
     {
@@ -26,12 +26,13 @@
         /// <summary>
         /// Returns a value that indicates whether the document is an Autodesk Inventor Part.
         /// </summary>
-        /// <param name="partDocument">The Inventor.PartDocument instance that this extension method affects.</param>
+        /// <param name="partDocument">
+        /// The <see cref="PartDocument"/> instance that this extension method affects.</param>
         /// <exception cref="ArgumentNullException"><paramref name="partDocument"/> is <c>null</c>.</exception>
         public static bool IsGenericPart(this PartDocument partDocument)
         {
             if (partDocument == null)
-                throw new ArgumentNullException("partDocument");
+                throw new ArgumentNullException(nameof(partDocument));
 
             return partDocument.SubType.Equals(PartDocumentId);
         }
@@ -39,12 +40,13 @@
         /// <summary>
         /// Returns a value that indicates whether the document is a Autodesk Inventor Sheet Metal Part.
         /// </summary>
-        /// <param name="partDocument">The Inventor.PartDocument instance that this extension method affects.</param>
+        /// <param name="partDocument">
+        /// The <see cref="PartDocument"/> instance that this extension method affects.</param>
         /// <exception cref="ArgumentNullException"><paramref name="partDocument"/> is <c>null</c>.</exception>
         public static bool IsSheetMetal(this PartDocument partDocument)
         {
             if (partDocument == null)
-                throw new ArgumentNullException("partDocument");
+                throw new ArgumentNullException(nameof(partDocument));
 
             return partDocument.SubType.Equals(SheetMetalPartDocumentId);
         }
@@ -52,12 +54,13 @@
         /// <summary>
         /// Returns a value that indicates wheter the document is an Autodesk Inventor Part and MDF.
         /// </summary>
-        /// <param name="partDocument">The Inventor.PartDocument instance that this extension method affects.</param>
+        /// <param name="partDocument">
+        /// The <see cref="PartDocument"/> instance that this extension method affects.</param>
         /// <exception cref="ArgumentNullException"><paramref name="partDocument"/> is <c>null</c>.</exception>
         public static bool IsMdf(this PartDocument partDocument)
         {
             if (partDocument == null)
-                throw new ArgumentNullException("partDocument");
+                throw new ArgumentNullException(nameof(partDocument));
 
             return partDocument.IsGenericPart() && partDocument.FullFileName.ToUpperInvariant().Contains("MDF");
         }
@@ -65,7 +68,7 @@
         public static string SubTypeString(this PartDocument partDocument)
         {
             if (partDocument == null)
-                throw new ArgumentNullException("partDocument");
+                throw new ArgumentNullException(nameof(partDocument));
 
             var subType = partDocument.SubType;
 
@@ -91,7 +94,8 @@
         /// <summary>
         /// Sets the format of a custom property.
         /// </summary>
-        /// <param name="partDocument">The Inventor.PartDocument instance that this extension method affects.</param>
+        /// <param name="partDocument">
+        /// The <see cref="PartDocument"/> instance that this extension method affects.</param>
         /// <param name="propertyName">The name of the custom property.</param>
         /// <param name="displayPrecision">The value's display precision.</param>
         /// <param name="showUnit">A value which indicates whether to display the value's unit.</param>
@@ -100,10 +104,10 @@
         public static void SetCustomPropertyFormat(this PartDocument partDocument, string propertyName, CustomPropertyPrecisionEnum displayPrecision, bool showUnit)
         {
             if (partDocument == null)
-                throw new ArgumentNullException("partDocument");
+                throw new ArgumentNullException(nameof(partDocument));
 
             if (string.IsNullOrEmpty(propertyName))
-                throw new ArgumentException("Argument is null or empty.", "propertyName");
+                throw new ArgumentException("Argument is null or empty.", nameof(propertyName));
 
             try
             {

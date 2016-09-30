@@ -6,7 +6,7 @@
     using Inventor;
 
     /// <summary>
-    /// Provides extension methods for <see cref="PartsList"/> objects.
+    /// Provides extension methods for <see cref="PartsList"/> instances.
     /// </summary>
     internal static class PartsListExtensions
     {

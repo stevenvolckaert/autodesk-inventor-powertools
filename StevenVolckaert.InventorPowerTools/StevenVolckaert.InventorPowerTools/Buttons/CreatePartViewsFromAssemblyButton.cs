@@ -12,7 +12,7 @@
 
         public CreatePartViewsFromAssemblyButton()
         {
-            Panel = AddIn.UserInterfaceManager.GetPanel(
+            Panel = AddIn.UserInterfaceManager.GetRibbonPanel(
                 name: "id_PanelD_PlaceViewsCreate",
                 tabName: "id_TabPlaceViews",
                 ribbonName: "Drawing"

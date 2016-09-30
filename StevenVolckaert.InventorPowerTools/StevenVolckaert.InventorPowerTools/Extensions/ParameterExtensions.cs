@@ -4,7 +4,7 @@
     using Inventor;
 
     /// <summary>
-    /// Provides extension methods for Inventor.Parameter objects.
+    /// Provides extension methods for <see cref="Parameter"/> instances.
     /// </summary>
     internal static class ParameterExtensions
     {
@@ -26,7 +26,7 @@
         public static void SetCustomPropertyFormat(this Parameter parameter, CustomPropertyPrecisionEnum displayPrecision, bool showUnit)
         {
             if (parameter == null)
-                throw new ArgumentNullException("parameter");
+                throw new ArgumentNullException(nameof(parameter));
 
             parameter.CustomPropertyFormat.PropertyType = CustomPropertyTypeEnum.kTextPropertyType;
             parameter.CustomPropertyFormat.ShowUnitsString = showUnit;

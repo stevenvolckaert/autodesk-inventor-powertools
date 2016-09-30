@@ -6,25 +6,32 @@
     using Inventor;
 
     /// <summary>
-    /// Provides extension methods for Inventor.AssemblyDocument objects.
+    /// Provides extension methods for <see cref="AssemblyDocument"/> instances.
     /// </summary>
     public static class AssemblyDocumentExtensions
     {
         /// <summary>
         /// Sets the format of a custom property.
         /// </summary>
-        /// <param name="assembly">The Inventor.AssemblyDocument instance that this extension method affects.</param>
+        /// <param name="assembly">
+        /// The <see cref="AssemblyDocument"/> instance that this extension method affects.</param>
         /// <param name="propertyName">The name of the custom property.</param>
         /// <param name="displayPrecision">The value's display precision.</param>
         /// <param name="showUnit">A value which indicates whether to display the value's unit.</param>
         /// <exception cref="ArgumentNullException"><paramref name="assembly"/> is <c>null</c>.</exception>
         /// <exception cref="ArgumentException"><paramref name="propertyName"/> is <c>null</c> or empty.</exception>
-        public static void SetCustomPropertyFormat(this AssemblyDocument assembly, string propertyName, CustomPropertyPrecisionEnum displayPrecision, bool showUnit)
+        public static void SetCustomPropertyFormat(
+            this AssemblyDocument assembly,
+            string propertyName,
+            CustomPropertyPrecisionEnum displayPrecision,
+            bool showUnit
+        )
         {
             if (assembly == null)
-                throw new ArgumentNullException("assembly");
+                throw new ArgumentNullException(nameof(assembly));
 
-            // NOTE uncommenting the next argument check always throws an exception. Probably a bug in the Inventor API.
+            // NOTE Uncommenting the next argument check always throws an exception.
+            // This is likely a bug in the Inventor API.
 
             //if (string.IsNullOrEmpty(propertyName))
             //    throw new ArgumentException("Argument is null or empty.", "propertyName");
@@ -41,7 +48,7 @@
         public static List<Assembly> Subassemblies(this AssemblyDocument assembly)
         {
             if (assembly == null)
-                throw new ArgumentNullException("assembly");
+                throw new ArgumentNullException(nameof(assembly));
 
             return
                 assembly.AllReferencedDocuments
@@ -53,12 +60,13 @@
         /// <summary>
         /// Returns all parts.
         /// </summary>
-        /// <param name="assembly">The Inventor.AssemblyDocument instance that this extension method affects.</param>
+        /// <param name="assembly">
+        /// The <see cref="AssemblyDocument"/> instance that this extension method affects.</param>
         /// <exception cref="ArgumentNullException"><paramref name="assembly"/> is <c>null</c>.</exception>
         public static List<PartDocument> Parts(this AssemblyDocument assembly)
         {
             if (assembly == null)
-                throw new ArgumentNullException("assembly");
+                throw new ArgumentNullException(nameof(assembly));
 
             return assembly.AllReferencedDocuments.OfType<PartDocument>().Reverse().ToList();
         }
@@ -66,12 +74,13 @@
         /// <summary>
         /// Returns all generic parts.
         /// </summary>
-        /// <param name="assembly">The Inventor.AssemblyDocument instance that this extension method affects.</param>
+        /// <param name="assembly">
+        /// The <see cref="AssemblyDocument"/> instance that this extension method affects.</param>
         /// <exception cref="ArgumentNullException"><paramref name="assembly"/> is <c>null</c>.</exception>
         public static List<PartDocument> GenericParts(this AssemblyDocument assembly)
         {
             if (assembly == null)
-                throw new ArgumentNullException("assembly");
+                throw new ArgumentNullException(nameof(assembly));
 
             return assembly.Parts().Where(x => x.IsGenericPart()).ToList();
         }
@@ -79,12 +88,13 @@
         /// <summary>
         /// Returns all sheet metal parts.
         /// </summary>
-        /// <param name="assembly">The Inventor.AssemblyDocument instance that this extension method affects.</param>
+        /// <param name="assembly">
+        /// The <see cref="AssemblyDocument"/> instance that this extension method affects.</param>
         /// <exception cref="ArgumentNullException"><paramref name="assembly"/> is <c>null</c>.</exception>
         public static List<Part> SheetMetalParts(this AssemblyDocument assembly)
         {
             if (assembly == null)
-                throw new ArgumentNullException("assembly");
+                throw new ArgumentNullException(nameof(assembly));
 
             return assembly.Parts().Where(x => x.IsSheetMetal()).Select(Part.AsPart).ToList();
         }
@@ -92,9 +102,11 @@
         /// <summary>
         /// Returns the unit quantity of a specified part.
         /// </summary>
-        /// <param name="assemblyDocument">The Inventor.AssemblyDocument instance that this extension method affects.</param>
+        /// <param name="assemblyDocument">
+        /// The <see cref="AssemblyDocument"/> instance that this extension method affects.</param>
         /// <param name="part">The part.</param>
-        /// <exception cref="ArgumentNullException"><paramref name="assembly"/> or <paramref name="part"/>is <c>null</c>.</exception>
+        /// <exception cref="ArgumentNullException">
+        /// <paramref name="assembly"/> or <paramref name="part"/>is <c>null</c>.</exception>
         public static int GetPartQuantity(this AssemblyDocument assembly, PartDocument part)
         {
             return GetPartQuantity(assembly, part, displayWarnings: false);
@@ -103,17 +115,19 @@
         /// <summary>
         /// Returns the unit quantity of a specified part.
         /// </summary>
-        /// <param name="assemblyDocument">The Inventor.AssemblyDocument instance that this extension method affects.</param>
+        /// <param name="assemblyDocument">
+        /// The <see cref="AssemblyDocument"/> instance that this extension method affects.</param>
         /// <param name="part">The part.</param>
         /// <param name="displayWarnings">A value which indicates wheter to display warnings, if they occur.</param>
-        /// <exception cref="ArgumentNullException"><paramref name="assembly"/> or <paramref name="part"/>is <c>null</c>.</exception>
+        /// <exception cref="ArgumentNullException">
+        /// <paramref name="assembly"/> or <paramref name="part"/>is <c>null</c>.</exception>
         public static int GetPartQuantity(this AssemblyDocument assembly, PartDocument part, bool displayWarnings)
         {
             if (assembly == null)
-                throw new ArgumentNullException("assembly");
+                throw new ArgumentNullException(nameof(assembly));
 
             if (part == null)
-                throw new ArgumentNullException("part");
+                throw new ArgumentNullException(nameof(part));
 
             var bom = assembly.ComponentDefinition.BOM;
 
@@ -122,9 +136,9 @@
 
             if (displayWarnings && bom.RequiresUpdate)
                 AddIn.ShowWarningMessageBox(
-                    caption: AssemblyInfo.Name,
-                    messageFormat: "The BOM of assembly '{0}' requires an update. Quantities displayed in the generated drawing might be incorrect.",
-                    messageArgs: assembly.DisplayName
+                    AssemblyInfo.Name,
+                    $"The BOM of assembly '{assembly.DisplayName}' requires an update. " +
+                        "Quantities displayed in the generated drawing might be incorrect."
                 );
 
             try
@@ -201,12 +215,13 @@
         /// <summary>
         /// Returns all MDF parts.
         /// </summary>
-        /// <param name="assembly">The Inventor.AssemblyDocument instance that this extension method affects.</param>
+        /// <param name="assembly">
+        /// The <see cref="AssemblyDocument"/> instance that this extension method affects.</param>
         /// <exception cref="ArgumentNullException"><paramref name="assembly"/> is <c>null</c>.</exception>
         public static List<PartDocument> MdfParts(this AssemblyDocument assembly)
         {
             if (assembly == null)
-                throw new ArgumentNullException("assembly");
+                throw new ArgumentNullException(nameof(assembly));
 
             return assembly.Parts().Where(x => x.IsMdf()).ToList();
         }

@@ -8,17 +8,17 @@
     using Environment = System.Environment;
 
     /// <summary>
-    /// Provides extension methods for Inventor.Sheet objects.
+    /// Provides extension methods for <see cref="Sheet"/> instances.
     /// </summary>
     public static class SheetExtensions
     {
         public static PartsList AddPartsList(this Sheet sheet, object viewOrModel, PartsListLevelEnum level)
         {
             if (sheet == null)
-                throw new ArgumentNullException("sheet");
+                throw new ArgumentNullException(nameof(sheet));
 
             if (viewOrModel == null)
-                throw new ArgumentNullException("viewOrModel");
+                throw new ArgumentNullException(nameof(viewOrModel));
 
             var partsList =
                 sheet.PartsLists.Add(
@@ -85,12 +85,12 @@
         /// <summary>
         /// Returns the sheet's center point.
         /// </summary>
-        /// <param name="sheet">The Inventor.Sheet object that this extension method affects.</param>
+        /// <param name="sheet">The <see cref="Sheet"/> instance that this extension method affects.</param>
         /// <exception cref="ArgumentNullException"><paramref name="sheet"/> is <c>null</c>.</exception>
         public static Point2d CenterPoint(this Sheet sheet)
         {
             if (sheet == null)
-                throw new ArgumentNullException("sheet");
+                throw new ArgumentNullException(nameof(sheet));
 
             return AddIn.CreatePoint2D(sheet.Width / 2, sheet.Height / 2);
         }
@@ -98,12 +98,12 @@
         /// <summary>
         /// Returns the margin of the sheet's border.
         /// </summary>
-        /// <param name="sheet">The Inventor.Sheet object that this extension method affects.</param>
+        /// <param name="sheet">The <see cref="Sheet"/> instance that this extension method affects.</param>
         /// <exception cref="ArgumentNullException"><paramref name="sheet"/> is <c>null</c>.</exception>
         public static Margin Margin(this Sheet sheet)
         {
             if (sheet == null)
-                throw new ArgumentNullException("sheet");
+                throw new ArgumentNullException(nameof(sheet));
 
             return sheet.Border == null
                 ? new Margin()
@@ -137,12 +137,12 @@
         /// <summary>
         /// Returns a point in the top right corner, useful for placing small views that add an overview.
         /// </summary>
-        /// <param name="sheet">The Inventor.Sheet object that this extension method affects.</param>
+        /// <param name="sheet">The <see cref="Sheet"/> instance that this extension method affects.</param>
         /// <exception cref="ArgumentNullException"><paramref name="sheet"/> is <c>null</c>.</exception>
         public static Point2d TopRightPoint(this Sheet sheet)
         {
             if (sheet == null)
-                throw new ArgumentNullException("sheet");
+                throw new ArgumentNullException(nameof(sheet));
 
             var margin = sheet.Margin();
 
@@ -156,7 +156,7 @@
         public static Point2d TopRightPoint(this Sheet sheet, double horizontalOffset, double verticalOffset)
         {
             if (sheet == null)
-                throw new ArgumentNullException("sheet");
+                throw new ArgumentNullException(nameof(sheet));
 
             var margin = sheet.Margin();
 
@@ -170,10 +170,13 @@
         /// <summary>
         /// Returns the sheet's top right corner.
         /// </summary>
-        /// <param name="sheet">The Inventor.Sheet object that this extension method affects.</param>
+        /// <param name="sheet">The <see cref="Sheet"/> instance that this extension method affects.</param>
         /// <exception cref="ArgumentNullException"><paramref name="sheet"/> is <c>null</c>.</exception>
         public static Point2d TopRightCorner(this Sheet sheet)
         {
+            if (sheet == null)
+                throw new ArgumentNullException(nameof(sheet));
+
             return sheet.Border == null
                 ? AddIn.CreatePoint2D(sheet.Width, sheet.Height)
                 : sheet.Border.RangeBox.MaxPoint;

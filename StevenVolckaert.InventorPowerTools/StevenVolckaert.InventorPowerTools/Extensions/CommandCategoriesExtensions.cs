@@ -3,7 +3,7 @@
     using Inventor;
 
     /// <summary>
-    /// Provides extension methods for Inventor.CommandCategories objects.
+    /// Provides extension methods for <see cref="CommandCategories"/> instances.
     /// </summary>
     internal static class CommandCategoriesExtensions
     {

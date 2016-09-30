@@ -32,7 +32,8 @@
         /// <summary>
         /// Adds left and top projected views of a specified drawing view to the active document.
         /// </summary>
-        /// <param name="drawingView">The Inventor.DrawingView instance that this extension method affects.</param>
+        /// <param name="drawingView">
+        /// The <see cref="DrawingView"/> instance that this extension method affects.</param>
         /// <param name="addDimensions">A value that specifies whether dimensions need to be added.</param>
         /// <param name="drawingDistance">The distance between <paramref name="drawingView"/> and
         /// the projected views.</param>
@@ -45,10 +46,10 @@
         )
         {
             if (drawingView == null)
-                throw new ArgumentNullException("drawingView");
+                throw new ArgumentNullException(nameof(drawingView));
 
             if (drawingDistance < 0)
-                throw new ArgumentOutOfRangeException("drawingDistance");
+                throw new ArgumentOutOfRangeException(nameof(drawingDistance));
 
             var drawingViews = DrawingDocument.ActiveSheet.DrawingViews;
             var drawingDimensions = DrawingDocument.ActiveSheet.DrawingDimensions;
@@ -94,8 +95,8 @@
         /// <summary>
         /// Adds a part name to the drawing view of the active document.
         /// </summary>
-        /// <param name="drawingView">The <see cref="DrawingView"/> instance that this extension method affects.
-        /// </param>
+        /// <param name="drawingView">
+        /// The <see cref="DrawingView"/> instance that this extension method affects.</param>
         /// <param name="partName">The name of the part to add.</param>
         /// <param name="drawingDistance">The distance between <paramref name="drawingView"/> and the name to add.
         /// </param>
@@ -122,7 +123,8 @@
         /// <summary>
         /// Adds a horizontal dimension.
         /// </summary>
-        /// <param name="drawingView">The Inventor.DrawingView instance that this extension method affects.</param>
+        /// <param name="drawingView">
+        /// The <see cref="DrawingView"/> instance that this extension method affects.</param>
         /// <param name="dimensionStyle">The style to apply to the dimension.</param>
         /// <returns>The created dimension.</returns>
         /// <exception cref="ArgumentNullException"><paramref name="drawingView"/> is <c>null</c>.</exception>
@@ -137,7 +139,8 @@
         /// <summary>
         /// Adds a horizontal dimension.
         /// </summary>
-        /// <param name="drawingView">The Inventor.DrawingView instance that this extension method affects.</param>
+        /// <param name="drawingView">
+        /// The <see cref="DrawingView"/> instance that this extension method affects.</param>
         /// <param name="dimensionStyle">The style to apply to the dimension.</param>
         /// <param name="drawingDistance">The distance between <paramref name="drawingView"/> and the dimension.
         /// </param>
@@ -151,10 +154,10 @@
         )
         {
             if (drawingView == null)
-                throw new ArgumentNullException("drawingView");
+                throw new ArgumentNullException(nameof(drawingView));
 
             if (drawingDistance < 0)
-                throw new ArgumentOutOfRangeException("drawingDistance");
+                throw new ArgumentOutOfRangeException(nameof(drawingDistance));
 
             var verticalLines = drawingView.VerticalLines();
 
@@ -200,7 +203,8 @@
         /// <summary>
         /// Adds a horizontal chain dimension set to annotate the view's vertical bend lines.
         /// </summary>
-        /// <param name="drawingView">The Inventor.DrawingView instance that this extension method affects.</param>
+        /// <param name="drawingView">
+        /// The <see cref="DrawingView"/> instance that this extension method affects.</param>
         /// <param name="dimensionStyle">The style to apply to the dimension.</param>
         /// <returns>The created dimension set.</returns>
         /// <exception cref="ArgumentNullException"><paramref name="drawingView"/> is <c>null</c>.</exception>
@@ -209,6 +213,9 @@
             DimensionStyle dimensionStyle
         )
         {
+            if (drawingView == null)
+                throw new ArgumentNullException(nameof(drawingView));
+
             var curves = new List<DrawingCurve>();
             var verticalLines = drawingView.VerticalLines();
 
@@ -236,7 +243,8 @@
         /// <summary>
         /// Adds a vertical dimension.
         /// </summary>
-        /// <param name="drawingView">The Inventor.DrawingView instance that this extension method affects.</param>
+        /// <param name="drawingView">
+        /// The <see cref="DrawingView"/> instance that this extension method affects.</param>
         /// <param name="dimensionStyle">The style to apply to the dimension.</param>
         /// <returns>The created dimension.</returns>
         /// <exception cref="ArgumentNullException"><paramref name="drawingView"/> is <c>null</c>.</exception>
@@ -251,7 +259,8 @@
         /// <summary>
         /// Adds a vertical dimension.
         /// </summary>
-        /// <param name="drawingView">The Inventor.DrawingView instance that this extension method affects.</param>
+        /// <param name="drawingView">
+        /// The <see cref="DrawingView"/> instance that this extension method affects.</param>
         /// <param name="dimensionStyle">The style to apply to the dimension.</param>
         /// <param name="drawingDistance">The distance between <paramref name="drawingView"/> and the dimension.
         /// </param>
@@ -265,10 +274,10 @@
         )
         {
             if (drawingView == null)
-                throw new ArgumentNullException("drawingView");
+                throw new ArgumentNullException(nameof(drawingView));
 
             if (drawingDistance < 0)
-                throw new ArgumentOutOfRangeException("drawingDistance");
+                throw new ArgumentOutOfRangeException(nameof(drawingDistance));
 
             var horizontalLines = drawingView.HorizontalLines();
 
@@ -314,7 +323,8 @@
         /// <summary>
         /// Adds a vertical chain dimension set to annotate the view's horizontal bend lines.
         /// </summary>
-        /// <param name="drawingView">The Inventor.DrawingView instance that this extension method affects.</param>
+        /// <param name="drawingView">
+        /// The <see cref="DrawingView"/> instance that this extension method affects.</param>
         /// <param name="dimensionStyle">The style to apply to the dimension.</param>
         /// <returns>The created dimension set.</returns>
         /// <exception cref="ArgumentNullException"><paramref name="drawingView"/> is <c>null</c>.</exception>
@@ -323,6 +333,9 @@
             DimensionStyle dimensionStyle
         )
         {
+            if (drawingView == null)
+                throw new ArgumentNullException(nameof(drawingView));
+
             var curves = new List<DrawingCurve>();
             var horizontalLines = drawingView.HorizontalLines(); ;
 
@@ -350,17 +363,18 @@
         /// <summary>
         /// Adds a base view of every parts in a specified assembly view.
         /// </summary>
-        /// <param name="drawingView">The Inventor.DrawingView instance that this extension method affects.</param>
+        /// <param name="drawingView">
+        /// The <see cref="DrawingView"/> instance that this extension method affects.</param>
         /// <param name="drawingDistance">The distance between each generated base view.</param>
         /// <exception cref="ArgumentNullException"><paramref name="drawingView"/> is <c>null</c>.</exception>
         /// <exception cref="ArgumentOutOfRangeException"><paramref name="drawingDistance"/> is negative.</exception>
         public static void AddBaseViewOfParts(this DrawingView drawingView, double drawingDistance)
         {
             if (drawingView == null)
-                throw new ArgumentNullException("drawingView");
+                throw new ArgumentNullException(nameof(drawingView));
 
             if (drawingDistance < 0)
-                throw new ArgumentOutOfRangeException("drawingDistance");
+                throw new ArgumentOutOfRangeException(nameof(drawingDistance));
 
             var views = new List<DrawingView>();
             var distanceFromBottomBorder = 2.0;
@@ -407,15 +421,16 @@
         /// <summary>
         /// Fits the view into a specified rectangle by changing it's scale.
         /// </summary>
-        /// <param name="drawingView">The Inventor.DrawingView instance that this extension method affects.</param>
+        /// <param name="drawingView">
+        /// The <see cref="DrawingView"/> instance that this extension method affects.</param>
         /// <param name="rectangle">The rectangle in which the view has to fit.</param>
         public static void Fit(this DrawingView drawingView, Rectangle rectangle)
         {
             if (drawingView == null)
-                throw new ArgumentNullException("drawingView");
+                throw new ArgumentNullException(nameof(drawingView));
 
             if (rectangle == null)
-                throw new ArgumentNullException("rectangle");
+                throw new ArgumentNullException(nameof(rectangle));
 
             var actualWidth = drawingView.Width / drawingView.Scale;
             var actualHeight = drawingView.Height / drawingView.Scale;
@@ -434,13 +449,14 @@
         /// <summary>
         /// Returns the horizontal lines of the drawing view.
         /// </summary>
-        /// <param name="drawingView">The Inventor.DrawingView instance that this extension method affects.</param>
-        /// <returns>A list of Inventor.DrawingCurve objects.</returns>
+        /// <param name="drawingView">
+        /// The <see cref="DrawingView"/> instance that this extension method affects.</param>
+        /// <returns>A list of <see cref="DrawingCurve"/> instances.</returns>
         /// <exception cref="ArgumentNullException"><paramref name="drawingView"/> is <c>null</c>.</exception>
         public static List<DrawingCurve> HorizontalLines(this DrawingView drawingView)
         {
             if (drawingView == null)
-                throw new ArgumentNullException("drawingView");
+                throw new ArgumentNullException(nameof(drawingView));
 
             var horizontalLines =
                 from x in drawingView.DrawingCurves.Cast<DrawingCurve>()
@@ -455,13 +471,14 @@
         /// <summary>
         /// Returns the vertical lines of the drawing view.
         /// </summary>
-        /// <param name="drawingView">The Inventor.DrawingView instance that this extension method affects.</param>
-        /// <returns>A list of Inventor.DrawingCurve objects.</returns>
+        /// <param name="drawingView">
+        /// The <see cref="DrawingView"/> instance that this extension method affects.</param>
+        /// <returns>A list of <see cref="DrawingCurve"/> instances.</returns>
         /// <exception cref="ArgumentNullException"><paramref name="drawingView"/> is <c>null</c>.</exception>
         public static List<DrawingCurve> VerticalLines(this DrawingView drawingView)
         {
             if (drawingView == null)
-                throw new ArgumentNullException("drawingView");
+                throw new ArgumentNullException(nameof(drawingView));
 
             var verticalLines =
                 from x in drawingView.DrawingCurves.Cast<DrawingCurve>()
@@ -477,12 +494,13 @@
         /// Returns a list of documents that are referenced by the drawing view.
         /// </summary>
         /// <typeparam name="TDocument">The document type.</typeparam>
-        /// <param name="drawingView">The Inventor.DrawingView instance that this extension method affects.</param>
+        /// <param name="drawingView">
+        /// The <see cref="DrawingView"/> instance that this extension method affects.</param>
         /// <exception cref="ArgumentNullException"><paramref name="drawingView"/> is <c>null</c>.</exception>
         public static List<TDocument> GetReferencedDocuments<TDocument>(this DrawingView drawingView)
         {
             if (drawingView == null)
-                throw new ArgumentNullException("drawingView");
+                throw new ArgumentNullException(nameof(drawingView));
 
             var document = (_Document)drawingView.ReferencedDocumentDescriptor.ReferencedDocument;
             return document.ReferencedDocuments.OfType<TDocument>().Reverse().ToList();
@@ -491,7 +509,8 @@
         /// <summary>
         /// Returns a list of sheet metal part documents that are referenced by the drawing view.
         /// </summary>
-        /// <param name="drawingView">The Inventor.DrawingView instance that this extension method affects.</param>
+        /// <param name="drawingView">
+        /// The <see cref="DrawingView"/> instance that this extension method affects.</param>
         /// <exception cref="ArgumentNullException"><paramref name="drawingView"/> is <c>null</c>.</exception>
         public static List<PartDocument> GetReferencedSheetMetalDocuments(this DrawingView drawingView)
         {

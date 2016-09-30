@@ -4,15 +4,16 @@
     using Inventor;
 
     /// <summary>
-    /// Provides extension methods for Inventor.Document objects.
+    /// Provides extension methods for <see cref="Document"/> instances.
     /// </summary>
     internal static class DocumentExtensions
     {
         /// <summary>
         /// Returns the path of the document's directory.
         /// </summary>
-        /// <param name="document">The Inventor.Document instance that this extension method affects.</param>
-        /// <returns>The path of the document's directory, or <c>null</c> if the document isn't saved to disk.</returns>
+        /// <param name="document">The <see cref="Document"/> instance that this extension method affects.</param>
+        /// <returns>The path of the document's directory,
+        /// or <c>null</c> if the document isn't saved to disk.</returns>
         /// <exception cref="ArgumentNullException"><paramref name="document"/> is <c>null</c>.</exception>
         public static string DirectoryPath(this Document document)
         {
@@ -27,7 +28,7 @@
         /// <summary>
         /// Saves the drawing document as a PDF file.
         /// </summary>
-        /// <param name="document">The Inventor.Document instance that this extension method affects.</param>
+        /// <param name="document">The <see cref="Document"/> instance that this extension method affects.</param>
         /// <param name="filePath">The path of the PDF file to be created.</param>
         /// <returns>A value that indicates whether the operation was successful.</returns>
         /// <exception cref="ArgumentNullException"><paramref name="document"/> is <c>null</c>.</exception>
@@ -35,15 +36,16 @@
         public static bool SaveAsPDF(this Document document, string filePath)
         {
             if (document == null)
-                throw new ArgumentNullException("document");
+                throw new ArgumentNullException(nameof(document));
 
             if (string.IsNullOrEmpty(filePath))
-                throw new ArgumentException("Argument is null or empty.", "filePath");
+                throw new ArgumentException("Argument is null or empty.", nameof(filePath));
 
             try
             {
                 var inventor = (Inventor.Application)document.Parent;
-                var PDFAddIn = (TranslatorAddIn)inventor.ApplicationAddIns.ItemById["{0AC6FD96-2F4D-42CE-8BE0-8AEA580399E4}"];
+                var PDFAddIn = (TranslatorAddIn)inventor.ApplicationAddIns
+                    .ItemById["{0AC6FD96-2F4D-42CE-8BE0-8AEA580399E4}"];
 
                 var translationContext = inventor.TransientObjects.CreateTranslationContext();
                 translationContext.Type = IOMechanismEnum.kFileBrowseIOMechanism;
