@@ -6,7 +6,7 @@
     using Inventor;
 
     /// <summary>
-    /// Provides extension methods for Inventor.DrawingView objects.
+    /// Provides extension methods for <see cref="DrawingView"/> instances.
     /// </summary>
     internal static class DrawingViewExtensions
     {
@@ -34,10 +34,15 @@
         /// </summary>
         /// <param name="drawingView">The Inventor.DrawingView instance that this extension method affects.</param>
         /// <param name="addDimensions">A value that specifies whether dimensions need to be added.</param>
-        /// <param name="drawingDistance">The distance between <paramref name="drawingView"/> and the projected views.</param>
+        /// <param name="drawingDistance">The distance between <paramref name="drawingView"/> and
+        /// the projected views.</param>
         /// <exception cref="ArgumentNullException"><paramref name="drawingView"/> is <c>null</c>.</exception>
         /// <exception cref="ArgumentOutOfRangeException"><paramref name="drawingDistance"/> is negative.</exception>
-        public static void AddTopAndLeftProjectedViews(this DrawingView drawingView, bool addDimensions, double drawingDistance)
+        public static void AddTopAndLeftProjectedViews(
+            this DrawingView drawingView,
+            bool addDimensions,
+            double drawingDistance
+        )
         {
             if (drawingView == null)
                 throw new ArgumentNullException("drawingView");
@@ -47,8 +52,7 @@
 
             var drawingViews = DrawingDocument.ActiveSheet.DrawingViews;
             var drawingDimensions = DrawingDocument.ActiveSheet.DrawingDimensions;
-            var dimensionStyle = DrawingDocument.StylesManager.ActiveStandardStyle.ActiveObjectDefaults.LinearDimensionStyle;
-            dimensionStyle.LinearPrecision = LinearPrecisionEnum.kZeroFractionalLinearPrecision;
+            var dimensionStyle = DrawingDocument.ActiveLinearDimensionStyle();
 
             // Add top view.
             var topView =
@@ -90,16 +94,20 @@
         /// <summary>
         /// Adds a part name to the drawing view of the active document.
         /// </summary>
-        /// <param name="drawingView">The <see cref="DrawingView"/> instance that this extension method affects.</param>
+        /// <param name="drawingView">The <see cref="DrawingView"/> instance that this extension method affects.
+        /// </param>
         /// <param name="partName">The name of the part to add.</param>
-        /// <param name="drawingDistance">The distance between <paramref name="drawingView"/> and the name to add.</param>
+        /// <param name="drawingDistance">The distance between <paramref name="drawingView"/> and the name to add.
+        /// </param>
         public static void AddPartName(this DrawingView drawingView, string partName, double drawingDistance)
         {
             if (drawingView == null)
                 throw new ArgumentNullException(nameof(drawingView));
 
             var note = DrawingDocument.ActiveSheet.DrawingNotes.GeneralNotes.AddFitted(
-                PlacementPoint: AddIn.CreatePoint2D(drawingView.Left - drawingDistance, drawingView.Top + drawingDistance * 5),
+                PlacementPoint: AddIn.CreatePoint2D(
+                    drawingView.Left - drawingDistance, drawingView.Top + drawingDistance * 5
+                ),
                 // TODO Parameterize style override. May 5, 2016.
                 FormattedText: $"<StyleOverride Bold='True' FontSize='0,4' Underline='True'>{partName}</StyleOverride>"
             );
@@ -118,7 +126,10 @@
         /// <param name="dimensionStyle">The style to apply to the dimension.</param>
         /// <returns>The created dimension.</returns>
         /// <exception cref="ArgumentNullException"><paramref name="drawingView"/> is <c>null</c>.</exception>
-        public static LinearGeneralDimension AddHorizontalDimension(this DrawingView drawingView, DimensionStyle dimensionStyle)
+        public static LinearGeneralDimension AddHorizontalDimension(
+            this DrawingView drawingView,
+            DimensionStyle dimensionStyle
+        )
         {
             return AddHorizontalDimension(drawingView, dimensionStyle, drawingDistance: 1.0);
         }
@@ -128,11 +139,16 @@
         /// </summary>
         /// <param name="drawingView">The Inventor.DrawingView instance that this extension method affects.</param>
         /// <param name="dimensionStyle">The style to apply to the dimension.</param>
-        /// <param name="drawingDistance">The distance between <paramref name="drawingView"/> and the dimension.</param>
+        /// <param name="drawingDistance">The distance between <paramref name="drawingView"/> and the dimension.
+        /// </param>
         /// <returns>The created dimension.</returns>
         /// <exception cref="ArgumentNullException"><paramref name="drawingView"/> is <c>null</c>.</exception>
         /// <exception cref="ArgumentOutOfRangeException"><paramref name="drawingDistance"/> is negative.</exception>
-        public static LinearGeneralDimension AddHorizontalDimension(this DrawingView drawingView, DimensionStyle dimensionStyle, double drawingDistance)
+        public static LinearGeneralDimension AddHorizontalDimension(
+            this DrawingView drawingView,
+            DimensionStyle dimensionStyle,
+            double drawingDistance
+        )
         {
             if (drawingView == null)
                 throw new ArgumentNullException("drawingView");
@@ -188,7 +204,10 @@
         /// <param name="dimensionStyle">The style to apply to the dimension.</param>
         /// <returns>The created dimension set.</returns>
         /// <exception cref="ArgumentNullException"><paramref name="drawingView"/> is <c>null</c>.</exception>
-        public static ChainDimensionSet AddHorizontalBendLineDimensionSet(this DrawingView drawingView, DimensionStyle dimensionStyle)
+        public static ChainDimensionSet AddHorizontalBendLineDimensionSet(
+            this DrawingView drawingView,
+            DimensionStyle dimensionStyle
+        )
         {
             var curves = new List<DrawingCurve>();
             var verticalLines = drawingView.VerticalLines();
@@ -221,7 +240,10 @@
         /// <param name="dimensionStyle">The style to apply to the dimension.</param>
         /// <returns>The created dimension.</returns>
         /// <exception cref="ArgumentNullException"><paramref name="drawingView"/> is <c>null</c>.</exception>
-        public static LinearGeneralDimension AddVerticalDimension(this DrawingView drawingView, DimensionStyle dimensionStyle)
+        public static LinearGeneralDimension AddVerticalDimension(
+            this DrawingView drawingView,
+            DimensionStyle dimensionStyle
+        )
         {
             return AddVerticalDimension(drawingView, dimensionStyle, drawingDistance: 1.0);
         }
@@ -231,11 +253,16 @@
         /// </summary>
         /// <param name="drawingView">The Inventor.DrawingView instance that this extension method affects.</param>
         /// <param name="dimensionStyle">The style to apply to the dimension.</param>
-        /// <param name="drawingDistance">The distance between <paramref name="drawingView"/> and the dimension.</param>
+        /// <param name="drawingDistance">The distance between <paramref name="drawingView"/> and the dimension.
+        /// </param>
         /// <returns>The created dimension.</returns>
         /// <exception cref="ArgumentNullException"><paramref name="drawingView"/> is <c>null</c>.</exception>
         /// <exception cref="ArgumentOutOfRangeException"><paramref name="drawingDistance"/> is negative.</exception>
-        public static LinearGeneralDimension AddVerticalDimension(this DrawingView drawingView, DimensionStyle dimensionStyle, double drawingDistance)
+        public static LinearGeneralDimension AddVerticalDimension(
+            this DrawingView drawingView,
+            DimensionStyle dimensionStyle,
+            double drawingDistance
+        )
         {
             if (drawingView == null)
                 throw new ArgumentNullException("drawingView");
@@ -266,7 +293,10 @@
 
                     return verticalLines.Count > 1
                         ? DrawingDocument.ActiveSheet.DrawingDimensions.GeneralDimensions.AddLinear(
-                            TextOrigin: AddIn.CreatePoint2D(drawingView.Left - drawingDistance, drawingView.Position.Y),
+                            TextOrigin: AddIn.CreatePoint2D(
+                                x: drawingView.Left - drawingDistance,
+                                y: drawingView.Position.Y
+                            ),
                             IntentOne: DrawingDocument.ActiveSheet.CreateGeometryIntent(verticalLines.First()),
                             IntentTwo: Type.Missing,
                             DimensionType: DimensionTypeEnum.kVerticalDimensionType,
@@ -288,7 +318,10 @@
         /// <param name="dimensionStyle">The style to apply to the dimension.</param>
         /// <returns>The created dimension set.</returns>
         /// <exception cref="ArgumentNullException"><paramref name="drawingView"/> is <c>null</c>.</exception>
-        public static ChainDimensionSet AddVerticalBendLineDimensionSet(this DrawingView drawingView, DimensionStyle dimensionStyle)
+        public static ChainDimensionSet AddVerticalBendLineDimensionSet(
+            this DrawingView drawingView,
+            DimensionStyle dimensionStyle
+        )
         {
             var curves = new List<DrawingCurve>();
             var horizontalLines = drawingView.HorizontalLines(); ;
@@ -451,7 +484,8 @@
             if (drawingView == null)
                 throw new ArgumentNullException("drawingView");
 
-            return ((_Document)drawingView.ReferencedDocumentDescriptor.ReferencedDocument).ReferencedDocuments.OfType<TDocument>().Reverse().ToList();
+            var document = (_Document)drawingView.ReferencedDocumentDescriptor.ReferencedDocument;
+            return document.ReferencedDocuments.OfType<TDocument>().Reverse().ToList();
         }
 
         /// <summary>
