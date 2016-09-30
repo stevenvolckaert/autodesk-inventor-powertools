@@ -34,7 +34,7 @@
 
             //MessageBox.Show(GetColumnIds(partsList));
 
-            partsList.RemoveColumns(
+            partsList.ClearColumnsExcept(
                 new Dictionary<string, int>
                 {
                     { "{32853F0F-3444-11D1-9E93-0060B03C1CA6}", 5 }, // "PART NUMBER"
