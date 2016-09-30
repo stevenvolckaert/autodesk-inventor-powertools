@@ -82,6 +82,28 @@ namespace StevenVolckaert.InventorPowerTools
 
         #region Helper methods
 
+        // TODO Place ToValueList<TEnum>() in an appropriate static class.
+        // As extension methods require an instance to be called, its place is not here.
+        // (We're never using the value parameter below.) 
+        // See http://stackoverflow.com/a/1167367/2314596
+
+        /// <summary>
+        /// Creates a list of all values defined by the specified enumeration type.
+        /// </summary>
+        /// <typeparam name="TEnum">The type of the enumeration values.</typeparam>
+        /// <returns>A list containing all values defined by the enumeration type.</returns>
+        public static IList<TEnum> CreateEnumValueList<TEnum>()
+            where TEnum : struct, IConvertible
+        {
+            var enumType = typeof(TEnum);
+
+            if (!enumType.IsEnum)
+                // TODO Replace string literal with the StevenVolckaert.Properties.Resources.IllegalType property.
+                throw new ArgumentException($"Illegal type '{enumType}'. Expected type 'System.Enum'.");
+
+            return Enum.GetValues(typeof(TEnum)).Cast<TEnum>().ToList();
+        }
+
         [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "x")]
         [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "y")]
         public static Point2d CreatePoint2D(double x, double y)
