@@ -11,7 +11,7 @@
             get { return _assemblyDocument; }
         }
 
-        public static readonly Func<AssemblyDocument, Assembly> AsAssembly =
+        public static Func<AssemblyDocument, Assembly> AsAssembly { get; } =
             assemblyDocument => new Assembly(assemblyDocument) { IsSelected = true };
 
         public string Name
