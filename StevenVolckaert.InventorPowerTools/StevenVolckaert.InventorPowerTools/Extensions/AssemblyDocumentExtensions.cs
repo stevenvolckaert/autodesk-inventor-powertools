@@ -38,7 +38,11 @@
 
             try
             {
-                assembly.ComponentDefinition.Parameters[propertyName].SetCustomPropertyFormat(displayPrecision, showUnit);
+                var parameter = assembly.ComponentDefinition.Parameters[propertyName];
+                parameter.SetCustomPropertyFormat(displayPrecision, showUnit);
+                
+
+                // TODO Set parameter.DisplayFormat instead of SetCustomPropertyFormat?
             }
             catch
             {

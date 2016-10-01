@@ -31,6 +31,7 @@
             parameter.CustomPropertyFormat.PropertyType = CustomPropertyTypeEnum.kTextPropertyType;
             parameter.CustomPropertyFormat.ShowUnitsString = showUnit;
             parameter.CustomPropertyFormat.Precision = displayPrecision;
+            //parameter.CustomPropertyFormat.ShowTrailingZeros
         }
     }
 }

@@ -22,7 +22,7 @@
                 throw new ArgumentNullException(nameof(bottomLeftCorner));
 
             if (topRightCorner == null)
-                throw new ArgumentNullException(nameof(topRightCorner);
+                throw new ArgumentNullException(nameof(topRightCorner));
 
             BottomLeftCorner = bottomLeftCorner;
             TopRightCorner = topRightCorner;

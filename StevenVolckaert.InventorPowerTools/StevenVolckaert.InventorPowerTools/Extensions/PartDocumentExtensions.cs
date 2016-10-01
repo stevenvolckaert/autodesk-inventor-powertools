@@ -111,7 +111,8 @@
 
             try
             {
-                partDocument.ComponentDefinition.Parameters[propertyName].SetCustomPropertyFormat(displayPrecision, showUnit);
+                var parameter = partDocument.ComponentDefinition.Parameters[propertyName];
+                parameter.SetCustomPropertyFormat(displayPrecision, showUnit);
             }
             catch
             {

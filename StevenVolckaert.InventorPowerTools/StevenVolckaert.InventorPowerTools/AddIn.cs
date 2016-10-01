@@ -104,6 +104,30 @@ namespace StevenVolckaert.InventorPowerTools
             return Enum.GetValues(typeof(TEnum)).Cast<TEnum>().ToList();
         }
 
+        private static Dictionary<LinearPrecisionEnum, CustomPropertyPrecisionEnum> _linearPrecisionEnumMapping =
+            new Dictionary<LinearPrecisionEnum, CustomPropertyPrecisionEnum>
+            {
+                { LinearPrecisionEnum.kZeroDecimalPlaceLinearPrecision, CustomPropertyPrecisionEnum.kZeroDecimalPlacePrecision },
+                { LinearPrecisionEnum.kOneDecimalPlaceLinearPrecision, CustomPropertyPrecisionEnum.kOneDecimalPlacePrecision },
+                { LinearPrecisionEnum.kTwoDecimalPlacesLinearPrecision, CustomPropertyPrecisionEnum.kTwoDecimalPlacesPrecision },
+                { LinearPrecisionEnum.kThreeDecimalPlacesLinearPrecision, CustomPropertyPrecisionEnum.kThreeDecimalPlacesPrecision },
+                { LinearPrecisionEnum.kFourDecimalPlacesLinearPrecision, CustomPropertyPrecisionEnum.kFourDecimalPlacesPrecision },
+                { LinearPrecisionEnum.kFiveDecimalPlacesLinearPrecision, CustomPropertyPrecisionEnum.kFiveDecimalPlacesPrecision },
+                { LinearPrecisionEnum.kSixDecimalPlacesLinearPrecision, CustomPropertyPrecisionEnum.kSixDecimalPlacesPrecision },
+                { LinearPrecisionEnum.kSevenDecimalPlacesLinearPrecision, CustomPropertyPrecisionEnum.kSevenDecimalPlacesPrecision },
+                { LinearPrecisionEnum.kEightDecimalPlacesLinearPrecision, CustomPropertyPrecisionEnum.kEightDecimalPlacesPrecision },
+                { LinearPrecisionEnum.kHalfFractionalLinearPrecision, CustomPropertyPrecisionEnum.kHalfFractionalLengthPrecision },
+                { LinearPrecisionEnum.kQuarterFractionalLinearPrecision, CustomPropertyPrecisionEnum.kQuarterFractionalLengthPrecision },
+                { LinearPrecisionEnum.kEightDecimalPlacesLinearPrecision, CustomPropertyPrecisionEnum.kEightDecimalPlacesPrecision },
+                { LinearPrecisionEnum.kSixteenthsFractionalLinearPrecision, CustomPropertyPrecisionEnum.kSixteenthsFractionalLengthPrecision },
+                { LinearPrecisionEnum.kThirtySecondsFractionalLinearPrecision, CustomPropertyPrecisionEnum.kThirtySecondsFractionalLengthPrecision },
+                { LinearPrecisionEnum.kSixtyFourthsFractionalLinearPrecision, CustomPropertyPrecisionEnum.kSixteenthsFractionalLengthPrecision },
+                { LinearPrecisionEnum.kOneTwentyEighthsFractionalLinearPrecision, CustomPropertyPrecisionEnum.kOneTwentyEighthsFractionalLengthPrecision }
+            };
+
+        public static Func<LinearPrecisionEnum, CustomPropertyPrecisionEnum> AsCustomPropertyPrecisionEnum { get; } =
+            x => _linearPrecisionEnumMapping[x];
+
         [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "x")]
         [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "y")]
         public static Point2d CreatePoint2D(double x, double y)

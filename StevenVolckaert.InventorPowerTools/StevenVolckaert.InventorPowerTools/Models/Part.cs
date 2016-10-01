@@ -20,15 +20,20 @@
             get { return Document.DisplayName; }
         }
 
-        public Part(PartDocument part)
+        public Part(PartDocument partDocument)
         {
-            if (part == null)
-                throw new ArgumentNullException(nameof(part));
+            if (partDocument == null)
+                throw new ArgumentNullException(nameof(partDocument));
 
-            Document = part;
-            Document.SetCustomPropertyFormat("Lengte", CustomPropertyPrecisionEnum.kZeroDecimalPlacePrecision, showUnit: false);
-            Document.SetCustomPropertyFormat("Breedte", CustomPropertyPrecisionEnum.kZeroDecimalPlacePrecision, showUnit: false);
-            Document.SetCustomPropertyFormat("Dikte", CustomPropertyPrecisionEnum.kZeroDecimalPlacePrecision, showUnit: false);
+            Document = partDocument;
+
+            var dimensionStyle = TryGetActiveDrawingDocument()?.ActiveLinearDimensionStyle();
+            var linearPrecision = dimensionStyle?.LinearPrecision ?? LinearPrecisionEnum.kZeroDecimalPlaceLinearPrecision;
+            var customPropertyPrecisionEnum = AddIn.AsCustomPropertyPrecisionEnum(linearPrecision);
+
+            Document.SetCustomPropertyFormat("Lengte", customPropertyPrecisionEnum, showUnit: false);
+            Document.SetCustomPropertyFormat("Breedte", customPropertyPrecisionEnum, showUnit: false);
+            Document.SetCustomPropertyFormat("Dikte", customPropertyPrecisionEnum, showUnit: false);
         }
     }
 }
