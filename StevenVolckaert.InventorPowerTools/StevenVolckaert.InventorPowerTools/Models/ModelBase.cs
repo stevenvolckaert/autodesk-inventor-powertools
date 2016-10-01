@@ -2,6 +2,7 @@
 {
     using Inventor;
     using Microsoft.Practices.Prism.ViewModel;
+    using System.Collections.Generic;
 
     public abstract class ModelBase : NotificationObject
     {
@@ -32,6 +33,32 @@
         protected DrawingDocument TryGetActiveDrawingDocument()
         {
             return ActiveDocument as DrawingDocument;
+        }
+
+        private static Dictionary<LinearPrecisionEnum, CustomPropertyPrecisionEnum> _linearPrecisionEnumMapping =
+            new Dictionary<LinearPrecisionEnum, CustomPropertyPrecisionEnum>
+            {
+                { LinearPrecisionEnum.kZeroDecimalPlaceLinearPrecision, CustomPropertyPrecisionEnum.kZeroDecimalPlacePrecision },
+                { LinearPrecisionEnum.kOneDecimalPlaceLinearPrecision, CustomPropertyPrecisionEnum.kOneDecimalPlacePrecision },
+                { LinearPrecisionEnum.kTwoDecimalPlacesLinearPrecision, CustomPropertyPrecisionEnum.kTwoDecimalPlacesPrecision },
+                { LinearPrecisionEnum.kThreeDecimalPlacesLinearPrecision, CustomPropertyPrecisionEnum.kThreeDecimalPlacesPrecision },
+                { LinearPrecisionEnum.kFourDecimalPlacesLinearPrecision, CustomPropertyPrecisionEnum.kFourDecimalPlacesPrecision },
+                { LinearPrecisionEnum.kFiveDecimalPlacesLinearPrecision, CustomPropertyPrecisionEnum.kFiveDecimalPlacesPrecision },
+                { LinearPrecisionEnum.kSixDecimalPlacesLinearPrecision, CustomPropertyPrecisionEnum.kSixDecimalPlacesPrecision },
+                { LinearPrecisionEnum.kSevenDecimalPlacesLinearPrecision, CustomPropertyPrecisionEnum.kSevenDecimalPlacesPrecision },
+                { LinearPrecisionEnum.kEightDecimalPlacesLinearPrecision, CustomPropertyPrecisionEnum.kEightDecimalPlacesPrecision },
+                { LinearPrecisionEnum.kHalfFractionalLinearPrecision, CustomPropertyPrecisionEnum.kHalfFractionalLengthPrecision },
+                { LinearPrecisionEnum.kQuarterFractionalLinearPrecision, CustomPropertyPrecisionEnum.kQuarterFractionalLengthPrecision },
+                { LinearPrecisionEnum.kEightDecimalPlacesLinearPrecision, CustomPropertyPrecisionEnum.kEightDecimalPlacesPrecision },
+                { LinearPrecisionEnum.kSixteenthsFractionalLinearPrecision, CustomPropertyPrecisionEnum.kSixteenthsFractionalLengthPrecision },
+                { LinearPrecisionEnum.kThirtySecondsFractionalLinearPrecision, CustomPropertyPrecisionEnum.kThirtySecondsFractionalLengthPrecision },
+                { LinearPrecisionEnum.kSixtyFourthsFractionalLinearPrecision, CustomPropertyPrecisionEnum.kSixteenthsFractionalLengthPrecision },
+                { LinearPrecisionEnum.kOneTwentyEighthsFractionalLinearPrecision, CustomPropertyPrecisionEnum.kOneTwentyEighthsFractionalLengthPrecision }
+            };
+
+        public static CustomPropertyPrecisionEnum ConvertToCustomPropertyPrecisionEnum(LinearPrecisionEnum linearPrecisionEnum)
+        {
+            return _linearPrecisionEnumMapping[linearPrecisionEnum];
         }
     }
 }
