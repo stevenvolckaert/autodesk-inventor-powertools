@@ -11,7 +11,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Steven Volckaert")]
 [assembly: AssemblyProduct(StevenVolckaert.InventorPowerTools.AssemblyInfo.Name)]
-[assembly: AssemblyCopyright("Copyright © 2015 Steven Volckaert")]
+[assembly: AssemblyCopyright("Copyright © 2016 Steven Volckaert")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
