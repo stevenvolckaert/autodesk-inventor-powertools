@@ -1,13 +1,13 @@
 ================================================================================
- Inventor Power Tools - A collection of power tools for Autodesk Inventor 2012.
- Copyright © 2015 Steven Volckaert
- steven.volckaert@gmail.com
+Inventor® Power Tools - A collection of power tools for Autodesk Inventor® 2012
+Copyright © 2016 Steven Volckaert
+https://www.linkedin.com/in/stevenvolckaert | steven.volckaert@gmail.com
 ================================================================================
 
- Installation Instructions
+ Installation instructions
 --------------------------------------------------------------------------------
 
-1. Close Autodesk Inventor.
+1. Close Autodesk Inventor®.
 2. Copy the files
 
     StevenVolckaert.InventorPowerTools.Inventor.addin
@@ -17,5 +17,5 @@ to directory
 
     C:\ProgramData\Autodesk\Inventor 2012\Addins\
 
-3. Start Autodesk Inventor.
+3. Start Autodesk Inventor®.
 4. Enjoy!
