@@ -200,8 +200,8 @@ UpgradeLog*.htm
 # Microsoft Fakes
 FakesAssemblies/
 
-# Microsoft Compiled HTML Help
-*.chm
+# Microsoft Compiled HTML Help index files
+*.chw
 
 # Node.js Tools for Visual Studio
 .ntvs_analysis.dat
