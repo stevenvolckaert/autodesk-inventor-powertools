@@ -26,14 +26,38 @@
                 throw new ArgumentNullException(nameof(partDocument));
 
             Document = partDocument;
+            SetCustomPropertyFormat(CustomPropertyPrecisionEnum.kZeroDecimalPlacePrecision, showTrailingZeros: false);
+        }
 
-            var dimensionStyle = TryGetActiveDrawingDocument()?.ActiveLinearDimensionStyle();
-            var linearPrecision = dimensionStyle?.LinearPrecision ?? LinearPrecisionEnum.kZeroDecimalPlaceLinearPrecision;
-            var customPropertyPrecisionEnum = AddIn.AsCustomPropertyPrecisionEnum(linearPrecision);
+        public void SetCustomPropertyFormat(CustomPropertyPrecisionEnum displayPrecision, bool showTrailingZeros)
+        {
+            foreach (var propertyName in CustomPropertyNames)
+            {
+                var parameter = Document.ComponentDefinition.Parameters.TryGetValue(propertyName);
 
-            Document.SetCustomPropertyFormat("Lengte", customPropertyPrecisionEnum, showUnit: false);
-            Document.SetCustomPropertyFormat("Breedte", customPropertyPrecisionEnum, showUnit: false);
-            Document.SetCustomPropertyFormat("Dikte", customPropertyPrecisionEnum, showUnit: false);
+                try
+                {
+                    parameter?.SetCustomPropertyFormat(
+                        displayPrecision,
+                        showUnit: false,
+                        showTrailingZeros: showTrailingZeros
+                    );
+                }
+                catch
+                {
+                }
+            }
+        }
+
+        public void SetCustomPropertyFormat(LinearPrecision linearPrecision, bool showTrailingZeros)
+        {
+            if (linearPrecision == null)
+                throw new ArgumentNullException(nameof(linearPrecision));
+
+            SetCustomPropertyFormat(
+                ConvertToCustomPropertyPrecisionEnum(linearPrecision.EnumValue),
+                showTrailingZeros
+            );
         }
     }
 }

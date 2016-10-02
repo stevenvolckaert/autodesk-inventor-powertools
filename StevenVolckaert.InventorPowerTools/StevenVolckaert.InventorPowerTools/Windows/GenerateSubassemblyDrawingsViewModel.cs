@@ -67,7 +67,10 @@
 
                 try
                 {
-                    // 1. Add base view.
+                    // 1. Alter formatting of custom properties.
+                    SetCustomPropertyFormat(assembly.Parts);
+
+                    // 2. Add base view.
                     var baseView = sheet.DrawingViews.AddBaseView(
                         Model: (_Document)assembly.Document,
                         Position: drawingDocument.ActiveSheet.CenterPoint(),
@@ -89,18 +92,10 @@
                         drawingDistance: 0.5
                     );
 
-                    // 2. Add part list to the top right corner.
-                    foreach (var part in assembly.Document.Parts())
-                    {
-                        // Alter formatting of custom properties.
-                        part.SetCustomPropertyFormat("Lengte", displayPrecision: CustomPropertyPrecisionEnum.kZeroDecimalPlacePrecision, showUnit: false);
-                        part.SetCustomPropertyFormat("Breedte", displayPrecision: CustomPropertyPrecisionEnum.kZeroDecimalPlacePrecision, showUnit: false);
-                        part.SetCustomPropertyFormat("Dikte", displayPrecision: CustomPropertyPrecisionEnum.kZeroDecimalPlacePrecision, showUnit: false);
-                    }
-
+                    // 3. Add part list to the top right corner.
                     var partsList = sheet.AddPartsList(assembly.Document, PartsListLevelEnum.kStructured);
 
-                    // 3. Add base "ISO TOP Right", Hidden line removed, Shaded base view of the subassembly in the drawing's top right corner.
+                    // 4. Add base "ISO TOP Right", Hidden line removed, Shaded base view of the subassembly in the drawing's top right corner.
                     var perspectiveView = sheet.DrawingViews.AddBaseView(
                         Model: (_Document)assembly.Document,
                         Position: drawingDocument.ActiveSheet.TopRightPoint(),

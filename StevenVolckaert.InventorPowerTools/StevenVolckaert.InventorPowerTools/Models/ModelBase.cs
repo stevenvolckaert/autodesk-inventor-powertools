@@ -11,6 +11,8 @@
             get { return AddIn.Inventor.ActiveDocument; }
         }
 
+        protected static List<string> CustomPropertyNames { get; } = new List<string> { "Lengte", "Breedte", "Dikte" };
+
         private bool _isSelected;
         public bool IsSelected
         {
@@ -47,13 +49,13 @@
                 { LinearPrecisionEnum.kSixDecimalPlacesLinearPrecision, CustomPropertyPrecisionEnum.kSixDecimalPlacesPrecision },
                 { LinearPrecisionEnum.kSevenDecimalPlacesLinearPrecision, CustomPropertyPrecisionEnum.kSevenDecimalPlacesPrecision },
                 { LinearPrecisionEnum.kEightDecimalPlacesLinearPrecision, CustomPropertyPrecisionEnum.kEightDecimalPlacesPrecision },
-                { LinearPrecisionEnum.kHalfFractionalLinearPrecision, CustomPropertyPrecisionEnum.kHalfFractionalLengthPrecision },
-                { LinearPrecisionEnum.kQuarterFractionalLinearPrecision, CustomPropertyPrecisionEnum.kQuarterFractionalLengthPrecision },
-                { LinearPrecisionEnum.kEightDecimalPlacesLinearPrecision, CustomPropertyPrecisionEnum.kEightDecimalPlacesPrecision },
-                { LinearPrecisionEnum.kSixteenthsFractionalLinearPrecision, CustomPropertyPrecisionEnum.kSixteenthsFractionalLengthPrecision },
-                { LinearPrecisionEnum.kThirtySecondsFractionalLinearPrecision, CustomPropertyPrecisionEnum.kThirtySecondsFractionalLengthPrecision },
-                { LinearPrecisionEnum.kSixtyFourthsFractionalLinearPrecision, CustomPropertyPrecisionEnum.kSixteenthsFractionalLengthPrecision },
-                { LinearPrecisionEnum.kOneTwentyEighthsFractionalLinearPrecision, CustomPropertyPrecisionEnum.kOneTwentyEighthsFractionalLengthPrecision }
+                { LinearPrecisionEnum.kHalfFractionalLinearPrecision, CustomPropertyPrecisionEnum.kOneDecimalPlacePrecision },
+                { LinearPrecisionEnum.kQuarterFractionalLinearPrecision, CustomPropertyPrecisionEnum.kTwoDecimalPlacesPrecision },
+                { LinearPrecisionEnum.kEighthsFractionalLinearPrecision, CustomPropertyPrecisionEnum.kThreeDecimalPlacesPrecision },
+                { LinearPrecisionEnum.kSixteenthsFractionalLinearPrecision, CustomPropertyPrecisionEnum.kFourDecimalPlacesPrecision },
+                { LinearPrecisionEnum.kThirtySecondsFractionalLinearPrecision, CustomPropertyPrecisionEnum.kFiveDecimalPlacesPrecision },
+                { LinearPrecisionEnum.kSixtyFourthsFractionalLinearPrecision, CustomPropertyPrecisionEnum.kSixDecimalPlacesPrecision },
+                { LinearPrecisionEnum.kOneTwentyEighthsFractionalLinearPrecision, CustomPropertyPrecisionEnum.kSevenDecimalPlacesPrecision }
             };
 
         public static CustomPropertyPrecisionEnum ConvertToCustomPropertyPrecisionEnum(LinearPrecisionEnum linearPrecisionEnum)

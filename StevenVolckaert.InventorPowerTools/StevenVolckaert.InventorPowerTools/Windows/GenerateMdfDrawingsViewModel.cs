@@ -3,6 +3,7 @@
     using System;
     using System.Collections.Generic;
     using System.Globalization;
+    using System.Linq;
     using System.Windows;
     using Inventor;
     using Environment = System.Environment;
@@ -33,7 +34,7 @@
 
         protected override void GenerateDrawings()
         {
-            foreach (var part in MdfParts)
+            foreach (var part in MdfParts.Select(Part.AsPart))
             {
                 var drawingDocument = CreateDrawingDocument();
                 var sheet = drawingDocument.ActiveSheet;
@@ -42,9 +43,7 @@
                 try
                 {
                     // 1. Alter formatting of custom properties.
-                    part.SetCustomPropertyFormat("Lengte", CustomPropertyPrecisionEnum.kZeroDecimalPlacePrecision, showUnit: false);
-                    part.SetCustomPropertyFormat("Breedte", CustomPropertyPrecisionEnum.kZeroDecimalPlacePrecision, showUnit: false);
-                    part.SetCustomPropertyFormat("Dikte", CustomPropertyPrecisionEnum.kZeroDecimalPlacePrecision, showUnit: false);
+                    SetCustomPropertyFormat(part);
 
                     // 2. Add base view.
                     var baseView = sheet.DrawingViews.AddBaseView(
@@ -107,7 +106,12 @@
                 catch (Exception ex)
                 {
                     MessageBox.Show(
-                        messageBoxText: string.Format(CultureInfo.InvariantCulture, "Encountered an exception when generating drawings for part document {0}:{1}", part.FullFileName, Environment.NewLine + ex.ToString()),
+                        messageBoxText: string.Format(
+                            CultureInfo.InvariantCulture,
+                            "Encountered an exception when generating drawings for part document {0}:{1}",
+                            part.Document.FullFileName,
+                            Environment.NewLine + ex.ToString()
+                        ),
                         caption: "Exception",
                         button: MessageBoxButton.OK,
                         icon: MessageBoxImage.Exclamation

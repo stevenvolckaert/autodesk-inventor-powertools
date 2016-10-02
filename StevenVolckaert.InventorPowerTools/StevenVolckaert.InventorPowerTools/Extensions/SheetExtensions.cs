@@ -48,7 +48,6 @@
             partsList.AddCustomPropertyColumn("Dikte");
 
             partsList.SetColumnValuesHorizontalJustification(HorizontalTextAlignmentEnum.kAlignTextCenter);
-
             return partsList;
         }
 

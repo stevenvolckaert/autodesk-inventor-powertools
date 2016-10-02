@@ -9,29 +9,44 @@
     internal static class ParameterExtensions
     {
         /// <summary>
-        /// Sets the parameter's CustomPropertyFormat to text, no units, and zero decimal place precision.
+        /// Sets the parameter's custom property format to text, no units, zero decimal place precision, and no
+        /// trailing zeros.
         /// </summary>
-        /// <param name="parameter"></param>
+        /// <param name="parameter">The <see cref="Parameter"/> instance that this extension method affects.</param>
+        /// <exception cref="ArgumentNullException"><paramref name="parameter"/> is <c>null</c>.</exception>
         public static void SetCustomPropertyFormat(this Parameter parameter)
         {
-            SetCustomPropertyFormat(parameter, displayPrecision: CustomPropertyPrecisionEnum.kZeroDecimalPlacePrecision, showUnit: false);
+            if (parameter == null)
+                throw new ArgumentNullException(nameof(parameter));
+
+            SetCustomPropertyFormat(
+                parameter,
+                displayPrecision: CustomPropertyPrecisionEnum.kZeroDecimalPlacePrecision,
+                showUnit: false,
+                showTrailingZeros: false
+            );
         }
 
         /// <summary>
-        /// 
+        /// Sets the format of a custom property.
         /// </summary>
-        /// <param name="parameter"></param>
-        /// <param name="displayPrecision"></param>
-        /// <param name="showUnit"></param>
-        public static void SetCustomPropertyFormat(this Parameter parameter, CustomPropertyPrecisionEnum displayPrecision, bool showUnit)
+        /// <param name="parameter">The <see cref="Parameter"/> instance that this extension method affects.</param>
+        /// <param name="displayPrecision">The precision used to format the parameter's value.</param>
+        /// <param name="showUnit">A value which indicates whether to display the parameter's unit.</param>
+        /// <exception cref="ArgumentNullException"><paramref name="parameter"/> is <c>null</c>.</exception>
+        public static void SetCustomPropertyFormat(
+            this Parameter parameter,
+            CustomPropertyPrecisionEnum displayPrecision,
+            bool showUnit,
+            bool showTrailingZeros)
         {
             if (parameter == null)
                 throw new ArgumentNullException(nameof(parameter));
 
             parameter.CustomPropertyFormat.PropertyType = CustomPropertyTypeEnum.kTextPropertyType;
-            parameter.CustomPropertyFormat.ShowUnitsString = showUnit;
             parameter.CustomPropertyFormat.Precision = displayPrecision;
-            //parameter.CustomPropertyFormat.ShowTrailingZeros
+            parameter.CustomPropertyFormat.ShowUnitsString = showUnit;
+            parameter.CustomPropertyFormat.ShowTrailingZeros = showTrailingZeros;
         }
     }
 }

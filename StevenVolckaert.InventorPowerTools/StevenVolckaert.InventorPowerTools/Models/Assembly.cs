@@ -1,6 +1,8 @@
 ﻿namespace StevenVolckaert.InventorPowerTools
 {
     using System;
+    using System.Collections.Generic;
+    using System.Linq;
     using Inventor;
 
     public class Assembly : ModelBase, IDocument
@@ -20,15 +22,52 @@
             get { return Document.DisplayName; }
         }
 
+        /// <summary>
+        /// Gets the individual parts contained in the assembly.
+        /// </summary>
+        public IEnumerable<Part> Parts
+        {
+            get { return Document.Parts().Select(Part.AsPart); }
+        }
+
         public Assembly(AssemblyDocument assemblyDocument)
         {
             if (assemblyDocument == null)
                 throw new ArgumentNullException(nameof(assemblyDocument));
 
             Document = assemblyDocument;
-            Document.SetCustomPropertyFormat("Lengte", CustomPropertyPrecisionEnum.kZeroDecimalPlacePrecision, showUnit: false);
-            Document.SetCustomPropertyFormat("Breedte", CustomPropertyPrecisionEnum.kZeroDecimalPlacePrecision, showUnit: false);
-            Document.SetCustomPropertyFormat("Dikte", CustomPropertyPrecisionEnum.kZeroDecimalPlacePrecision, showUnit: false);
+            SetCustomPropertyFormat(CustomPropertyPrecisionEnum.kZeroDecimalPlacePrecision, showTrailingZeros: false);
+        }
+
+        public void SetCustomPropertyFormat(CustomPropertyPrecisionEnum displayPrecision, bool showTrailingZeros)
+        {
+            foreach (var propertyName in CustomPropertyNames)
+            {
+                var parameter = Document.ComponentDefinition.Parameters.TryGetValue(propertyName);
+
+                try
+                {
+                    parameter?.SetCustomPropertyFormat(
+                        displayPrecision,
+                        showUnit: false,
+                        showTrailingZeros: showTrailingZeros
+                    );
+                }
+                catch
+                {
+                }
+            }
+        }
+
+        public void SetCustomPropertyFormat(LinearPrecision linearPrecision, bool showTrailingZeros)
+        {
+            if (linearPrecision == null)
+                throw new ArgumentNullException(nameof(linearPrecision));
+
+            SetCustomPropertyFormat(
+                ConvertToCustomPropertyPrecisionEnum(linearPrecision.EnumValue),
+                showTrailingZeros
+            );
         }
     }
 }

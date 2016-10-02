@@ -78,7 +78,10 @@
 
                 try
                 {
-                    // 1. Add flat pattern base view.
+                    // 1. Alter formatting of custom properties.
+                    SetCustomPropertyFormat(part);
+
+                    // 2. Add flat pattern base view.
                     var flatPatternView = sheet.DrawingViews.AddBaseView(
                         Model: (_Document)part.Document,
                         Position: drawingDocument.ActiveSheet.CenterPoint(),
@@ -99,20 +102,19 @@
                     if (flatPatternView.HorizontalLines().Any(x => x.IsBendLine()))
                         flatPatternView.AddVerticalDimension(dimensionStyle, drawingDistance: 2.0);
 
-                    // 2. Add part list to the top right corner.
+                    // 3. Add part list to the top right corner.
                     var partsList = sheet.AddPartsList(part.Document, PartsListLevelEnum.kPartsOnly);
                     var quantity = Assembly.GetPartQuantity(part.Document);
 
                     if (quantity > 0)
                         partsList.PartsListRows[1]["QTY"].Value = quantity.ToString();
 
-                    // 3. Add base "ISO Top Right", hidden line removed, shaded base view of the part in the drawing's top right corner.
+                    // 4. Add base "ISO Top Right", hidden line removed, shaded base view of the part in the drawing's top right corner.
                     var perspectiveView = sheet.DrawingViews.AddBaseView(
                         Model: (_Document)part.Document,
                         Position: drawingDocument.ActiveSheet.TopRightPoint(),
                         Scale: 0.1,
                         ViewOrientation: ViewOrientationTypeEnum.kIsoTopRightViewOrientation,
-                        // DrawingViewStyleEnum.kShadedDrawingViewStyle results in difficult to read printouts - replacing with kHiddenLineDrawingViewStyle.
                         ViewStyle: DrawingViewStyleEnum.kHiddenLineDrawingViewStyle,
                         ModelViewName: string.Empty,
                         ArbitraryCamera: Type.Missing,
@@ -140,7 +142,7 @@
                             perspectiveView.Position.Y - partsList.RangeBox.Height()
                         );
 
-                    // 4. TODO Add 'Top View' below the 'ISO Top Right' view.
+                    // 5. TODO Add 'Top View' below the 'ISO Top Right' view.
                     // TODO Implement extension method 'BottomRightPoint'.
                     var topView = sheet.DrawingViews.AddBaseView(
                         Model: (_Document)part.Document,

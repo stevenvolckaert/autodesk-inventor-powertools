@@ -171,5 +171,16 @@
 
             return drawingDocument;
         }
+
+        protected void SetCustomPropertyFormat(Part part)
+        {
+            part.SetCustomPropertyFormat(SelectedLinearPrecision, AreTrailingZerosDisplayed);
+        }
+
+        protected void SetCustomPropertyFormat(IEnumerable<Part> parts)
+        {
+            foreach (var part in parts)
+                SetCustomPropertyFormat(part);
+        }
     }
 }

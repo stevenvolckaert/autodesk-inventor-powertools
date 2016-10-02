@@ -90,33 +90,5 @@
                     return subType;
             }
         }
-
-        /// <summary>
-        /// Sets the format of a custom property.
-        /// </summary>
-        /// <param name="partDocument">
-        /// The <see cref="PartDocument"/> instance that this extension method affects.</param>
-        /// <param name="propertyName">The name of the custom property.</param>
-        /// <param name="displayPrecision">The value's display precision.</param>
-        /// <param name="showUnit">A value which indicates whether to display the value's unit.</param>
-        /// <exception cref="ArgumentNullException"><paramref name="partDocument"/> is <c>null</c>.</exception>
-        /// <exception cref="ArgumentException"><paramref name="propertyName"/> is <c>null</c> or empty.</exception>
-        public static void SetCustomPropertyFormat(this PartDocument partDocument, string propertyName, CustomPropertyPrecisionEnum displayPrecision, bool showUnit)
-        {
-            if (partDocument == null)
-                throw new ArgumentNullException(nameof(partDocument));
-
-            if (string.IsNullOrEmpty(propertyName))
-                throw new ArgumentException("Argument is null or empty.", nameof(propertyName));
-
-            try
-            {
-                var parameter = partDocument.ComponentDefinition.Parameters[propertyName];
-                parameter.SetCustomPropertyFormat(displayPrecision, showUnit);
-            }
-            catch
-            {
-            }
-        }
     }
 }

@@ -10,45 +10,6 @@
     /// </summary>
     public static class AssemblyDocumentExtensions
     {
-        /// <summary>
-        /// Sets the format of a custom property.
-        /// </summary>
-        /// <param name="assembly">
-        /// The <see cref="AssemblyDocument"/> instance that this extension method affects.</param>
-        /// <param name="propertyName">The name of the custom property.</param>
-        /// <param name="displayPrecision">The value's display precision.</param>
-        /// <param name="showUnit">A value which indicates whether to display the value's unit.</param>
-        /// <exception cref="ArgumentNullException"><paramref name="assembly"/> is <c>null</c>.</exception>
-        /// <exception cref="ArgumentException"><paramref name="propertyName"/> is <c>null</c> or empty.</exception>
-        public static void SetCustomPropertyFormat(
-            this AssemblyDocument assembly,
-            string propertyName,
-            CustomPropertyPrecisionEnum displayPrecision,
-            bool showUnit
-        )
-        {
-            if (assembly == null)
-                throw new ArgumentNullException(nameof(assembly));
-
-            // NOTE Uncommenting the next argument check always throws an exception.
-            // This is likely a bug in the Inventor API.
-
-            //if (string.IsNullOrEmpty(propertyName))
-            //    throw new ArgumentException("Argument is null or empty.", "propertyName");
-
-            try
-            {
-                var parameter = assembly.ComponentDefinition.Parameters[propertyName];
-                parameter.SetCustomPropertyFormat(displayPrecision, showUnit);
-                
-
-                // TODO Set parameter.DisplayFormat instead of SetCustomPropertyFormat?
-            }
-            catch
-            {
-            }
-        }
-
         public static List<Assembly> Subassemblies(this AssemblyDocument assembly)
         {
             if (assembly == null)
