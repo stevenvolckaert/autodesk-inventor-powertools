@@ -98,8 +98,9 @@ namespace StevenVolckaert.InventorPowerTools
             var enumType = typeof(TEnum);
 
             if (!enumType.IsEnum)
-                // TODO Replace string literal with the StevenVolckaert.Properties.Resources.IllegalType property.
-                throw new ArgumentException($"Illegal type '{enumType}'. Expected type 'System.Enum'.");
+                throw new ArgumentException(
+                    string.Format(CultureInfo.CurrentCulture, Resources.IllegalType, enumType, nameof(Enum))
+                );
 
             return Enum.GetValues(typeof(TEnum)).Cast<TEnum>().ToList();
         }

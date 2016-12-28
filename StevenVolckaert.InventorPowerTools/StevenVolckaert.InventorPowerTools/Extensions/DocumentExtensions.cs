@@ -4,21 +4,22 @@
     using Inventor;
 
     /// <summary>
-    /// Provides extension methods for <see cref="Document"/> instances.
+    ///     Provides extension methods for <see cref="Document"/> instances.
     /// </summary>
     internal static class DocumentExtensions
     {
         /// <summary>
-        /// Returns the path of the document's directory.
+        ///     Returns the path of the document's directory.
         /// </summary>
         /// <param name="document">The <see cref="Document"/> instance that this extension method affects.</param>
-        /// <returns>The path of the document's directory,
-        /// or <c>null</c> if the document isn't saved to disk.</returns>
+        /// <returns>
+        ///     The path of the document's directory, or <c>null</c> if the document isn't saved to disk.
+        /// </returns>
         /// <exception cref="ArgumentNullException"><paramref name="document"/> is <c>null</c>.</exception>
         public static string DirectoryPath(this Document document)
         {
             if (document == null)
-                throw new ArgumentNullException("document");
+                throw new ArgumentNullException(nameof(document));
 
             return string.IsNullOrEmpty(document.FullFileName)
                 ? null
@@ -26,20 +27,22 @@
         }
 
         /// <summary>
-        /// Saves the drawing document as a PDF file.
+        ///     Saves the drawing document as a PDF file.
         /// </summary>
         /// <param name="document">The <see cref="Document"/> instance that this extension method affects.</param>
         /// <param name="filePath">The path of the PDF file to be created.</param>
         /// <returns>A value that indicates whether the operation was successful.</returns>
         /// <exception cref="ArgumentNullException"><paramref name="document"/> is <c>null</c>.</exception>
-        /// <exception cref="ArgumentException"><paramref name="filePath"/> is <c>null</c> or empty.</exception>
+        /// <exception cref="ArgumentException">
+        ///     <paramref name="filePath"/> is <c>null</c> or empty.
+        /// </exception>
         public static bool SaveAsPDF(this Document document, string filePath)
         {
             if (document == null)
                 throw new ArgumentNullException(nameof(document));
 
             if (string.IsNullOrEmpty(filePath))
-                throw new ArgumentException("Argument is null or empty.", nameof(filePath));
+                throw new ArgumentException(Resources.ValueNullOrEmpty, nameof(filePath));
 
             try
             {

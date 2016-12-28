@@ -24,7 +24,7 @@
                 throw new ArgumentNullException(nameof(partsList));
 
             if (string.IsNullOrEmpty(propertyName))
-                throw new ArgumentException("Argument is null or empty.", nameof(propertyName));
+                throw new ArgumentException(Resources.ValueNullOrEmpty, nameof(propertyName));
 
             var column = partsList.PartsListColumns.Add(
                 PropertyType: PropertyTypeEnum.kCustomProperty,

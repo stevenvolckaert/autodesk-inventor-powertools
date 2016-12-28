@@ -23,7 +23,7 @@
                 throw new ArgumentNullException(nameof(parameters));
 
             if (string.IsNullOrEmpty(parameterName))
-                throw new ArgumentException("Argument is null or empty.", nameof(parameterName));
+                throw new ArgumentException(Resources.ValueNullOrEmpty, nameof(parameterName));
 
             try
             {
@@ -49,7 +49,7 @@
                 throw new ArgumentNullException(nameof(parameters));
 
             if (string.IsNullOrEmpty(parameterName))
-                throw new ArgumentException("Argument is null or empty.", nameof(parameterName));
+                throw new ArgumentException(Resources.ValueNullOrEmpty, nameof(parameterName));
 
             return parameters.ContainsValue(parameterName) ? parameters[parameterName] : null;
         }
