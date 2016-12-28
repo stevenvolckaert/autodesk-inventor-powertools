@@ -40,7 +40,7 @@
     <SignAssembly>false</SignAssembly>
   </PropertyGroup>
   <PropertyGroup>
-    <AssemblyOriginatorKeyFile>..\..\SupportFiles\StevenVolckaert.pfx</AssemblyOriginatorKeyFile>
+    <AssemblyOriginatorKeyFile>..\..\StevenVolckaert.pfx</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Autodesk.Inventor.Interop, Version=16.0.0.0, Culture=neutral, PublicKeyToken=d84147f8b4276564, processorArchitecture=MSIL">
@@ -127,10 +127,10 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <CodeAnalysisDictionary Include="..\..\SupportFiles\CustomDictionary.xml">
+    <CodeAnalysisDictionary Include="..\..\CustomDictionary.xml">
       <Link>CustomDictionary.xml</Link>
     </CodeAnalysisDictionary>
-    <CodeAnalysisDictionary Include="..\..\SupportFiles\AutodeskDictionary.xml">
+    <CodeAnalysisDictionary Include="..\..\AutodeskDictionary.xml">
       <Link>AutodeskDictionary.xml</Link>
     </CodeAnalysisDictionary>
     <Content Include="StevenVolckaert.InventorPowerTools.Inventor.addin">
