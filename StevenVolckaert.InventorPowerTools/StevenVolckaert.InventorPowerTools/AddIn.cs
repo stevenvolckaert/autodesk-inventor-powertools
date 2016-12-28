@@ -306,7 +306,7 @@ namespace StevenVolckaert.InventorPowerTools
 
         #region ApplicationAddInServer members
 
-        public void Activate(Inventor.ApplicationAddInSite AddInSiteObject, bool FirstTime)
+        public void Activate(ApplicationAddInSite AddInSiteObject, bool FirstTime)
         {
             Inventor = AddInSiteObject.Application;
             UserInterfaceEvents.OnResetCommandBars += OnResetCommandBars;
@@ -435,9 +435,9 @@ namespace StevenVolckaert.InventorPowerTools
             RegisterButtons();
         }
 
+        [Obsolete("This method is obsolete. Use the ControlDefinition instances to implement commands instead.")]
         public void ExecuteCommand(int commandID)
         {
-            // NOTE: This method is obsolete. Use the ControlDefinition instances to implement commands.
         }
 
         public object Automation
