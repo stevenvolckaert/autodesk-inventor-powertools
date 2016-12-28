@@ -49,7 +49,7 @@ namespace StevenVolckaert.InventorPowerTools.Buttons
             var partName = drawingView.ReferencedDocumentDescriptor.DisplayName.RemoveExtension();
             var rowItemNumber = GetRowItemNumber(partName);
 
-            if (string.IsNullOrEmpty(rowItemNumber) == false)
+            if (rowItemNumber.IsNullOrWhiteSpace() == false)
                 partName = $"{rowItemNumber} : {partName}";
 
             drawingView.AddPartName(partName, drawingDistance: 0.5);

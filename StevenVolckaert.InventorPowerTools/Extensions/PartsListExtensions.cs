@@ -11,20 +11,22 @@
     internal static class PartsListExtensions
     {
         /// <summary>
-        /// Adds a new column that contains a custom property to a specified parts list.
+        ///     Adds a new column that contains a custom property to a specified parts list.
         /// </summary>
         /// <param name="partsList">The <see cref="PartsList"/> instance that this extension method affects.</param>
         /// <param name="propertyName">The name of the custom property.</param>
         /// <returns>The newly created column.</returns>
         /// <exception cref="ArgumentNullException"><paramref name="partsList"/> is <c>null</c>.</exception>
-        /// <exception cref="ArgumentException"><paramref name="propertyName"/> is <c>null</c> or empty.</exception>
+        /// <exception cref="ArgumentException">
+        ///     <paramref name="propertyName"/> is <c>null</c>, empty, or white space.
+        /// </exception>
         public static PartsListColumn AddCustomPropertyColumn(this PartsList partsList, string propertyName)
         {
             if (partsList == null)
                 throw new ArgumentNullException(nameof(partsList));
 
-            if (string.IsNullOrEmpty(propertyName))
-                throw new ArgumentException(Resources.ValueNullOrEmpty, nameof(propertyName));
+            if (propertyName.IsNullOrWhiteSpace())
+                throw new ArgumentException(Resources.ValueNullEmptyOrWhiteSpace, nameof(propertyName));
 
             var column = partsList.PartsListColumns.Add(
                 PropertyType: PropertyTypeEnum.kCustomProperty,
@@ -121,8 +123,8 @@
         //    if (partsList == null)
         //        throw new ArgumentNullException(nameof(partsList));
 
-        //    if (string.IsNullOrEmpty(key))
-        //        throw new ArgumentException(nameof(key));
+        //    if (key.IsNullEmptyOrWhiteSpace())
+        //        throw new ArgumentException(Resources.ValueNullEmptyOrWhiteSpace, nameof(key));
 
         //    return partsList.PartsListColumns.Cast<PartsListColumn>()
         //        .Where(x => x.PropertyType == PropertyTypeEnum.kFileProperty)

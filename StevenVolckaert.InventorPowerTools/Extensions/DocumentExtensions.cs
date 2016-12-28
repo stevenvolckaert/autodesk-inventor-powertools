@@ -21,7 +21,7 @@
             if (document == null)
                 throw new ArgumentNullException(nameof(document));
 
-            return string.IsNullOrEmpty(document.FullFileName)
+            return document.FullFileName.IsNullOrWhiteSpace()
                 ? null
                 : System.IO.Path.GetDirectoryName(document.FullFileName);
         }
@@ -34,15 +34,15 @@
         /// <returns>A value that indicates whether the operation was successful.</returns>
         /// <exception cref="ArgumentNullException"><paramref name="document"/> is <c>null</c>.</exception>
         /// <exception cref="ArgumentException">
-        ///     <paramref name="filePath"/> is <c>null</c> or empty.
+        ///     <paramref name="filePath"/> is <c>null</c>, empty, or white space.
         /// </exception>
         public static bool SaveAsPDF(this Document document, string filePath)
         {
             if (document == null)
                 throw new ArgumentNullException(nameof(document));
 
-            if (string.IsNullOrEmpty(filePath))
-                throw new ArgumentException(Resources.ValueNullOrEmpty, nameof(filePath));
+            if (filePath.IsNullOrWhiteSpace())
+                throw new ArgumentException(Resources.ValueNullEmptyOrWhiteSpace, nameof(filePath));
 
             try
             {
