@@ -49,8 +49,8 @@
     </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
-    <Reference Include="StevenVolckaert.Core, Version=0.1.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\StevenVolckaert.Core.0.1.0\lib\net35\StevenVolckaert.Core.dll</HintPath>
+    <Reference Include="StevenVolckaert.Core, Version=0.1.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\StevenVolckaert.Core.0.1.1\lib\net35\StevenVolckaert.Core.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
