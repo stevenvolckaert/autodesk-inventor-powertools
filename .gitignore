@@ -27,6 +27,7 @@ bld/
 
 # Visual Studio 2015 IntelliSense database
 *.VC.db
+*.VC.opendb
 
 # MSTest test Results
 [Tt]est[Rr]esult*/

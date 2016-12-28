@@ -127,10 +127,10 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <CodeAnalysisDictionary Include="..\..\CustomDictionary.xml">
+    <CodeAnalysisDictionary Include="..\CustomDictionary.xml">
       <Link>CustomDictionary.xml</Link>
     </CodeAnalysisDictionary>
-    <CodeAnalysisDictionary Include="..\..\AutodeskDictionary.xml">
+    <CodeAnalysisDictionary Include="..\AutodeskDictionary.xml">
       <Link>AutodeskDictionary.xml</Link>
     </CodeAnalysisDictionary>
     <Content Include="StevenVolckaert.InventorPowerTools.Inventor.addin">
