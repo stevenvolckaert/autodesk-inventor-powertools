@@ -173,19 +173,14 @@
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>call "%25VS120COMNTOOLS%25vsvars32"
-mt.exe -manifest "$(ProjectDir)StevenVolckaert.InventorPowerTools.manifest" -outputresource:"$(TargetPath)";#2
-copy /Y "$(TargetPath)" "C:\ProgramData\Autodesk\Inventor 2012\Addins\"
-copy /Y "$(TargetDir)$(TargetName).Inventor.addin" "C:\ProgramData\Autodesk\Inventor 2012\Addins\"
+    <PostBuildEvent>
+      call "%25VS120COMNTOOLS%25vsvars32"
+      mt.exe -manifest "$(ProjectDir)StevenVolckaert.InventorPowerTools.manifest" -outputresource:"$(TargetPath)";#2
     </PostBuildEvent>
     <!--
-      
       copy /Y "$(TargetPath)" "$(TargetDir)$(TargetName).Inventor.addin" "C:\ProgramData\Autodesk\Inventor 2012\Addins\"
-      
-      
-      
       copy /Y "$(TargetDir)$(TargetName).Inventor.addin" "C:\ProgramData\Autodesk\Inventor 2012\Addins\"
-      copy /Y "$(ProjectDir)StevenVolckaert.InventorPowerTools.addin" "C:\ProgramData\Autodesk\Inventor 2012\Addins\" -->
+     -->
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
