@@ -92,7 +92,6 @@
     <Compile Include="Extensions\StringExtensions.cs" />
     <Compile Include="Extensions\UserInterfaceManagerExtensions.cs" />
     <Compile Include="GlobalSuppressions.cs" />
-    <Compile Include="HumanReadableStringComparer.cs" />
     <Compile Include="ImageConvert.cs">
       <SubType>Component</SubType>
     </Compile>

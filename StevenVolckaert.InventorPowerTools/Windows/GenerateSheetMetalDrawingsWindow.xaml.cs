@@ -35,12 +35,8 @@ namespace StevenVolckaert.InventorPowerTools.Windows
             if (parts == null || parts.Count == 0)
                 return;
 
-            using (var comparer = new HumanReadableStringComparer())
-            {
-                ViewModel.Assembly = assembly;
-                ViewModel.Parts = parts.OrderBy(x => x.Name, comparer).ToList();
-            }
-
+            ViewModel.Assembly = assembly;
+            ViewModel.Parts = parts.OrderByOrdinal(x => x.Name).ToList();
             base.Show();
         }
 
