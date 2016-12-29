@@ -1,10 +1,10 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using System.Windows;
-using Inventor;
-
-namespace StevenVolckaert.InventorPowerTools.Windows
+﻿namespace StevenVolckaert.InventorPowerTools.Windows
 {
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Windows;
+    using Inventor;
+
     public partial class GenerateSheetMetalDrawingsWindow : Window
     {
         private GenerateSheetMetalDrawingsViewModel ViewModel

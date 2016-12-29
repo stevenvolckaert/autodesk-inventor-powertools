@@ -1,9 +1,9 @@
-﻿using System.Collections.Generic;
-using System.Windows;
-using Inventor;
-
-namespace StevenVolckaert.InventorPowerTools.Windows
+﻿namespace StevenVolckaert.InventorPowerTools.Windows
 {
+    using System.Collections.Generic;
+    using System.Windows;
+    using Inventor;
+
     public partial class GenerateMdfDrawingsWindow : Window
     {
         private GenerateMdfDrawingsViewModel ViewModel

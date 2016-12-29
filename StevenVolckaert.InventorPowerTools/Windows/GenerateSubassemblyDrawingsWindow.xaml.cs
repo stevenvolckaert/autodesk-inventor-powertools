@@ -1,9 +1,9 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using System.Windows;
-
-namespace StevenVolckaert.InventorPowerTools.Windows
+﻿namespace StevenVolckaert.InventorPowerTools.Windows
 {
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Windows;
+
     public partial class GenerateSubassemblyDrawingsWindow : Window
     {
         /* TODO attach double click event of each ListView row to a command in the view model.
