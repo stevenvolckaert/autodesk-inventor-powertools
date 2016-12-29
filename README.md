@@ -21,7 +21,7 @@ information.
 
 Each [release][2] contains a `.txt` file with installation instructions.
 
-##### In summary:
+**In summary:**
 
 1. Close Autodesk Inventor®;
 2. Extract the contents of the ZIP file to directory `C:\ProgramData\Autodesk\Inventor 2012\Addins\`;
