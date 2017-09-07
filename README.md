@@ -31,9 +31,30 @@ Each [release][2] contains a `.txt` file with installation instructions.
 
 Inventor® Power Tools is licensed under the [MIT license](LICENSE).
 
+## Installing Inventor 2012 on Windows 8.1 or Windows 10
+
+I experienced problems running Inventor on Windows 10. After successful installation, launching Inventor
+stopped immediately with error code `0xc0000142`:
+
+![Inventor application error 0xc0000142](Documentation/inventor-application-error-0xc0000142.jpg)
+
+I've found the solution to this problem in the Autodesk Community topic [Autodesk Inventor 2012 does not run
+on Windows 10][3].
+
+In a nutshell, the installation procedure on Windows 8.1 or Windows 10 is as follows:
+
+1. Install Autodesk Inventor 2012;
+2. Install [Autodesk Inventor 2012 Service Pack 2][4];
+3. Install [Update 4 for Inventor 2012 SP2][5];
+4. Install [Hotfix - Inventor 2012 unexpectedly exits after updating to Windows 8.1][6].
+
 ## See also
 
 * [Inventor® Power Tools releases][2]
 
 [1]: https://msdn.microsoft.com/en-us/library/hh506443%28v=vs.110%29.aspx
 [2]: https://github.com/stevenvolckaert/autodesk-inventor-powertools/releases
+[3]: https://forums.autodesk.com/t5/installation-licensing/autodesk-inventor-2012-does-not-run-on-windows-10/td-p/6224268
+[4]: https://knowledge.autodesk.com/search-result/caas/downloads/content/autodesk-inventor-2012-service-pack-2.html
+[5]: https://knowledge.autodesk.com/search-result/caas/downloads/content/update-4-for-inventor-2012-sp2.html
+[6]: https://knowledge.autodesk.com/support/inventor-products/downloads/caas/downloads/content/hotfix-inventor-2012-unexpectedly-exits-after-updating-to-windows-81.html
