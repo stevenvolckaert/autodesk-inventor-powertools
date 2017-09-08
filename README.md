@@ -1,21 +1,21 @@
 # Inventor® Power Tools
 
-**Inventor® Power Tools** is a collection of productivity tools for Autodesk Inventor® 2012, distributed as an add-in.
-It automates some common, repetitive tasks, like generating drawings for each part in an assembly.
+**Inventor® Power Tools** is a collection of productivity tools for Autodesk Inventor® 2012, distributed as an
+add-in. It automates some common, repetitive tasks, like generating drawings for each part in an assembly.
 
-After generation, each drawing is left open in the editor, giving the engineer the opportunity to further adapt them,
-if necessary.
+After generation, each drawing is left open in the editor, giving the engineer the opportunity to further
+adapt them, if necessary.
 
 ## Forking and compiling from source
 
-Since Autodesk Inventor® 2012 is built on the .NET Framework 3.5, the project targets `.NET Framework 3.5`. This
-framework is not installed by default on Windows 8, Windows 8.1 or Windows 10, meaning you need to install it manually
-in order to compile from source. [Installing the .NET Framework 3.5 on Windows 8, Windows 8.1 and Windows 10][1]
-explains how to do this.
+Since Autodesk Inventor® 2012 is built on the .NET Framework 3.5, the project targets `.NET Framework 3.5`.
+This framework is not installed by default on Windows 8, Windows 8.1 or Windows 10, meaning you need to
+install it manually in order to compile from source. [Installing the .NET Framework 3.5 on Windows 8,
+Windows 8.1 and Windows 10][1] explains how to do this.
 
-Using this method didn't work for me on Windows 10, but I managed to install .NET Framework 3.5 using the `DISM.exe`
-tool. See [Can't install .NET 3.5 on Windows 10](http://superuser.com/q/946988/319367) on StackExchange for more
-information.
+Using this method didn't work for me on Windows 10, but I managed to install .NET Framework 3.5 using the
+`DISM.exe` tool. See [Can't install .NET 3.5 on Windows 10](http://superuser.com/q/946988/319367) on
+StackExchange for more information.
 
 ## Installation
 
@@ -33,11 +33,11 @@ To debug the addin with Inventor 2012, do the following:
 
 - Set project `StevenVolckaert.InventorPowerTools` as *startup project*.
 - In the project properties of `StevenVolckaert.InventorPowerTools`, set the *Start action* to **Start
-  external program** and select the path to `Inventor.exe`:
+  external program** and select the path to `Inventor.exe`.
 
   ![InventorPowerTools](Documentation/inventor-power-tools-project-properties-debug.png)
 
-Now hit `F5` to start debugging or `Ctrl+F5` to run.
+Finally, hit `F5` to start debugging or `Ctrl+F5` to run.
 
 ## License
 
