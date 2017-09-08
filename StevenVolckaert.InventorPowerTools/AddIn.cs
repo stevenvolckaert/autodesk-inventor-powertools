@@ -21,7 +21,8 @@ namespace StevenVolckaert.InventorPowerTools
         /// </summary>
         public const string ClientId = "{" + AssemblyInfo.Guid + "}";
 
-        private CreateTopAndLeftProjectedViewsButton _createTopAndLeftViewButton;
+        private CreateLeftThenThreeTopProjectedViewsButton _createLeftThenThreeTopProjectedViewsButton;
+        private CreateTopAndLeftProjectedViewsButton _createTopAndLeftProjectedViewsButton;
         private CreatePartViewsFromAssemblyButton _createPartViewsFromAssemblyButton;
         private ExportPdfButton _exportPdfButton;
         private GenerateSheetMetalDrawingsButton _generateSheetMetalDrawingsButton;
@@ -315,9 +316,14 @@ namespace StevenVolckaert.InventorPowerTools
 
             try
             {
-                _createTopAndLeftViewButton = new CreateTopAndLeftProjectedViewsButton();
+                // Buttons only visible when in drawing edit mode.
+                _createLeftThenThreeTopProjectedViewsButton =
+                    new CreateLeftThenThreeTopProjectedViewsButton();
+                _createTopAndLeftProjectedViewsButton = new CreateTopAndLeftProjectedViewsButton();
                 _createPartViewsFromAssemblyButton = new CreatePartViewsFromAssemblyButton();
                 _exportPdfButton = new ExportPdfButton();
+
+                // Buttons only visible when in assembly edit mode.
                 _generateSheetMetalDrawingsButton = new GenerateSheetMetalDrawingsButton();
                 _generateMdfDrawingsButton = new GenerateMdfDrawingsButton();
                 _generateSubAssemblyDrawingsButton = new GenerateSubassemblyDrawingsButton();
@@ -357,8 +363,9 @@ namespace StevenVolckaert.InventorPowerTools
                 ribbonName: "Drawing"
             );
 
-            _createTopAndLeftViewButton.Panel.CommandControls.AddSeparator();
-            _createTopAndLeftViewButton.AddToPanel();
+            _createTopAndLeftProjectedViewsButton.Panel.CommandControls.AddSeparator();
+            _createTopAndLeftProjectedViewsButton.AddToPanel();
+            _createLeftThenThreeTopProjectedViewsButton.AddToPanel();
             _createPartViewsFromAssemblyButton.AddToPanel();
             _generateSheetMetalDrawingsButton.AddTo(generateDrawingsPanel);
             _generateMdfDrawingsButton.AddTo(generateDrawingsPanel);
@@ -372,10 +379,14 @@ namespace StevenVolckaert.InventorPowerTools
             UserInterfaceEvents.OnEnvironmentChange -= OnEnvironmentChange;
             UserInterfaceEvents.OnResetRibbonInterface -= OnResetRibbonInterface;
 
+            _createTopAndLeftProjectedViewsButton.Dispose();
+            _createTopAndLeftProjectedViewsButton = null;
+
+            _createLeftThenThreeTopProjectedViewsButton.Dispose();
+            _createLeftThenThreeTopProjectedViewsButton = null;
+
             _createPartViewsFromAssemblyButton.Dispose();
-            _createTopAndLeftViewButton.Dispose();
             _createPartViewsFromAssemblyButton = null;
-            _createTopAndLeftViewButton = null;
 
             Marshal.ReleaseComObject(Inventor);
             Inventor = null;
@@ -391,7 +402,8 @@ namespace StevenVolckaert.InventorPowerTools
                 foreach (CommandBar commandBar in commandBars)
                     if (commandBar.InternalName == "PMxPartFeatureCmdBar")
                     {
-                        _createTopAndLeftViewButton.AddTo(commandBar);
+                        _createTopAndLeftProjectedViewsButton.AddTo(commandBar);
+                        _createLeftThenThreeTopProjectedViewsButton.AddTo(commandBar);
                         _createPartViewsFromAssemblyButton.AddTo(commandBar);
                         return;
                     }
@@ -411,7 +423,8 @@ namespace StevenVolckaert.InventorPowerTools
                 switch (environment.InternalName)
                 {
                     case "DLxDrawingEnvironment":
-                        _createTopAndLeftViewButton.IsEnabled = isEnabled;
+                        _createTopAndLeftProjectedViewsButton.IsEnabled = isEnabled;
+                        _createLeftThenThreeTopProjectedViewsButton.IsEnabled = isEnabled;
                         _createPartViewsFromAssemblyButton.IsEnabled = isEnabled;
                         _exportPdfButton.IsEnabled = isEnabled;
                         break;

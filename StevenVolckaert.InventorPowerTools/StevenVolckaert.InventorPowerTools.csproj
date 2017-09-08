@@ -67,6 +67,7 @@
     <Compile Include="AddIn.cs" />
     <Compile Include="Buttons\ButtonBase.cs" />
     <Compile Include="Buttons\CreatePartViewsFromAssemblyButton.cs" />
+    <Compile Include="Buttons\CreateLeftThenThreeTopProjectedViewsButton.cs" />
     <Compile Include="Buttons\CreateTopAndLeftProjectedViewsButton.cs" />
     <Compile Include="Buttons\ExportPdfButton.cs" />
     <Compile Include="Buttons\GenerateMdfDrawingsButton.cs" />
@@ -102,6 +103,7 @@
     <Compile Include="Models\Margin.cs" />
     <Compile Include="Models\Part.cs" />
     <Compile Include="Models\Rectangle.cs" />
+    <Compile Include="Models\ViewStyle.cs" />
     <Compile Include="PartType.cs" />
     <Compile Include="Prism\Commands\DelegateCommand.cs" />
     <Compile Include="Prism\Commands\DelegateCommandBase.cs" />
@@ -132,6 +134,8 @@
     <CodeAnalysisDictionary Include="..\AutodeskDictionary.xml">
       <Link>AutodeskDictionary.xml</Link>
     </CodeAnalysisDictionary>
+    <None Include="Buttons\CreateTopRightBottomLeftProjectedViewsButton.ico" />
+    <EmbeddedResource Include="Buttons\CreateLeftThenThreeTopProjectedViewsButton.ico" />
     <Content Include="StevenVolckaert.InventorPowerTools.Inventor.addin">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

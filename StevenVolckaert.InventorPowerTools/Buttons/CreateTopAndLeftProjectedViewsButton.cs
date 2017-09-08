@@ -9,7 +9,7 @@ namespace StevenVolckaert.InventorPowerTools.Buttons
     {
         public override string DisplayName { get; } = "Top+Left";
 
-        public override string Description { get; } = "Add Top & Left Projected Views";
+        public override string Description { get; } = "Add Top and Left Projected Views";
 
         public CreateTopAndLeftProjectedViewsButton()
         {

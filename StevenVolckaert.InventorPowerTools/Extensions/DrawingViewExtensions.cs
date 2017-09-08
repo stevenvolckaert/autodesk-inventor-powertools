@@ -30,15 +30,81 @@
         #endregion
 
         /// <summary>
-        /// Adds left and top projected views of a specified drawing view to the active document.
+        ///     Adds a left projected view of the current <see cref="DrawingView"/> instance, and then a
+        ///     specified number of top projected views, each time using the previously generated
+        ///     <see cref="DrawingView"/> instance as a base.
         /// </summary>
         /// <param name="drawingView">
-        /// The <see cref="DrawingView"/> instance that this extension method affects.</param>
-        /// <param name="addDimensions">A value that specifies whether dimensions need to be added.</param>
-        /// <param name="drawingDistance">The distance between <paramref name="drawingView"/> and
-        /// the projected views.</param>
-        /// <exception cref="ArgumentNullException"><paramref name="drawingView"/> is <c>null</c>.</exception>
-        /// <exception cref="ArgumentOutOfRangeException"><paramref name="drawingDistance"/> is negative.</exception>
+        ///     The <see cref="DrawingView"/> instance that this extension method affects.
+        /// </param>
+        /// <param name="numberOfTopViews">
+        ///     The number of top projected views to add.
+        /// </param>
+        /// <param name="addDimensions">
+        ///     A value that specifies whether dimensions need to be added.
+        /// </param>
+        /// <param name="drawingDistance">
+        ///     The distance between <paramref name="drawingView"/> and each subsequent projected view.
+        /// </param>
+        /// <exception cref="ArgumentNullException">
+        ///     <paramref name="drawingView"/> is <c>null</c>.
+        /// </exception>
+        /// <exception cref="ArgumentOutOfRangeException">
+        ///     <paramref name="numberOfTopViews"/> or <paramref name="drawingDistance"/> is negative.
+        /// </exception>
+        public static void AddLeftThenTopProjectedViews(
+            this DrawingView drawingView,
+            int numberOfTopViews,
+            bool addDimensions,
+            double drawingDistance
+        )
+        {
+            if (drawingView == null)
+                throw new ArgumentNullException(nameof(drawingView));
+
+            if (numberOfTopViews < 0)
+                throw new ArgumentOutOfRangeException(nameof(numberOfTopViews));
+
+            if (drawingDistance < 0)
+                throw new ArgumentOutOfRangeException(nameof(drawingDistance));
+
+            var leftProjectedView = drawingView.AddLeftProjectedView(drawingDistance);
+            var topProjectedViews = new List<DrawingView>();
+            var previousProjectedView = leftProjectedView;
+
+            for (int i = 0; i <= numberOfTopViews; i++)
+            {
+                var topProjectedView = previousProjectedView.AddTopProjectedView(drawingDistance);
+                topProjectedViews.Add(topProjectedView);
+                previousProjectedView = topProjectedView;
+            }
+
+            if (addDimensions)
+            {
+                var dimensionStyle = DrawingDocument.ActiveLinearDimensionStyle();
+                leftProjectedView.AddHorizontalDimension(dimensionStyle);
+                topProjectedViews.ForEach(x => x.AddHorizontalDimension(dimensionStyle));
+            }
+        }
+
+        /// <summary>
+        ///     Adds a projected view to the top and left of the current <see cref="DrawingView"/> instance.
+        /// </summary>
+        /// <param name="drawingView">
+        ///     The <see cref="DrawingView"/> instance that this extension method affects.
+        /// </param>
+        /// <param name="addDimensions">
+        ///     A value that specifies whether dimensions need to be added.
+        /// </param>
+        /// <param name="drawingDistance">
+        ///     The distance between <paramref name="drawingView"/> and the projected views.
+        /// </param>
+        /// <exception cref="ArgumentNullException">
+        ///     <paramref name="drawingView"/> is <c>null</c>.
+        /// </exception>
+        /// <exception cref="ArgumentOutOfRangeException">
+        ///     <paramref name="drawingDistance"/> is negative.
+        /// </exception>
         public static void AddTopAndLeftProjectedViews(
             this DrawingView drawingView,
             bool addDimensions,
@@ -51,54 +117,114 @@
             if (drawingDistance < 0)
                 throw new ArgumentOutOfRangeException(nameof(drawingDistance));
 
-            var drawingViews = DrawingDocument.ActiveSheet.DrawingViews;
-            var drawingDimensions = DrawingDocument.ActiveSheet.DrawingDimensions;
-            var dimensionStyle = DrawingDocument.ActiveLinearDimensionStyle();
+            var topProjectedView = drawingView.AddTopProjectedView(drawingDistance);
+            var leftProjectedView = drawingView.AddLeftProjectedView(drawingDistance);
 
-            // Add top view.
-            var topView =
-                drawingViews.AddProjectedView(
+            if (addDimensions)
+            {
+                var dimensionStyle = DrawingDocument.ActiveLinearDimensionStyle();
+                topProjectedView.AddHorizontalDimension(dimensionStyle);
+                leftProjectedView.AddVerticalDimension(dimensionStyle);
+            }
+        }
+
+        /// <summary>
+        ///     Adds a projected view to the top of the current <see cref="DrawingView"/> instance.
+        /// </summary>
+        /// <param name="drawingView">
+        ///     The <see cref="DrawingView"/> instance that this extension method affects.
+        /// </param>
+        /// <param name="drawingDistance">
+        ///     The distance between <paramref name="drawingView"/> and the projected top view.
+        /// </param>
+        /// <exception cref="ArgumentNullException">
+        ///     <paramref name="drawingView"/> is <c>null</c>.
+        /// </exception>
+        /// <exception cref="ArgumentOutOfRangeException">
+        ///     <paramref name="drawingDistance"/> is negative.
+        /// </exception>
+        /// <returns>
+        ///     The <see cref="DrawingView"/> instance that was added to the currently active document.
+        /// </returns>
+        public static DrawingView AddTopProjectedView(this DrawingView drawingView, double drawingDistance)
+        {
+            if (drawingView == null)
+                throw new ArgumentNullException(nameof(drawingView));
+
+            if (drawingDistance < 0)
+                throw new ArgumentOutOfRangeException(nameof(drawingDistance));
+
+            var view =
+                DrawingDocument.ActiveSheet.DrawingViews.AddProjectedView(
                     ParentView: drawingView,
                     Position: AddIn.CreatePoint2D(drawingView.Position.X, drawingView.Top + 1),
                     ViewStyle: DrawingViewStyleEnum.kFromBaseDrawingViewStyle,
                     Scale: Type.Missing
                 );
 
-            topView.Position =
+            view.Position =
                 AddIn.CreatePoint2D(
-                    topView.Position.X,
-                    topView.Position.Y + topView.Height / 2 + drawingDistance - 1
+                    x: view.Position.X,
+                    y: view.Position.Y + view.Height / 2 + drawingDistance - 1
                 );
 
-            if (addDimensions)
-                topView.AddHorizontalDimension(dimensionStyle);
+            return view;
+        }
 
-            // Add left view.
-            var leftView =
-                    drawingViews.AddProjectedView(
+        /// <summary>
+        ///     Adds a projected view to the left of the current <see cref="DrawingView"/> instance.
+        /// </summary>
+        /// <param name="drawingView">
+        ///     The <see cref="DrawingView"/> instance that this extension method affects.
+        /// </param>
+        /// <param name="drawingDistance">
+        ///     The distance between <paramref name="drawingView"/> and the projected left view.
+        /// </param>
+        /// <exception cref="ArgumentNullException">
+        ///     <paramref name="drawingView"/> is <c>null</c>.
+        /// </exception>
+        /// <exception cref="ArgumentOutOfRangeException">
+        ///     <paramref name="drawingDistance"/> is negative.
+        /// </exception>
+        /// <returns>
+        ///     The <see cref="DrawingView"/> instance that was added to the currently active document.
+        /// </returns>
+        public static DrawingView AddLeftProjectedView(this DrawingView drawingView, double drawingDistance)
+        {
+            if (drawingView == null)
+                throw new ArgumentNullException(nameof(drawingView));
+
+            if (drawingDistance < 0)
+                throw new ArgumentOutOfRangeException(nameof(drawingDistance));
+
+            var view =
+                DrawingDocument.ActiveSheet.DrawingViews.AddProjectedView(
                     ParentView: drawingView,
                     Position: AddIn.CreatePoint2D(drawingView.Left - 1, drawingView.Position.Y),
                     ViewStyle: DrawingViewStyleEnum.kFromBaseDrawingViewStyle,
                     Scale: Type.Missing
                 );
 
-            leftView.Position =
+            view.Position =
                 AddIn.CreatePoint2D(
-                    leftView.Position.X - leftView.Width / 2 - drawingDistance + 1,
-                    leftView.Position.Y
+                    x: view.Position.X - view.Width / 2 - drawingDistance + 1,
+                    y: view.Position.Y
                 );
 
-            if (addDimensions)
-                leftView.AddVerticalDimension(dimensionStyle);
+            return view;
         }
 
         /// <summary>
-        /// Adds a part name to the drawing view of the active document.
+        ///     Adds a part name to the drawing view of the active document.
         /// </summary>
         /// <param name="drawingView">
-        /// The <see cref="DrawingView"/> instance that this extension method affects.</param>
-        /// <param name="partName">The name of the part to add.</param>
-        /// <param name="drawingDistance">The distance between <paramref name="drawingView"/> and the name to add.
+        ///     The <see cref="DrawingView"/> instance that this extension method affects.
+        /// </param>
+        /// <param name="partName">
+        ///     The name of the part to add.
+        /// </param>
+        /// <param name="drawingDistance">
+        ///     The distance between <paramref name="drawingView"/> and the name to add.
         /// </param>
         public static void AddPartName(this DrawingView drawingView, string partName, double drawingDistance)
         {
@@ -115,8 +241,8 @@
 
             note.Position =
                 AddIn.CreatePoint2D(
-                    note.Position.X - note.FittedTextWidth,
-                    note.Position.Y + note.FittedTextHeight
+                    x: note.Position.X - note.FittedTextWidth,
+                    y: note.Position.Y + note.FittedTextHeight
                 );
         }
 
@@ -163,7 +289,6 @@
 
             try
             {
-
                 return verticalLines.Count > 1
                     ? DrawingDocument.ActiveSheet.DrawingDimensions.GeneralDimensions.AddLinear(
                         TextOrigin: AddIn.CreatePoint2D(drawingView.Position.X, drawingView.Top + drawingDistance),
@@ -172,7 +297,8 @@
                         DimensionType: DimensionTypeEnum.kHorizontalDimensionType,
                         ArrowheadsInside: true,
                         DimensionStyle: dimensionStyle,
-                        Layer: Type.Missing)
+                        Layer: Type.Missing
+                    )
                     : null;
             }
             catch
@@ -190,7 +316,8 @@
                             DimensionType: DimensionTypeEnum.kHorizontalDimensionType,
                             ArrowheadsInside: true,
                             DimensionStyle: dimensionStyle,
-                            Layer: Type.Missing)
+                            Layer: Type.Missing
+                        )
                         : null;
                 }
                 catch
@@ -236,7 +363,8 @@
                     PlacementPoint: AddIn.CreatePoint2D(drawingView.Center.X, drawingView.Top + 1),
                     DimensionType: DimensionTypeEnum.kHorizontalDimensionType,
                     DimensionStyle: dimensionStyle,
-                    Layer: Type.Missing)
+                    Layer: Type.Missing
+                )
                 : null;
         }
 
@@ -290,7 +418,8 @@
                         IntentTwo: DrawingDocument.ActiveSheet.CreateGeometryIntent(horizontalLines.Last()),
                         DimensionType: DimensionTypeEnum.kVerticalDimensionType,
                         ArrowheadsInside: true,
-                        DimensionStyle: dimensionStyle)
+                        DimensionStyle: dimensionStyle
+                    )
                     : null;
             }
             catch
@@ -310,7 +439,8 @@
                             IntentTwo: Type.Missing,
                             DimensionType: DimensionTypeEnum.kVerticalDimensionType,
                             ArrowheadsInside: true,
-                            DimensionStyle: dimensionStyle)
+                            DimensionStyle: dimensionStyle
+                        )
                         : null;
                 }
                 catch
@@ -356,7 +486,8 @@
                     PlacementPoint: AddIn.CreatePoint2D(drawingView.Left - 1, drawingView.Center.Y),
                     DimensionType: DimensionTypeEnum.kVerticalDimensionType,
                     DimensionStyle: dimensionStyle,
-                    Layer: Type.Missing)
+                    Layer: Type.Missing
+                )
                 : null;
         }
 
@@ -396,19 +527,23 @@
                     // Move view to the top right.
                     view.Position =
                         AddIn.CreatePoint2D(
-                            view.Position.X + (views.Any() ? views.Max(x => x.Width) : 0) + drawingDistance,
-                            originalY - view.Height / 2
+                            x: view.Position.X + (views.Any() ? views.Max(x => x.Width) : 0) + drawingDistance,
+                            y: originalY - view.Height / 2
                         );
 
-                    position = AddIn.CreatePoint2D(view.Left + view.Width + drawingDistance, originalY);
+                    position =
+                        AddIn.CreatePoint2D(
+                            x: view.Left + view.Width + drawingDistance,
+                            y: originalY
+                        );
                 }
                 else
                 {
                     // Move view down.
                     view.Position =
                         AddIn.CreatePoint2D(
-                            view.Position.X + view.Width / 2,
-                            view.Position.Y - view.Height / 2
+                            x: view.Position.X + view.Width / 2,
+                            y: view.Position.Y - view.Height / 2
                         );
 
                     position = AddIn.CreatePoint2D(position.X, view.Top - view.Height - drawingDistance);
