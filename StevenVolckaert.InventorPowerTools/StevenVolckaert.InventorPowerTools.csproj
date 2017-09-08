@@ -15,6 +15,7 @@
     <SccLocalPath>SAK</SccLocalPath>
     <SccAuxPath>SAK</SccAuxPath>
     <SccProvider>SAK</SccProvider>
+    <AddinTargetPath>C:\ProgramData\Autodesk\Inventor 2012\Addins\</AddinTargetPath>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -168,17 +169,18 @@
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>
-      call "%25VS120COMNTOOLS%25vsvars32"
+      call "%25VS140COMNTOOLS%25vsvars32"
       mt.exe -manifest "$(ProjectDir)StevenVolckaert.InventorPowerTools.manifest" -outputresource:"$(TargetPath)";#2
     </PostBuildEvent>
-    <!--
-      copy /Y "$(TargetPath)" "$(TargetDir)$(TargetName).Inventor.addin" "C:\ProgramData\Autodesk\Inventor 2012\Addins\"
-      copy /Y "$(TargetDir)$(TargetName).Inventor.addin" "C:\ProgramData\Autodesk\Inventor 2012\Addins\"
-     -->
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(AddinTargetPath)' != '' And Exists('$(AddinTargetPath)') ">
+    <PostBuildEvent>
+      copy /Y "$(TargetDir)StevenVolckaert.*.dll" "$(AddinTargetPath)"
+      copy /Y "$(TargetDir)$(TargetName).Inventor.addin" "$(AddinTargetPath)"
+    </PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
