@@ -1,6 +1,5 @@
 ﻿namespace StevenVolckaert.InventorPowerTools.Windows
 {
-    using System;
     using System.Collections.Generic;
     using System.Linq;
     using System.Windows.Input;
@@ -71,11 +70,11 @@
             }
             set
             {
-                if (_selectedLinearPrecision != value)
-                {
-                    _selectedLinearPrecision = value;
-                    RaisePropertyChanged(() => SelectedLinearPrecision);
-                }
+                if (_selectedLinearPrecision == value)
+                    return;
+
+                _selectedLinearPrecision = value;
+                RaisePropertyChanged(() => SelectedLinearPrecision);
             }
         }
 
@@ -93,13 +92,19 @@
             }
         }
 
-        public List<DrawingViewStyleEnum> SupportedViewStyles { get; }
-            = ((DrawingViewStyleEnum[])Enum.GetValues(typeof(DrawingViewStyleEnum))).ToList();
+        public IList<DrawingViewStyle> SupportedViewStyles { get; }
+            = DrawingViewStyle.GetSupportedViewStyles().ToList();
 
-        private DrawingViewStyleEnum _selectedViewStyle = DrawingViewStyleEnum.kFromBaseDrawingViewStyle;
-        public DrawingViewStyleEnum SelectedViewStyle
+        private DrawingViewStyle _selectedViewStyle;
+        public DrawingViewStyle SelectedViewStyle
         {
-            get { return _selectedViewStyle; }
+            get
+            {
+                return _selectedViewStyle ?? (
+                    _selectedViewStyle = SupportedViewStyles
+                        .First(x => x.EnumValue == DrawingViewStyleEnum.kFromBaseDrawingViewStyle)
+                    );
+            }
             set
             {
                 if (_selectedViewStyle == value)

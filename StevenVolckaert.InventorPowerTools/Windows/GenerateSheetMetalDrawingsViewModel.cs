@@ -44,7 +44,10 @@
         public GenerateSheetMetalDrawingsViewModel()
         {
             Title = "Generate Sheet Metal Flat Pattern Drawings";
-            SelectedViewStyle = DrawingViewStyleEnum.kHiddenLineDrawingViewStyle;
+            SelectedViewStyle =
+                SupportedViewStyles.First(
+                    x => x.EnumValue == DrawingViewStyleEnum.kHiddenLineDrawingViewStyle
+                );
         }
 
         protected override void GenerateDrawings()
@@ -88,7 +91,7 @@
                         Position: drawingDocument.ActiveSheet.CenterPoint(),
                         Scale: Scale,
                         ViewOrientation: ViewOrientationTypeEnum.kDefaultViewOrientation,
-                        ViewStyle: SelectedViewStyle,
+                        ViewStyle: SelectedViewStyle.EnumValue,
                         ModelViewName: string.Empty,
                         ArbitraryCamera: Type.Missing,
                         AdditionalOptions: AddIn.CreateNameValueMap("SheetMetalFoldedModel", false)
@@ -116,7 +119,7 @@
                         Position: drawingDocument.ActiveSheet.TopRightPoint(),
                         Scale: 0.1,
                         ViewOrientation: ViewOrientationTypeEnum.kIsoTopRightViewOrientation,
-                        ViewStyle: SelectedViewStyle,
+                        ViewStyle: SelectedViewStyle.EnumValue,
                         ModelViewName: string.Empty,
                         ArbitraryCamera: Type.Missing,
                         AdditionalOptions: Type.Missing
@@ -150,7 +153,7 @@
                         Position: drawingDocument.ActiveSheet.BottomLeftCorner(),
                         Scale: 0.1,
                         ViewOrientation: ViewOrientationTypeEnum.kTopViewOrientation,
-                        ViewStyle: SelectedViewStyle,
+                        ViewStyle: SelectedViewStyle.EnumValue,
                         ModelViewName: string.Empty,
                         ArbitraryCamera: Type.Missing,
                         AdditionalOptions: Type.Missing

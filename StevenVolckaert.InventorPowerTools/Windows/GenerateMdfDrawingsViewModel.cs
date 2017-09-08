@@ -30,7 +30,10 @@
         public GenerateMdfDrawingsViewModel()
         {
             Title = "Generate MDF Drawings";
-            SelectedViewStyle = DrawingViewStyleEnum.kHiddenLineDrawingViewStyle;
+            SelectedViewStyle =
+                SupportedViewStyles.First(
+                    x => x.EnumValue == DrawingViewStyleEnum.kHiddenLineDrawingViewStyle
+                );
         }
 
         protected override void GenerateDrawings()
@@ -52,7 +55,7 @@
                         Position: drawingDocument.ActiveSheet.CenterPoint(),
                         Scale: 0.2,
                         ViewOrientation: ViewOrientationTypeEnum.kDefaultViewOrientation,
-                        ViewStyle: SelectedViewStyle,
+                        ViewStyle: SelectedViewStyle.EnumValue,
                         ModelViewName: string.Empty,
                         ArbitraryCamera: Type.Missing,
                         AdditionalOptions: Type.Missing

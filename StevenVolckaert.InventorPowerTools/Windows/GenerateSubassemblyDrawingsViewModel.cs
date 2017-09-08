@@ -44,7 +44,10 @@
         public GenerateSubassemblyDrawingsViewModel()
         {
             Title = "Generate Subassembly Drawings";
-            SelectedViewStyle = DrawingViewStyleEnum.kHiddenLineDrawingViewStyle;
+            SelectedViewStyle =
+                SupportedViewStyles.First(
+                    x => x.EnumValue == DrawingViewStyleEnum.kHiddenLineDrawingViewStyle
+                );
         }
 
         protected override void GenerateDrawings()
@@ -77,7 +80,7 @@
                         Position: drawingDocument.ActiveSheet.CenterPoint(),
                         Scale: Scale,
                         ViewOrientation: ViewOrientationTypeEnum.kFrontViewOrientation,
-                        ViewStyle: SelectedViewStyle,
+                        ViewStyle: SelectedViewStyle.EnumValue,
                         ModelViewName: string.Empty,
                         ArbitraryCamera: Type.Missing,
                         AdditionalOptions: Type.Missing
@@ -96,13 +99,14 @@
                     // 3. Add part list to the top right corner.
                     var partsList = sheet.AddPartsList(assembly.Document, PartsListLevelEnum.kStructured);
 
-                    // 4. Add base "ISO TOP Right", Hidden line removed, Shaded base view of the subassembly in the drawing's top right corner.
+                    // 4. Add base "ISO TOP Right", Hidden line removed, Shaded base view of the subassembly
+                    // in the drawing's top right corner.
                     var perspectiveView = sheet.DrawingViews.AddBaseView(
                         Model: (_Document)assembly.Document,
                         Position: drawingDocument.ActiveSheet.TopRightPoint(),
                         Scale: PerspectiveScale,
                         ViewOrientation: ViewOrientationTypeEnum.kIsoTopRightViewOrientation,
-                        ViewStyle: SelectedViewStyle,
+                        ViewStyle: SelectedViewStyle.EnumValue,
                         ModelViewName: string.Empty,
                         ArbitraryCamera: Type.Missing,
                         AdditionalOptions: Type.Missing

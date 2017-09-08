@@ -98,7 +98,8 @@
                        Target="{Binding ElementName=ViewStyleComboBox}"/>
                 <ComboBox x:Name="ViewStyleComboBox" Grid.Column="1" Grid.Row="3"
                           ItemsSource="{Binding SupportedViewStyles}"
-                          SelectedItem="{Binding SelectedViewStyle, Mode=TwoWay}"/>
+                          SelectedItem="{Binding SelectedViewStyle, Mode=TwoWay}"
+                          DisplayMemberPath="DisplayName"/>
                 
             </Grid>
         </GroupBox>
