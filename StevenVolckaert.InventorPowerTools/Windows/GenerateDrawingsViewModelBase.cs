@@ -12,7 +12,7 @@
 
         private string _templateFileName = AddIn.TemplatesPath + "Metric\\ISO.idw";
         /// <summary>
-        /// Gets or sets the file name of the template.
+        ///     Gets or sets the file name of the template.
         /// </summary>
         public string TemplateFileName
         {
@@ -147,8 +147,8 @@
         protected abstract void GenerateDrawings();
 
         /// <summary>
-        /// Creates a new <see cref="DrawingDocument"/>, using the template specified by the
-        /// <seealso cref="TemplateFileName"/> property.
+        ///     Creates a new <see cref="DrawingDocument"/>, using the template specified by the
+        ///     <seealso cref="TemplateFileName"/> property.
         /// </summary>
         /// <returns>A new <see cref="DrawingDocument"/> instance.</returns>
         protected DrawingDocument CreateDrawingDocument()
