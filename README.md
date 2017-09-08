@@ -27,6 +27,18 @@ Each [release][2] contains a `.txt` file with installation instructions.
 2. Extract the contents of the ZIP file to directory `C:\ProgramData\Autodesk\Inventor 2012\Addins\`;
 3. Start Autodesk Inventor®.
 
+## Debugging
+
+To debug the addin with Inventor 2012, do the following:
+
+- Set project `StevenVolckaert.InventorPowerTools` as *startup project*.
+- In the project properties of `StevenVolckaert.InventorPowerTools`, set the *Start action* to **Start
+  external program** and select the path to `Inventor.exe`:
+
+  ![InventorPowerTools](Documentation/inventor-power-tools-project-properties-debug.png)
+
+Now hit `F5` to start debugging or `Ctrl+F5` to run.
+
 ## License
 
 Inventor® Power Tools is licensed under the [MIT license](LICENSE).
