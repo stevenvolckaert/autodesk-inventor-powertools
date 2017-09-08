@@ -19,11 +19,11 @@
             get { return _templateFileName; }
             set
             {
-                if (_templateFileName != value)
-                {
-                    _templateFileName = value;
-                    RaisePropertyChanged(() => TemplateFileName);
-                }
+                if (_templateFileName == value)
+                    return;
+
+                _templateFileName = value;
+                RaisePropertyChanged(() => TemplateFileName);
             }
         }
 
@@ -33,11 +33,11 @@
             get { return _scale; }
             set
             {
-                if (_scale != value)
-                {
-                    _scale = value;
-                    RaisePropertyChanged(() => Scale);
-                }
+                if (_scale == value)
+                    return;
+
+                _scale = value;
+                RaisePropertyChanged(() => Scale);
             }
         }
 
@@ -47,11 +47,11 @@
             get { return _perspectiveScale; }
             set
             {
-                if (_perspectiveScale != value)
-                {
-                    _perspectiveScale = value;
-                    RaisePropertyChanged(() => PerspectiveScale);
-                }
+                if (_perspectiveScale == value)
+                    return;
+
+                _perspectiveScale = value;
+                RaisePropertyChanged(() => PerspectiveScale);
             }
         }
 

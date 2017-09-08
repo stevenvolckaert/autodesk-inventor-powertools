@@ -8,11 +8,11 @@
             get { return _title; }
             set
             {
-                if (_title != value)
-                {
-                    _title = value;
-                    RaisePropertyChanged(() => Title);
-                }
+                if (_title == value)
+                    return;
+
+                _title = value;
+                RaisePropertyChanged(() => Title);
             }
         }
 

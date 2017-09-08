@@ -13,11 +13,11 @@
             get { return _assembly; }
             set
             {
-                if (_assembly != value)
-                {
-                    _assembly = value;
-                    RaisePropertyChanged(() => Assembly);
-                }
+                if (_assembly == value)
+                    return;
+
+                _assembly = value;
+                RaisePropertyChanged(() => Assembly);
             }
         }
 
@@ -27,19 +27,33 @@
             get { return _parts; }
             set
             {
-                if (_parts != value)
-                {
-                    _parts = value;
-                    RaisePropertyChanged(() => Parts);
+                if (_parts == value)
+                    return;
 
-                    _documents = value.Cast<IDocument>().ToList();
-                    ComputeIsEverythingSelected();
-                }
+                _parts = value;
+                RaisePropertyChanged(() => Parts);
+
+                _documents = value.Cast<IDocument>().ToList();
+                ComputeIsEverythingSelected();
+            }
+        }
+
+        private DrawingViewStyleEnum _viewStyle = DrawingViewStyleEnum.kFromBaseDrawingViewStyle;
+        public DrawingViewStyleEnum ViewStyle
+        {
+            get { return _viewStyle; }
+            set
+            {
+                if (_viewStyle == value)
+                    return;
+
+                _viewStyle = value;
+                RaisePropertyChanged(() => ViewStyle);
             }
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="GenerateSheetMetalDrawingsViewModel"/> class.
+        ///     Initializes a new instance of the <see cref="GenerateSheetMetalDrawingsViewModel"/> class.
         /// </summary>
         public GenerateSheetMetalDrawingsViewModel()
         {
@@ -61,7 +75,7 @@
 
             var bom = Assembly.ComponentDefinition.BOM;
 
-            if (bom != null && bom.RequiresUpdate)
+            if (bom?.RequiresUpdate == true)
                 AddIn.ShowWarningMessageBox(
                     Title,
                     "The BOM of assembly '{0}' requires an update.{1}Quantities displayed in the generated drawings might be incorrect.",
