@@ -38,26 +38,13 @@
             }
         }
 
-        private DrawingViewStyleEnum _viewStyle = DrawingViewStyleEnum.kFromBaseDrawingViewStyle;
-        public DrawingViewStyleEnum ViewStyle
-        {
-            get { return _viewStyle; }
-            set
-            {
-                if (_viewStyle == value)
-                    return;
-
-                _viewStyle = value;
-                RaisePropertyChanged(() => ViewStyle);
-            }
-        }
-
         /// <summary>
         ///     Initializes a new instance of the <see cref="GenerateSheetMetalDrawingsViewModel"/> class.
         /// </summary>
         public GenerateSheetMetalDrawingsViewModel()
         {
             Title = "Generate Sheet Metal Flat Pattern Drawings";
+            SelectedViewStyle = DrawingViewStyleEnum.kHiddenLineDrawingViewStyle;
         }
 
         protected override void GenerateDrawings()
@@ -101,7 +88,7 @@
                         Position: drawingDocument.ActiveSheet.CenterPoint(),
                         Scale: Scale,
                         ViewOrientation: ViewOrientationTypeEnum.kDefaultViewOrientation,
-                        ViewStyle: DrawingViewStyleEnum.kHiddenLineDrawingViewStyle,
+                        ViewStyle: SelectedViewStyle,
                         ModelViewName: string.Empty,
                         ArbitraryCamera: Type.Missing,
                         AdditionalOptions: AddIn.CreateNameValueMap("SheetMetalFoldedModel", false)
@@ -123,13 +110,13 @@
                     if (quantity > 0)
                         partsList.PartsListRows[1]["QTY"].Value = quantity.ToString();
 
-                    // 4. Add base "ISO Top Right", hidden line removed, shaded base view of the part in the drawing's top right corner.
+                    // 4. Add base "ISO Top Right", base view of the part in the drawing's top right corner.
                     var perspectiveView = sheet.DrawingViews.AddBaseView(
                         Model: (_Document)part.Document,
                         Position: drawingDocument.ActiveSheet.TopRightPoint(),
                         Scale: 0.1,
                         ViewOrientation: ViewOrientationTypeEnum.kIsoTopRightViewOrientation,
-                        ViewStyle: DrawingViewStyleEnum.kHiddenLineDrawingViewStyle,
+                        ViewStyle: SelectedViewStyle,
                         ModelViewName: string.Empty,
                         ArbitraryCamera: Type.Missing,
                         AdditionalOptions: Type.Missing
@@ -140,20 +127,20 @@
                     perspectiveView.Fit(
                         new Rectangle(
                             AddIn.CreatePoint2D(
-                                ((sheet.Width - margin.Right) * 3 + margin.Left) / 4 + 1,
-                                ((sheet.Height - margin.Top) * 3 + margin.Bottom) / 4 + 1
+                                x: ((sheet.Width - margin.Right) * 3 + margin.Left) / 4 + 1,
+                                y: ((sheet.Height - margin.Top) * 3 + margin.Bottom) / 4 + 1
                             ),
                             AddIn.CreatePoint2D(
-                                topRightCorner.X - 1,
-                                topRightCorner.Y - 1
+                                x: topRightCorner.X - 1,
+                                y: topRightCorner.Y - 1
                             )
                         )
                     );
 
                     perspectiveView.Position =
                         AddIn.CreatePoint2D(
-                            perspectiveView.Position.X,
-                            perspectiveView.Position.Y - partsList.RangeBox.Height()
+                            x: perspectiveView.Position.X,
+                            y: perspectiveView.Position.Y - partsList.RangeBox.Height()
                         );
 
                     // 5. TODO Add 'Top View' below the 'ISO Top Right' view.
@@ -163,7 +150,7 @@
                         Position: drawingDocument.ActiveSheet.BottomLeftCorner(),
                         Scale: 0.1,
                         ViewOrientation: ViewOrientationTypeEnum.kTopViewOrientation,
-                        ViewStyle: DrawingViewStyleEnum.kHiddenLineDrawingViewStyle,
+                        ViewStyle: SelectedViewStyle,
                         ModelViewName: string.Empty,
                         ArbitraryCamera: Type.Missing,
                         AdditionalOptions: Type.Missing
@@ -171,8 +158,8 @@
 
                     topView.Position =
                         AddIn.CreatePoint2D(
-                            margin.Left + topView.Width + 1,
-                            margin.Bottom + topView.Height + 1
+                            x: margin.Left + topView.Width + 1,
+                            y: margin.Bottom + topView.Height + 1
                         );
                 }
                 catch (Exception ex)

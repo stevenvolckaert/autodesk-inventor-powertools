@@ -1,5 +1,6 @@
 ﻿namespace StevenVolckaert.InventorPowerTools.Windows
 {
+    using System;
     using System.Collections.Generic;
     using System.Linq;
     using System.Windows.Input;
@@ -89,6 +90,23 @@
                     _areTrailingZerosDisplayed = value;
                     RaisePropertyChanged(() => AreTrailingZerosDisplayed);
                 }
+            }
+        }
+
+        public List<DrawingViewStyleEnum> SupportedViewStyles { get; }
+            = ((DrawingViewStyleEnum[])Enum.GetValues(typeof(DrawingViewStyleEnum))).ToList();
+
+        private DrawingViewStyleEnum _selectedViewStyle = DrawingViewStyleEnum.kFromBaseDrawingViewStyle;
+        public DrawingViewStyleEnum SelectedViewStyle
+        {
+            get { return _selectedViewStyle; }
+            set
+            {
+                if (_selectedViewStyle == value)
+                    return;
+
+                _selectedViewStyle = value;
+                RaisePropertyChanged(() => SelectedViewStyle);
             }
         }
 

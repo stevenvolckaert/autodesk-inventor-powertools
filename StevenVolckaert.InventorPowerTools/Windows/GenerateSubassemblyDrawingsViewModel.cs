@@ -13,14 +13,14 @@
             get { return _subassemblies; }
             set
             {
-                if (_subassemblies != value)
-                {
-                    _subassemblies = value;
-                    RaisePropertyChanged(() => Subassemblies);
+                if (_subassemblies == value)
+                    return;
 
-                    _documents = value.Cast<IDocument>().ToList();
-                    ComputeIsEverythingSelected();
-                }
+                _subassemblies = value;
+                RaisePropertyChanged(() => Subassemblies);
+
+                _documents = value.Cast<IDocument>().ToList();
+                ComputeIsEverythingSelected();
             }
         }
 
@@ -30,20 +30,21 @@
             get { return _selectedSubassembly; }
             set
             {
-                if (_selectedSubassembly != value)
-                {
-                    _selectedSubassembly = value;
-                    RaisePropertyChanged(() => SelectedSubassembly);
-                }
+                if (_selectedSubassembly == value)
+                    return;
+
+                _selectedSubassembly = value;
+                RaisePropertyChanged(() => SelectedSubassembly);
             }
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="GenerateSubassemblyDrawingsViewModel"/> class.
+        ///     Initializes a new instance of the <see cref="GenerateSubassemblyDrawingsViewModel"/> class.
         /// </summary>
         public GenerateSubassemblyDrawingsViewModel()
         {
             Title = "Generate Subassembly Drawings";
+            SelectedViewStyle = DrawingViewStyleEnum.kHiddenLineDrawingViewStyle;
         }
 
         protected override void GenerateDrawings()
@@ -76,7 +77,7 @@
                         Position: drawingDocument.ActiveSheet.CenterPoint(),
                         Scale: Scale,
                         ViewOrientation: ViewOrientationTypeEnum.kFrontViewOrientation,
-                        ViewStyle: DrawingViewStyleEnum.kHiddenLineDrawingViewStyle,
+                        ViewStyle: SelectedViewStyle,
                         ModelViewName: string.Empty,
                         ArbitraryCamera: Type.Missing,
                         AdditionalOptions: Type.Missing
@@ -101,8 +102,7 @@
                         Position: drawingDocument.ActiveSheet.TopRightPoint(),
                         Scale: PerspectiveScale,
                         ViewOrientation: ViewOrientationTypeEnum.kIsoTopRightViewOrientation,
-                        // DrawingViewStyleEnum.kShadedDrawingViewStyle results in difficult to read printouts - replacing with kHiddenLineDrawingViewStyle.
-                        ViewStyle: DrawingViewStyleEnum.kHiddenLineDrawingViewStyle,
+                        ViewStyle: SelectedViewStyle,
                         ModelViewName: string.Empty,
                         ArbitraryCamera: Type.Missing,
                         AdditionalOptions: Type.Missing
@@ -113,20 +113,20 @@
                     perspectiveView.Fit(
                         new Rectangle(
                             AddIn.CreatePoint2D(
-                                ((sheet.Width - margin.Right) * 3 + margin.Left) / 4 + 1,
-                                ((sheet.Height - margin.Top) * 3 + margin.Bottom) / 4 + 1
+                                x: ((sheet.Width - margin.Right) * 3 + margin.Left) / 4 + 1,
+                                y: ((sheet.Height - margin.Top) * 3 + margin.Bottom) / 4 + 1
                             ),
                             AddIn.CreatePoint2D(
-                                topRightCorner.X - 1,
-                                topRightCorner.Y - 1
+                                x: topRightCorner.X - 1,
+                                y: topRightCorner.Y - 1
                             )
                         )
                     );
 
                     perspectiveView.Position =
                         AddIn.CreatePoint2D(
-                            perspectiveView.Position.X,
-                            perspectiveView.Position.Y - partsList.RangeBox.Height()
+                            x: perspectiveView.Position.X,
+                            y: perspectiveView.Position.Y - partsList.RangeBox.Height()
                         );
                 }
                 catch (Exception ex)
