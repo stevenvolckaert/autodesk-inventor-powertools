@@ -5,22 +5,23 @@
     using System.Linq;
 
     /// <summary>
-    /// Represents the precision of a linear dimension.
+    ///     Represents the precision of a linear dimension.
     /// </summary>
     public class LinearPrecision
     {
         /// <summary>
-        /// Gets the underlying enumeration value of the linear precision.
+        ///     Gets the underlying enumeration value of the linear precision.
         /// </summary>
         public LinearPrecisionEnum EnumValue { get; }
 
         /// <summary>
-        /// Gets the display name of the linear precision.
+        ///     Gets the display name of the linear precision.
         /// </summary>
         public string DisplayName { get; }
 
-        // TODO Learn how the enumeration values that represent decimal places are represented in Inventor, and adapt the below string
-        // literals, if necessary. What's declared currently is just a guess. Steven Volckaert. September 28, 2016.
+        // TODO Learn how the enumeration values that represent decimal places are represented in Inventor,
+        // and adapt the below string literals, if necessary. What's declared currently is just a guess.
+        // Steven Volckaert. September 28, 2016.
         private static readonly IDictionary<LinearPrecisionEnum, string> _decimalDisplayNames =
             new Dictionary<LinearPrecisionEnum, string>
             {
@@ -50,9 +51,11 @@
             };
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="LinearPrecision"/> class.
+        ///     Initializes a new instance of the <see cref="LinearPrecision"/> class.
         /// </summary>
-        /// <param name="enumValue">The underlying enumeration value.</param>
+        /// <param name="enumValue">
+        ///     The underlying enumeration value.
+        /// </param>
         public LinearPrecision(LinearPrecisionEnum enumValue)
             : this(enumValue, GetDisplayName(enumValue))
         {
@@ -65,10 +68,14 @@
         }
 
         /// <summary>
-        /// Returns the display name of the specified <see cref="LinearPrecisionEnum"/> value.
+        ///     Returns the display name of the specified <see cref="LinearPrecisionEnum"/> value.
         /// </summary>
-        /// <param name="value">The value to convert.</param>
-        /// <returns>The display name associated with <paramref name="value"/>.</returns>
+        /// <param name="value">
+        ///     The value to convert.
+        /// </param>
+        /// <returns>
+        ///     The display name associated with <paramref name="value"/>.
+        /// </returns>
         public static string GetDisplayName(LinearPrecisionEnum value)
         {
             string returnValue;
@@ -77,24 +84,32 @@
         }
 
         /// <summary>
-        /// Creates an enumerable of <see cref="LinearPrecision"/> instances that represent the decimal part of a linear precision. 
+        ///     Creates an enumerable of <see cref="LinearPrecision"/> instances that represent
+        ///     the decimal part of a linear precision. 
         /// </summary>
-        /// <returns>An enumerable of <see cref="LinearPrecision"/> instances. </returns>
+        /// <returns>
+        ///     An enumerable of <see cref="LinearPrecision"/> instances.
+        /// </returns>
         public static IEnumerable<LinearPrecision> CreateDecimalLinearPrecisions()
         {
             return CreateLinearPrecisions(_decimalDisplayNames);
         }
 
         /// <summary>
-        /// Creates an enumerable of <see cref="LinearPrecision"/> instances that represent the fractional part of a linear precision.
+        ///     Creates an enumerable of <see cref="LinearPrecision"/> instances that represent
+        ///     the fractional part of a linear precision.
         /// </summary>
-        /// <returns>An enumerable of <see cref="LinearPrecision"/> instances. </returns>
+        /// <returns>
+        ///     An enumerable of <see cref="LinearPrecision"/> instances.
+        /// </returns>
         public static IEnumerable<LinearPrecision> CreateFractionalLinearPrecisions()
         {
             return CreateLinearPrecisions(_fractionalDisplayNames);
         }
 
-        private static IEnumerable<LinearPrecision> CreateLinearPrecisions(IDictionary<LinearPrecisionEnum, string> displayNames)
+        private static IEnumerable<LinearPrecision> CreateLinearPrecisions(
+            IDictionary<LinearPrecisionEnum, string> displayNames
+        )
         {
             return displayNames.Select(x => new LinearPrecision(x.Key, x.Value));
         }
