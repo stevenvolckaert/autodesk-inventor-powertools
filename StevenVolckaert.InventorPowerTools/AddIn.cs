@@ -484,13 +484,21 @@ namespace StevenVolckaert.InventorPowerTools
 
         public static void ShowWarningMessageBox(string caption, Exception exception)
         {
-            ShowWarningMessageBox("{0}", exception.ToString());
+            ShowWarningMessageBox(caption, message: exception.ToString());
         }
 
         public static void ShowWarningMessageBox(string caption, string messageFormat, params object[] messageArgs)
         {
+            ShowWarningMessageBox(
+                caption: caption,
+                message: string.Format(CultureInfo.InvariantCulture, messageFormat, messageArgs)
+            );
+        }
+
+        public static void ShowWarningMessageBox(string caption, string message)
+        {
             MessageBox.Show(
-                messageBoxText: string.Format(CultureInfo.InvariantCulture, messageFormat, messageArgs),
+                messageBoxText: message,
                 caption: caption,
                 button: MessageBoxButton.OK,
                 icon: MessageBoxImage.Exclamation
