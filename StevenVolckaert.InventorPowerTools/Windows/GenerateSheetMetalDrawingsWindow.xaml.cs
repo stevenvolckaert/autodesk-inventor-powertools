@@ -37,7 +37,7 @@
 
             ViewModel.Assembly = assembly;
             ViewModel.Parts = parts.OrderByOrdinal(x => x.Name).ToList();
-            base.Show();
+            Show();
         }
 
         private void Hide(object sender, RoutedEventArgs e)
