@@ -67,15 +67,17 @@
 
             if (bom?.RequiresUpdate == true)
                 AddIn.ShowWarningMessageBox(
-                    Title,
-                    "The BOM of assembly '{0}' requires an update.{1}Quantities displayed in the generated drawings might be incorrect.",
-                    Assembly.DisplayName, System.Environment.NewLine + System.Environment.NewLine
+                    caption: Title,
+                    message: $"The BOM of assembly '{Assembly.DisplayName}' requires an update."
+                        + System.Environment.NewLine + System.Environment.NewLine
+                        + "Quantities displayed in the generated drawings might be incorrect."
                 );
 
             foreach (var part in selectedParts)
             {
                 var drawingDocument = CreateDrawingDocument();
-                var dimensionStyle = drawingDocument.StylesManager.ActiveStandardStyle.ActiveObjectDefaults.LinearDimensionStyle;
+                var dimensionStyle = drawingDocument
+                    .StylesManager.ActiveStandardStyle.ActiveObjectDefaults.LinearDimensionStyle;
 
                 var sheet = drawingDocument.ActiveSheet;
                 var topRightCorner = sheet.TopRightCorner();
