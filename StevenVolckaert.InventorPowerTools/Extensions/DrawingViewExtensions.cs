@@ -72,7 +72,7 @@
             var topProjectedViews = new List<DrawingView>();
             var previousProjectedView = leftProjectedView;
 
-            for (int i = 0; i <= numberOfTopViews; i++)
+            for (int i = 0; i < numberOfTopViews; i++)
             {
                 var topProjectedView = previousProjectedView.AddTopProjectedView(drawingDistance);
                 topProjectedViews.Add(topProjectedView);
