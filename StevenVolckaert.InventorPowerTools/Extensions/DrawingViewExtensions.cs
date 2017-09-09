@@ -554,11 +554,14 @@
         }
 
         /// <summary>
-        /// Fits the view into a specified rectangle by changing it's scale.
+        ///     Fits the view into a specified rectangle by changing it's scale.
         /// </summary>
         /// <param name="drawingView">
-        /// The <see cref="DrawingView"/> instance that this extension method affects.</param>
-        /// <param name="rectangle">The rectangle in which the view has to fit.</param>
+        ///     The <see cref="DrawingView"/> instance that this extension method affects.
+        /// </param>
+        /// <param name="rectangle">
+        ///     The rectangle in which the view has to fit.
+        /// </param>
         public static void Fit(this DrawingView drawingView, Rectangle rectangle)
         {
             if (drawingView == null)
@@ -579,6 +582,43 @@
 
             drawingView.Scale = requiredScales.Min();
             drawingView.Position = rectangle.CenterPoint;
+        }
+
+        /// <summary>
+        ///     Fits the view into the top right corner of the specified sheet.
+        /// </summary>
+        /// <param name="drawingView">
+        ///     The <see cref="DrawingView"/> instance this extension method affects.
+        /// </param>
+        /// <param name="sheet">
+        ///     The <see cref="Sheet"/> to fit the view into.
+        /// </param>
+        /// <exception cref="ArgumentNullException">
+        ///     <paramref name="drawingView"/> or <paramref name="sheet"/> is <c>null</c>.
+        /// </exception>
+        public static void FitToTopRightCorner(this DrawingView drawingView, Sheet sheet)
+        {
+            if (drawingView == null)
+                throw new ArgumentNullException(nameof(drawingView));
+
+            if (sheet == null)
+                throw new ArgumentNullException(nameof(sheet));
+
+            var margin = sheet.Margin();
+            var topRightCorner = sheet.TopRightCorner();
+
+            drawingView.Fit(
+                new Rectangle(
+                    bottomLeftCorner: AddIn.CreatePoint2D(
+                        x: ((sheet.Width - margin.Right) * 3 + margin.Left) / 4 + 1,
+                        y: ((sheet.Height - margin.Top) * 3 + margin.Bottom) / 4 + 1
+                    ),
+                    topRightCorner: AddIn.CreatePoint2D(
+                        x: topRightCorner.X - 1,
+                        y: topRightCorner.Y - 1
+                    )
+                )
+            );
         }
 
         /// <summary>

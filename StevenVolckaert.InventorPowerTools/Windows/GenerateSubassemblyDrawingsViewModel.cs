@@ -112,21 +112,7 @@
                         AdditionalOptions: Type.Missing
                     );
 
-                    var margin = sheet.Margin();
-
-                    perspectiveView.Fit(
-                        new Rectangle(
-                            AddIn.CreatePoint2D(
-                                x: ((sheet.Width - margin.Right) * 3 + margin.Left) / 4 + 1,
-                                y: ((sheet.Height - margin.Top) * 3 + margin.Bottom) / 4 + 1
-                            ),
-                            AddIn.CreatePoint2D(
-                                x: topRightCorner.X - 1,
-                                y: topRightCorner.Y - 1
-                            )
-                        )
-                    );
-
+                    perspectiveView.FitToTopRightCorner(sheet);
                     perspectiveView.Position =
                         AddIn.CreatePoint2D(
                             x: perspectiveView.Position.X,

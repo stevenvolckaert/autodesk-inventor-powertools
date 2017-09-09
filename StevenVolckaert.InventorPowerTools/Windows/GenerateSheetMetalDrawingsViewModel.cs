@@ -3,6 +3,7 @@
     using System;
     using System.Collections.Generic;
     using System.Linq;
+    using Drawing;
     using Inventor;
 
     internal class GenerateSheetMetalDrawingsViewModel : GenerateDrawingsViewModelBase
@@ -35,6 +36,31 @@
 
                 _documents = value.Cast<IDocument>().ToList();
                 ComputeIsEverythingSelected();
+            }
+        }
+
+        public IList<IGenerateSheetMetalDrawingsBehavior> SupportedGenerateDrawingsBehaviors { get; } =
+            new List<IGenerateSheetMetalDrawingsBehavior>
+            {
+                new GenerateSheetMetalFlatPatternDrawingsBehavior(),
+                new GenerateBaseViewWithLeftThenThreeTopProjectedViewsDrawingsBehavior()
+            };
+
+        private IGenerateSheetMetalDrawingsBehavior _selectedGenerateDrawingsBehavior;
+        public IGenerateSheetMetalDrawingsBehavior SelectedGenerateDrawingsBehavior
+        {
+            get
+            {
+                return _selectedGenerateDrawingsBehavior
+                    ?? (_selectedGenerateDrawingsBehavior = SupportedGenerateDrawingsBehaviors.First());
+            }
+            set
+            {
+                if (_selectedGenerateDrawingsBehavior == value)
+                    return;
+
+                _selectedGenerateDrawingsBehavior = value;
+                RaisePropertyChanged(() => SelectedGenerateDrawingsBehavior);
             }
         }
 
@@ -76,16 +102,20 @@
             foreach (var part in selectedParts)
             {
                 var drawingDocument = CreateDrawingDocument();
+
                 var dimensionStyle = drawingDocument
                     .StylesManager.ActiveStandardStyle.ActiveObjectDefaults.LinearDimensionStyle;
 
                 var sheet = drawingDocument.ActiveSheet;
-                var topRightCorner = sheet.TopRightCorner();
 
                 try
                 {
-                    // 1. Alter formatting of custom properties.
                     SetCustomPropertyFormat(part);
+
+                    SelectedGenerateDrawingsBehavior.AddViews(part, drawingDocument);
+                    continue;
+
+
 
                     // 2. Add flat pattern base view.
                     var flatPatternView = sheet.DrawingViews.AddBaseView(
@@ -127,21 +157,7 @@
                         AdditionalOptions: Type.Missing
                     );
 
-                    var margin = sheet.Margin();
-
-                    perspectiveView.Fit(
-                        new Rectangle(
-                            AddIn.CreatePoint2D(
-                                x: ((sheet.Width - margin.Right) * 3 + margin.Left) / 4 + 1,
-                                y: ((sheet.Height - margin.Top) * 3 + margin.Bottom) / 4 + 1
-                            ),
-                            AddIn.CreatePoint2D(
-                                x: topRightCorner.X - 1,
-                                y: topRightCorner.Y - 1
-                            )
-                        )
-                    );
-
+                    perspectiveView.FitToTopRightCorner(sheet);
                     perspectiveView.Position =
                         AddIn.CreatePoint2D(
                             x: perspectiveView.Position.X,
@@ -149,7 +165,11 @@
                         );
 
                     // 5. TODO Add 'Top View' below the 'ISO Top Right' view.
-                    // TODO Implement extension method 'BottomRightPoint'.
+                    // TODO Implement extension method 'BottomRightCorner()'
+                    // 
+                    // not necessary for GenerateSheetMetalDrawingsBehaviorType.BaseViewWithLeftThenThreeTopProjectedViews
+                    var margin = sheet.Margin();
+
                     var topView = sheet.DrawingViews.AddBaseView(
                         Model: (_Document)part.Document,
                         Position: drawingDocument.ActiveSheet.BottomLeftCorner(),

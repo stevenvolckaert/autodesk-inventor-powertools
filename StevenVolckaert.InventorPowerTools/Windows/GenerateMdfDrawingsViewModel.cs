@@ -73,39 +73,6 @@
 
                     // 3. Add part list to the top right corner.
                     var partsList = sheet.AddPartsList(part, PartsListLevelEnum.kPartsOnly);
-
-                    // 4. Add base "ISO TOP Right" base view of the subassembly in the drawing's top right corner.
-                    //var perspectiveView = sheet.DrawingViews.AddBaseView(
-                    //    Model: (_Document)part,
-                    //    Position: drawingDocument.ActiveSheet.TopRightPoint(),
-                    //    Scale: 0.1,
-                    //    ViewOrientation: ViewOrientationTypeEnum.kIsoTopRightViewOrientation,
-                    //    ViewStyle: SelectedViewStyle,
-                    //    ModelViewName: string.Empty,
-                    //    ArbitraryCamera: Type.Missing,
-                    //    AdditionalOptions: Type.Missing
-                    //);
-
-                    //var margin = sheet.Margin();
-
-                    //perspectiveView.Fit(
-                    //    new Rectangle(
-                    //        AddIn.CreatePoint2d(
-                    //            ((sheet.Width - margin.Right) * 3 + margin.Left) / 4 + 1,
-                    //            ((sheet.Height - margin.Top) * 3 + margin.Bottom) / 4 + 1
-                    //        ),
-                    //        AddIn.CreatePoint2d(
-                    //            topRightCorner.X - 1,
-                    //            topRightCorner.Y - 1
-                    //        )
-                    //    )
-                    //);
-
-                    //perspectiveView.Position =
-                    //    AddIn.CreatePoint2d(
-                    //        perspectiveView.Position.X,
-                    //        perspectiveView.Position.Y - partsList.RangeBox.Height()
-                    //    );
                 }
                 catch (Exception ex)
                 {
