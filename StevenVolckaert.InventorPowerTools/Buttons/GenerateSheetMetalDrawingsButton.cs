@@ -10,11 +10,11 @@
         private readonly GenerateSheetMetalDrawingsWindow _generateSheetMetalDrawingsWindow =
             new GenerateSheetMetalDrawingsWindow();
 
-        public override string DisplayName { get; } = "Sheet Metal" + Environment.NewLine + "Flat Pattern";
+        public override string DisplayName { get; } = "Sheet Metal";
 
         public override string Description { get; } =
-            "Generate a flat pattern drawing of every" + Environment.NewLine +
-            "sheet metal part in the active document.";
+            "Generate a drawing of every sheet" + Environment.NewLine +
+            "metal part in the active document.";
 
         protected override void OnExecute(NameValueMap context)
         {
@@ -29,7 +29,9 @@
 
                 if (sheetMetalParts.Count == 0)
                 {
-                    ShowWarningMessageBox($"Assembly {assembly.FullFileName} doesn't contain any sheet metal parts.");
+                    ShowWarningMessageBox(
+                        $"Assembly {assembly.FullFileName} doesn't contain any sheet metal parts."
+                    );
                     return;
                 }
 
