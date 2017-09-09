@@ -106,18 +106,18 @@
         <Grid Grid.Row="2" Margin="0,0,0,8">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
-                <ColumnDefinition/>
+                <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
             <!-- Drawing Type -->
-            <Label Grid.Column="0" Grid.Row="0" Content="Drawing Type"
-                       Target="{Binding ElementName=DrawingTypeComboBox}" />
-            <ComboBox x:Name="DrawingtypeComboBox" Grid.Column="1" Grid.Row="0"
+            <Label Grid.Column="0" Content="Drawing Type"
+                   Target="{Binding ElementName=DrawingTypeComboBox}" />
+            <ComboBox x:Name="DrawingtypeComboBox" Grid.Column="1"
                           ItemsSource="{Binding SupportedGenerateDrawingsBehaviors}"
                           SelectedItem="{Binding SelectedGenerateDrawingsBehavior, Mode=TwoWay}"
-                          DisplayMemberPath="DisplayName"/>
+                          DisplayMemberPath="DisplayName" MinWidth="280" />
 
-            <Button Grid.Column="3" Command="{Binding GenerateDrawingsCommand}" Click="Hide"
+            <Button Grid.Column="2" Command="{Binding GenerateDrawingsCommand}" Click="Hide"
                     Content="Generate" HorizontalAlignment="Left" Width="75" Margin="8,3" Padding="8,2"/>
         </Grid>
     </Grid>

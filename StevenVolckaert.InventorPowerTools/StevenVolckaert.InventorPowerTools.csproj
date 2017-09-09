@@ -73,6 +73,9 @@
     <Compile Include="Buttons\GenerateMdfDrawingsButton.cs" />
     <Compile Include="Buttons\GenerateSheetMetalDrawingsButton.cs" />
     <Compile Include="Buttons\GenerateSubassemblyDrawingsButton.cs" />
+    <Compile Include="Drawing\GenerateBaseViewWithLeftThenThreeTopProjectedViewsDrawingsBehavior.cs" />
+    <Compile Include="Drawing\GenerateSheetMetalDrawingsBehaviorBase.cs" />
+    <Compile Include="Drawing\GenerateSheetMetalFlatPatternDrawingsBehavior.cs" />
     <Compile Include="Extensions\ApplicationExtensions.cs" />
     <Compile Include="Extensions\AssemblyDocumentExtensions.cs" />
     <Compile Include="Extensions\BOMRowExtensions.cs" />
@@ -93,6 +96,7 @@
     <Compile Include="Extensions\StringExtensions.cs" />
     <Compile Include="Extensions\UserInterfaceManagerExtensions.cs" />
     <Compile Include="GlobalSuppressions.cs" />
+    <Compile Include="Drawing\IGenerateSheetMetalDrawingsBehavior.cs" />
     <Compile Include="ImageConvert.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -113,6 +117,7 @@
     <Compile Include="Prism\ViewModel\PropertySupport.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModelBase.cs" />
+    <Compile Include="Drawing\GenerateSheetMetalDrawingsBehaviorType.cs" />
     <Compile Include="Windows\GenerateSheetMetalDrawingsWindow.xaml.cs">
       <DependentUpon>GenerateSheetMetalDrawingsWindow.xaml</DependentUpon>
     </Compile>
