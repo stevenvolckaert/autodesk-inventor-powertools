@@ -28,8 +28,8 @@
                 if (subassemblies.Count == 0)
                 {
                     AddIn.ShowWarningMessageBox(
-                        _generateDrawingsWindow.Title,
-                        $"Assembly '{assembly.FullFileName}' doesn't contain subassemblies."
+                        caption: _generateDrawingsWindow.Title,
+                        message: $"Assembly '{assembly.FullFileName}' doesn't contain subassemblies."
                     );
 
                     return;
