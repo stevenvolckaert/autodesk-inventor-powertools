@@ -37,7 +37,7 @@ To debug the addin with Inventor 2012, do the following:
 
   ![InventorPowerTools](Documentation/inventor-power-tools-project-properties-debug.png)
 
-Finally, hit `F5` to start debugging or `Ctrl+F5` to run.
+- Finally, hit `F5` to start debugging or `Ctrl+F5` to run.
 
 ## License
 
