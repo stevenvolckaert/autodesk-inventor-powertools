@@ -56,7 +56,7 @@
         }
 
         public IList<LinearPrecision> SupportedLinearPrecisions { get; }
-            = LinearPrecision.CreateFractionalLinearPrecisions().ToList();
+            = LinearPrecision.SupportedFractionalLinearPrecisions;
 
         private LinearPrecision _selectedLinearPrecision;
         public LinearPrecision SelectedLinearPrecision
@@ -92,8 +92,7 @@
             }
         }
 
-        public IList<DrawingViewStyle> SupportedViewStyles { get; }
-            = DrawingViewStyle.GetSupportedViewStyles().ToList();
+        public IList<DrawingViewStyle> SupportedViewStyles { get; } = DrawingViewStyle.SupportedValues;
 
         private DrawingViewStyle _selectedViewStyle;
         public DrawingViewStyle SelectedViewStyle

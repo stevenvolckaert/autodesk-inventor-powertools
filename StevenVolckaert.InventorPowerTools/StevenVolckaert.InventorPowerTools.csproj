@@ -76,6 +76,7 @@
     <Compile Include="Drawing\GenerateBaseViewWithLeftThenThreeTopProjectedViewsDrawingsBehavior.cs" />
     <Compile Include="Drawing\GenerateSheetMetalDrawingsBehaviorBase.cs" />
     <Compile Include="Drawing\GenerateSheetMetalFlatPatternDrawingsBehavior.cs" />
+    <Compile Include="Enumeration.cs" />
     <Compile Include="Extensions\ApplicationExtensions.cs" />
     <Compile Include="Extensions\AssemblyDocumentExtensions.cs" />
     <Compile Include="Extensions\BOMRowExtensions.cs" />
@@ -107,7 +108,7 @@
     <Compile Include="Models\Margin.cs" />
     <Compile Include="Models\Part.cs" />
     <Compile Include="Models\Rectangle.cs" />
-    <Compile Include="Models\ViewStyle.cs" />
+    <Compile Include="Models\DrawingViewStyle.cs" />
     <Compile Include="PartType.cs" />
     <Compile Include="Prism\Commands\DelegateCommand.cs" />
     <Compile Include="Prism\Commands\DelegateCommandBase.cs" />
