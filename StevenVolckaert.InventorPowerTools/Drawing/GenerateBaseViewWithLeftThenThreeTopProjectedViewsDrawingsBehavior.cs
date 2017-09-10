@@ -38,8 +38,8 @@
 
             baseView.AddLeftThenTopProjectedViews(
                 numberOfTopViews: 3,
-                addDimensions: true,
-                drawingDistance: 2.5
+                addDimensions: false,
+                drawingDistance: 5
             );
 
             var partsList = AddPartsList(quantity);
