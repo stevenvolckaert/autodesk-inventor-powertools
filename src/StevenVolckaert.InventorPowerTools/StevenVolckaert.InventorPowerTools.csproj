@@ -44,14 +44,14 @@
     <AssemblyOriginatorKeyFile>..\..\StevenVolckaert.pfx</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Autodesk.Inventor.Interop, Version=16.0.0.0, Culture=neutral, PublicKeyToken=d84147f8b4276564, processorArchitecture=MSIL">
-      <HintPath>..\Libraries\Autodesk.Inventor.Interop.dll</HintPath>
+    <Reference Include="Autodesk.Inventor.Interop">
+      <HintPath>..\..\Libraries\Autodesk.Inventor.Interop.dll</HintPath>
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
     <Reference Include="StevenVolckaert.Core, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\StevenVolckaert.Core.1.0.0\lib\net35\StevenVolckaert.Core.dll</HintPath>
+      <HintPath>..\..\packages\StevenVolckaert.Core.1.0.0\lib\net35\StevenVolckaert.Core.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />

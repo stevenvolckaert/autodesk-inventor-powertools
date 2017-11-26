@@ -58,7 +58,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\StevenVolckaert.InventorPowerTools\StevenVolckaert.InventorPowerTools.csproj">
+    <ProjectReference Include="..\..\src\StevenVolckaert.InventorPowerTools\StevenVolckaert.InventorPowerTools.csproj">
       <Project>{e304487d-6aa6-425c-9962-ed4423242196}</Project>
       <Name>StevenVolckaert.InventorPowerTools</Name>
     </ProjectReference>

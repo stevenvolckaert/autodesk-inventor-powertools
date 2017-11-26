@@ -1,12 +1,8 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26730.12
+VisualStudioVersion = 15.0.27004.2009
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StevenVolckaert.InventorPowerTools", "StevenVolckaert.InventorPowerTools\StevenVolckaert.InventorPowerTools.csproj", "{E304487D-6AA6-425C-9962-ED4423242196}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StevenVolckaert.InventorPowerTools.Tests", "StevenVolckaert.InventorPowerTools.Tests\StevenVolckaert.InventorPowerTools.Tests.csproj", "{E38C90B4-3394-46A1-A26F-E78FD54368B0}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Documentation", "Documentation", "{74B32F39-BA24-4F4D-8BBC-68A4DA7BCB5F}"
 	ProjectSection(SolutionItems) = preProject
 		Documentation\admapi_16_0.chm = Documentation\admapi_16_0.chm
@@ -31,6 +27,14 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution items", "Solution 
 		README.md = README.md
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{3331B5FC-C938-40B5-AC18-893AB7DAF900}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{2AEDDFEE-5ADC-4429-9932-1FB84F4D3F98}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StevenVolckaert.InventorPowerTools", "src\StevenVolckaert.InventorPowerTools\StevenVolckaert.InventorPowerTools.csproj", "{E304487D-6AA6-425C-9962-ED4423242196}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StevenVolckaert.InventorPowerTools.Tests", "test\StevenVolckaert.InventorPowerTools.Tests\StevenVolckaert.InventorPowerTools.Tests.csproj", "{E38C90B4-3394-46A1-A26F-E78FD54368B0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -48,6 +52,10 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{E304487D-6AA6-425C-9962-ED4423242196} = {3331B5FC-C938-40B5-AC18-893AB7DAF900}
+		{E38C90B4-3394-46A1-A26F-E78FD54368B0} = {2AEDDFEE-5ADC-4429-9932-1FB84F4D3F98}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {4637C769-B085-4FEE-AFCA-E31EDB39F3A5}
